@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block Main %}
+<h5><p>Результаты поиска</p></h5>
+<ul class="tabs" data-tab>
+  <li class="tab-title active"><a href="#panel1">Книги</a></li>
+  <li class="tab-title"><a href="#panel2">Авторы</a></li>
+  <li class="tab-title"><a href="#panel3">Издательства</a></li>
+</ul>
+<div class="tabs-content">
+  <div class="content active" id="panel1">
+    <div aria-hidden="false" class="content active" id="panela">
+    <div class="row">
+      <ul class="small-block-grid-3">
+		{% for book in books %}
+			<li><a href={{book.get_absolute_url}}><i class="fi-fast-forward"></i>{{book.title}}</a></li>
+		{% endfor %}
+
+	</ul>
+    </div>
+  </div>
+  </div>
+  <div class="content" id="panel2">
+    <div aria-hidden="false" class="content active" id="panela">
+    <div class="row">
+      <ul class="small-block-grid-3">
+		{% for author in authors %}
+			<li><a href={{author.get_absolute_url}}><i class="fi-fast-forward"></i>{{author.personalData}}</a></li>
+		{% endfor %}
+
+	</ul>
+    </div>
+  </div>
+  </div>
+  <div class="content" id="panel3">
+    <div aria-hidden="false" class="content active" id="panela">
+    <div class="row">
+      <ul class="small-block-grid-3">
+		{% for publishing in publishings %}
+			<li><a href={{publishing.get_absolute_url}}><i class="fi-fast-forward"></i>{{publishings.title}}</a></li>
+		{% endfor %}
+
+	</ul>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load get_book %}
+{% load staticfiles %}
+{% block Main %}
+	<!--Боковая панель -->
+	{% include "leftpanel.html" %}
+	<div class="small-10 columns" style="padding-top: 10px">
+		<ul class="small-block-grid-5">
+				{% for book in books %}
+					{% get_book book %}
+				{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

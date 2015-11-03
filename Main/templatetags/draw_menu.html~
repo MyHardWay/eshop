@@ -1,0 +1,5 @@
+<ul>
+{% for page in pagesLst %}
+    <div style="margin-left: {{page.margin}}px; color: red;"><p><li><a href="{{page.url}}">{{page}}</a></li></p></div>
+{% endfor %}
+</ul>

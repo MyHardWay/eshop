@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My project</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/contnent-min.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/foundation/foundation.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/foundation/foundation.topbar.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/foundation/foundation.dropdown.js' %}"></script>
+	
+</head>
+<body>
+<!-- Верхняя панель навигации -->
+<div style="background-color:#333333;">
+    <div class="row">
+        <ul class="centeredText large-block-grid-4">
+		<li><a href="/auth/logout/">Доставка</a></li>
+		<li><a href="/auth/logout/">Как заказать</a></li>
+		<li><a href="/auth/logout/">Сертификаты</a></li>
+        	<li><a href="/auth/logout/">Помощь</a></li>
+	</ul>	
+    </div>
+</div>
+<!-- Панель авторизации и поиска -->
+<div id="searchPanel">
+	<div class="row" style="margin-top:20px">
+		<div class="large-2 columns">
+			<a href="/"><img src="{% static 'img/logo.jpg'%}" style="height:75px; width: 200px"></a>
+		</div>
+		<div class="large-6 columns">
+		  <a><input type="text" placeholder="Find Stuff" style="height:75px"></a>
+		</div>
+		<div class="large-1 columns">
+		  <a href="#" class="alert button expand" style="height:75px; line-height: 40px !important;">Найти</a>
+		</div>
+		<div class="large-1 columns">
+			<a href="/auth/logout/" style="height:75px">Сертификаты</a>
+		</div>
+		<div class="large-1 columns">
+			<a href="/auth/logout/" style="height:75px">Помощь</a>
+		</div>
+	</div>
+</div>
+<!-- Панель выбора товара -->
+<nav class="top-bar" data-topbar>
+    <ul class="title-area">
+		<li class="name">
+				<h1><a href="#">LOGO</a></h1>
+		</li>
+	</ul>
+	<section class="top-bar-section">
+	    <ul class="left">
+			<li class="divider"></li>
+			<li class="active"><a href="#">Menu Item 1</a></li>
+			<li class="divider"></li>				
+			<li><a href="#">Menu Item 2</a></li>
+			<li class="divider"></li>
+			<li><a data-dropdown="drop2" aria-controls="drop2" aria-expanded="false">Has Dropdown</a></li>
+				<div id="drop2" data-dropdown-content class=" large f-dropdown content" aria-hidden="true" tabindex="-1" style="width:1000px">
+  <p>Some text that people will think is awesome! Some text that people will think is awesome! Some text that people will think is awesome!</p>
+</div>	
+		</ul>
+	</section>
+</nav>
+	
+{% block Main %}
+{% endblock %}
+ <script>
+	//alert($("#searchPanel").children().children().attr("width"))
+    // $("#searchPanel").children().css({"background-color": "#333333", "margin-top": "40px"});
+    var rowElems = $("#searchPanel").children().children().children();
+	for (i = 0;  i < rowElems.length; i++) {
+	  //alert( rowElems[i].setAttribute('style', "height:400px"));
+	//alert( rowElems[i].innerHTML);
+	  //rowElems[i].height(300);	
+	}
+    //alert($("#searchPanel").children().children().attr("class"))
+    //$("#searchPanel").children().children().children().css({"height": "400px"})
+	//$("#searchPanel").children().children().css({"margin-top": "40px",'height': "200px"})
+    //var  rowElems = 
+    //($("#searchPanel").children().children('large-6 columns').children().children().height());
+    //alert($("#searchPanel").children().children('large-6 columns').children().height())
+  </script>
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
+<script> $(document).foundation(); </script>
+</body>

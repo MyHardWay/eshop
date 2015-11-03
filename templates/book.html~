@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block Main %}
+<div class = "small-12 columns" style="padding-top: 10px">
+	{% include "leftpanel.html" %}
+	<div class="small=10 columns">
+	<h2>{{book.author}} : {{book.title}}</h2>
+		<div class="small-3 columns">			
+			<img src="../../static/{{book.get_picture}}">
+		</div>
+	        <div class="small-4 end columns">
+			<p>{{book.text}}</p>
+	        </div>
+	</div>
+</div>
+
+{% endblock %}

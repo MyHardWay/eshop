@@ -1,0 +1,5 @@
+{% load staticfiles %}
+<li>
+	{% include "product-body.html" %}
+	<a class="button" id="buy{{product.id}}" onclick="makePurchase({{book.id}}); return false;" data-carttext="" href="#">В КОРЗИНУ</a>		
+</li>

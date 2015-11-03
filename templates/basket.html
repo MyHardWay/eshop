@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load get_products_in_basket %}
+{% block Main %}
+
+<!-- Инициализация диалогового окна -->
+<script type="text/javascript">	
+  $(function() {
+  	$("#dialog").dialog({
+  		dialogClass: 'no-close',
+   		autoOpen: false,
+		modal: true,
+		position: {my: "right bottom", at: "center center", of: window},
+  		buttons: [
+    			{
+      				text: "Отмена",
+      				click: function() {
+        			$( this ).dialog( "close" );}
+    			},
+			{
+      				text: "Ок",
+      				click: function() {
+        			$( this ).dialog( "close" );}
+    			},
+  		],
+		open: function() { $(".ui-dialog-titlebar-close").hide();}
+	});
+	
+  });
+</script>
+<!-- Только цифровой ввод в поля изменения количества товара -->
+<script type="text/javascript">		
+	$(document).ready(function() {
+		$('.book_numbers').keypress(function(e) {
+				if (!(e.which==8 || (e.which>47 && e.which<58))) return false;
+		});
+	});	
+</script>
+</head>
+<body>
+
+<!-- Диалоговое окно --> 
+<div id="dialog">
+ 	<p>Удалить товары из корзины?</p>
+</div>
+ 
+<!-- Содержимое корзины -->
+<ul class="tabs" data-tab>
+ 	<li class="tab-title active"><a href="#panel1">Заказ</a></li>
+ 	<li class="tab-title"><a href="#panel2">Отложено</a></li>
+</ul>
+<div class="tabs-content">
+	<!-- Текущий заказ -->
+ 	<div class="content active" id="panel1">
+		<div aria-hidden="false" class="content active" id="panela">
+    			<div class="row">
+      				<ul class="small-block-grid-5">
+					{% for order_product in order_products %}
+						{% get_products_in_basket order_product %}
+					{% endfor %}
+
+				</ul>
+    			</div>
+  		</div>
+  	</div>
+	<!-- Отложенные товары -->
+  	<div class="content" id="panel2">
+    		<p>Панель для отложенного товара. На данный момент находится в разработке.</p>
+  	</div>
+
+
+{% endblock %}
+
+
+ 
+

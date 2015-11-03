@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load get_product %}
+{% load staticfiles %}
+{% block Main %}
+	<!--Боковая панель -->
+	{% include "leftpanel.html" %}
+	<div class="small-10 columns" style="padding-top: 10px">
+		<ul class="small-block-grid-5">
+				{% for product in products %}
+					{% get_product product %}
+				{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

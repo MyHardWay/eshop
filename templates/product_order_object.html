@@ -1,0 +1,38 @@
+{% load staticfiles %}
+
+
+
+<li>
+	<!-- Форма для отображения продукта в корзине -->
+	{% include "product_body_object.html" %}
+		 <div class="row collapse prefix-round">
+			<div class="small-3 columns">
+			  	<a href="#" class="button prefix" onclick='delete_one("#product{{product.id}}")'>-</a>
+			</div>
+			<div class="small-6 columns">
+			  	<input type="text" placeholder="Количество товара" value="{{numbers}}" pattern="[0-9]{3}" id='product{{product.id}}' 		 								class='book_numbers' onchange='change_order("#product{{product.id}}")'>
+				<input type="hidden" value="{{order_product_id}}"" name="order_product_id">
+			</div>
+			<div class="small-3 columns">
+			  	<a href="#" class="button prefix" onclick='add_one("#product{{product.id}}")'>+</a>
+			</div>
+			<div class="row">
+				<!-- Отложенные товары
+				<div class="small-6 columns">
+				 <a href="#" >Отложить</a>
+				</div>
+				-->
+				<div class="small-6 columns">
+				 <a href="#" onclick="delete_order_product({{order_product_id}})">Удалить</a>
+				</div>
+
+			</div>
+		 </div>
+
+
+
+</li>
+
+
+
+

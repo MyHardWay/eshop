@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	
+</head>
+<body>
+<div class='large-3 large-offset-3 columns'>
+	<form method='POST' id="activeform" action="/auth/registrate/">
+	{% csrf_token %}
+	{{form}}
+	{% if error %}
+	<p><h6>{{error}}</h6></p>
+	{% endif %}
+	<input type='submit' class='button' value='Зарегистрироваться'>
+	</form>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+	$('#activeform').on('submit', function(event){
+    	    event.preventDefault();
+	    var _self = $(this);
+	    var token = $('input[name="csrfmiddlewaretoken"]').val();
+            alert( _self.serialize())  // sanity check
+                $.ajax({
+		    type: _self.attr('method'),
+		    url: _self.attr('action'),
+		    data: _self.serialize(),
+		    contentType: "application/x-www-form-urlencoded;charset=utf-8",
+		    headers: {"X-CSRFToken": token},
+		    beforeSend: function(xhr) {
+		    	xhr.setRequestHeader("Accept-Charset","utf-8");
+		    	xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded;charset=utf-8");},
+                    success: function(json) {
+                        //код в этом блоке выполняется при успешной отправке сообщения
+                        alert("Ваше сообщение отпрвлено!")},
+                    error: function( xhr, textStatus ) {
+    		        alert( [ xhr.status, textStatus ] )},
+	            complete: function() {
+                        //код в этом блоке выполняется при успешной отправке сообщения
+                        alert("Ваше сообщение отпрвлено!")},
+	            crossDomain: false
+                });
+	return 
+	});
+</script>
+
+</body>

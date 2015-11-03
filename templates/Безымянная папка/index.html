@@ -1,0 +1,187 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block Main %}
+	<!--Боковая панель -->
+	<div class="small-2 columns" style="padding-top: 10px"> 
+		<a href="#"><i class="fi-fast-forward"></i><h4>Рецензии читателей</h4></a>
+		<ul class="small-block-grid-3">
+			<a href="#"><i class="fi-fast-forward"></i><h4>Рецензии читателей</h4></a>
+			<a href="#"><i class="fi-fast-forward"></i><h4>Рецензии читателей</h4></a>
+			<div id="vk_groups"></div>
+			<script type="text/javascript">
+			VK.Widgets.Group("vk_groups", {mode: 0, width: "220", height: "400"}, 103542696);
+			</script>
+		</ul>
+	</div>
+	<!-- Контент -->
+	<div class="small-10 columns" style="padding-top: 10px">
+		<!-- Слайдер -->
+		<div class="small-7 columns">
+			<ul class="example-orbit" data-orbit >
+			  <li>
+			    <img src="{% static 'img/Advertising-Omar-Hoyam.jpg'%}" alt="slide 1" />
+			    <div class="orbit-caption">
+			      Caption One.
+			    </div>
+			  </li>
+			  <li class="active">
+			    <img src="{% static 'img/Advertising-Omar-Hoyam.jpg'%}" alt="slide 2" />
+			    <div class="orbit-caption">
+			      Caption Two.
+			    </div>
+			  </li>
+			  <li>
+			    <img src="{% static 'img/Advertising-Omar-Hoyam.jpg'%}" alt="slide 3" />
+			    <div class="orbit-caption">
+			      Caption Three.
+			    </div>
+			  </li>
+			</ul>
+		</div>
+		<!-- Баннер -->
+		<div class="small-5 columns">
+			<div class="profile-card" style="height: 445px">
+
+		    		<img src="http://zurb.com/ink/images/inky-computer.svg" alt="Inky">
+
+		 			 <div class="profile-info">
+
+					    <h4 class="subheader">Inky</h4>
+
+					    <p>Inky or inking can substitute for any word having to do with cool or awesome.</p>
+
+					    <p><strong>Used in a scentence -</strong> Yo man, Foundation for Emails is so inky. Coding emails doesn't suck anymore!</p>
+
+					    <p><a href="http://foundation.zurb.com/forum">Forum</a> | <a href="http://zurb.com/ink/">Website</a></p>
+
+					    <ul class="inline-list">
+
+					      <li><a href="https://www.facebook.com/ZURB"><i class="fi-social-facebook"></i></a></li>
+
+					      <li><a href="https://twitter.com/zurbink"><i class="fi-social-twitter"></i></a></li>
+
+					      <li><a href="https://github.com/zurb/ink"><i class="fi-social-github"></i></a></li>
+		   			</div>
+			</div>
+                </div>
+		<ul class="small-block-grid-1"><li><h4>Bestsallers</h4></li></ul>
+		<!-- Перечень книг -->	
+		<ul class="small-block-grid-5" name='Bestsallers'>
+		<li><div class="product-padding">
+			<div class="product-cover">
+				<a class="cover" href="/books/498962/" title="Чайна Мьевиль - Рельсы">
+					<span class="relative">
+					<img style="display: block;" src="http://img2.labirint.ru/books50/498962/covermid.jpg" class="book-img-cover" alt="Чайна Мьевиль - Рельсы 						обложка книги" title="Чайна Мьевиль - Рельсы обложка книги">		</span>
+					<span class="product-title">Рельсы</span>
+				</a>
+		
+				<span class="fader"></span>
+				<span style="display: block; top: 0px;" class="product-hint lazyloaded">
+					<a href="/reviews/goods/498962/"><span>3</span> рец.</a><br>
+					<a href="/screenshot/goods/498962/1/" onclick="return screenshot(this);"><span>17</span> фото</a>
+					<span class="tip"></span>
+				</span>
+			</div>
+
+		<div class="product-author">
+			<a href="/authors/33227/" title="Мьевиль Чайна"><span>Мьевиль Чайна</span></a>	<div class="fader"></div>
+		</div>
+		<div class="product-pubhouse">
+			<a href="/pubhouse/438/" title="Эксмо"><span>Эксмо</span></a><span>: </span>
+			<a href="/series/30880/" title="Современная зарубежная фантастика"><span>Современная зарубежная фантастика</span></a>
+			<div class="fader"></div>
+		</div>	
+		<div class="product-buy-area">
+			<div class="product-pricing">
+				<div class="price">
+					<span class="price-old"><span class="price-gray">534</span></span>
+					<span class="price-val" title="Цена со скидкой">
+					<span>497</span> р.</span>
+				</div>
+			</div>
+
+			<div class="product-buy-margin">
+				<div class="product-buy buy-avaliable fleft">
+					<a class="button" id="buy498962" onclick="shopingnew(498962, 0, 0); return false;" data-carttext="" href="#">В КОРЗИНУ</a>
+				</div>	
+				<div class="fleft product-icons-outer">
+					<div class="product-icons">
+						<div class="product-icons-inner">
+							<a id="comp498962" class="compare" data-idtov="498962" onclick="return compare(498962, -1);" rel="nofollow" 								title="Сравнить"></a>
+							<a class="fave nopstate" data-idtov="498962" href="" onclick="putbook(498962); return false;" rel="nofollow" title="В 								отложенные"></a>
+							<div class="cleaner0"></div>
+						</div>
+					</div>
+				</div>
+
+	
+				<div class="cleaner0"></div>
+			</div>
+		</div>	
+	</div></li> <li><div class="product-padding">
+			<div class="product-cover">
+				<a class="cover" href="/books/498962/" title="Чайна Мьевиль - Рельсы">
+					<span class="relative">
+					<img style="display: block;" src="http://img2.labirint.ru/books50/498962/covermid.jpg" class="book-img-cover" alt="Чайна Мьевиль - Рельсы 						обложка книги" title="Чайна Мьевиль - Рельсы обложка книги">		</span>
+					<span class="product-title">Рельсы</span>
+				</a>
+		
+				<span class="fader"></span>
+				<span style="display: block; top: 0px;" class="product-hint lazyloaded">
+					<a href="/reviews/goods/498962/"><span>3</span> рец.</a><br>
+					<a href="/screenshot/goods/498962/1/" onclick="return screenshot(this);"><span>17</span> фото</a>
+					<span class="tip"></span>
+				</span>
+			</div>
+
+		<div class="product-author">
+			<a href="/authors/33227/" title="Мьевиль Чайна"><span>Мьевиль Чайна</span></a>	<div class="fader"></div>
+		</div>
+		<div class="product-pubhouse">
+			<a href="/pubhouse/438/" title="Эксмо"><span>Эксмо</span></a><span>: </span>
+			<a href="/series/30880/" title="Современная зарубежная фантастика"><span>Современная зарубежная фантастика</span></a>
+			<div class="fader"></div>
+		</div>	
+		<div class="product-buy-area">
+			<div class="product-pricing">
+				<div class="price">
+					<span class="price-old"><span class="price-gray">534</span></span>
+					<span class="price-val" title="Цена со скидкой">
+					<span>497</span> р.</span>
+				</div>
+			</div>
+
+			<div class="product-buy-margin">
+				<div class="product-buy buy-avaliable fleft">
+					<a class="button" id="buy498962" onclick="shopingnew(498962, 0, 0); return false;" data-carttext="" href="#">В КОРЗИНУ</a>
+				</div>	
+				<div class="fleft product-icons-outer">
+					<div class="product-icons">
+						<div class="product-icons-inner">
+							<a id="comp498962" class="compare" data-idtov="498962" onclick="return compare(498962, -1);" rel="nofollow" 								title="Сравнить"></a>
+							<a class="fave nopstate" data-idtov="498962" href="" onclick="putbook(498962); return false;" rel="nofollow" title="В 								отложенные"></a>
+							<div class="cleaner0"></div>
+						</div>
+					</div>
+				</div>
+
+	
+				<div class="cleaner0"></div>
+			</div>
+		</div>	
+	</div></li></ul>
+
+	</div>
+
+
+<script type="text/javascript">
+	window.onload = function(){
+		for(k=1; k<=5; k++){
+			$("<li class='item'>Тест</li>").appendTo("[name*='Bestsallers']");
+				
+</script>
+
+
+
+	
+{% endblock %}

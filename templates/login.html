@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+</head>
+<body>
+<div class='large-3 large-offset-3 columns'>
+	<form action='/auth/login/' method='post'>
+	{% csrf_token %}
+	{{form}}
+	{% if error %}
+	<p><h6>{{error}}</h6></p>
+	{% endif %}
+	<input type='submit' class='button' value='Войти'>
+	<input type='button' value='Регистрация' class ='button' onclick="location.href='/auth/registrate'">
+	</form>
+</div>
+</body>

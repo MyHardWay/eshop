@@ -1,0 +1,14 @@
+<a class="cover" href="{{book.get_absolute_url}}" title={{book.title}}>
+<img style="display: block;" src="../../static/{{book.get_picture}}" class="book-img-cover" alt="{{book.title}}" title="{{book.title}}">
+<div class="row">
+	<a href="{{book.author.get_absolute_url}}" title="{{book.author}}"><span>{{book.author}}</span></a>
+</div>
+<div class="row">
+	<a href="{{book.publishing.get_absolute_url}}" title="{{book.publishing}}"><span>Издательство: {{book.publishing}}</span></a>
+</div>
+<div class="row">
+	<a href="/genre/{{book.genre.id}}" title="{{book.genre}}"><span>{{book.genre}}</span></a> 
+</div>
+<div class="row">
+	<h5>{{book.prize}}</h5>
+</div>

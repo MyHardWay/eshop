@@ -1,0 +1,15 @@
+<!-- Форма для отображения изображения, автора, издательства, названия и цены продукта. -->
+<a class="cover" href="{{product.get_absolute_url}}" title={{book.title}}>
+<img style="display: block;" src="../../static/{{product.get_picture}}" alt="{{product.title}}" title="{{product.title}}">
+<div class="row">
+	<a href="{{product.author.get_absolute_url}}" title="{{product.author}}"><span>{{product.author}}</span></a>
+</div>
+<div class="row">
+	<a href="{{product.publishing.get_absolute_url}}" title="{{product.publishing}}"><span>Издательство: {{product.publishing}}</span></a>
+</div>
+<div class="row">
+	<a href="/genre/{{product.genre.id}}" title="{{product.genre}}"><span>{{product.genre}}</span></a> 
+</div>
+<div class="row">
+	<h5>{{product.prize}}</h5>
+</div>

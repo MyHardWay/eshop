@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	
+</head>
+<body>
+<div class='large-3 large-offset-3 columns'>
+	<form method='POST' id="activeform" >
+	{% csrf_token %}
+	{{form}}
+	<p><h6><div id="error"></h6></p>
+	<input type='button' class='button' value='Зарегистрироваться' onclick="submit_by_id()"> 
+	</form>
+</div>
+</body>
+
+		
+

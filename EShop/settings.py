@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from django.conf.global_settings import MEDIA_ROOT
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,7 +26,7 @@ SECRET_KEY = 'v9^s88x@c$7vfsr(x&_zeh@av9@j%b1rsrgaokpwi0ryf!8c-m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -37,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Main',
+    'Authorization',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'EShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'Main/templatetags')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,9 +92,9 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Europe/Moscow'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'ru-RU'
 
 USE_I18N = True
 
@@ -104,3 +107,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    '/home/way/mysites/EShop/static',
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/img')

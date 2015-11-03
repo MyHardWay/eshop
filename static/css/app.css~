@@ -1,0 +1,113 @@
+.centeredText li{
+            Padding:0;
+            margin:0;
+}
+
+.row {min-width:98% !important;}
+
+.button{
+	    text-align:center !important;
+		vertical-align:middle !important;
+	}
+
+.accordion .f-dropdown.content { 
+    display: block; 
+}
+
+section.top-bar-section.left > ul {
+  width: 90%;
+  padding-left: 13%;
+  padding-right: 20px;
+}
+
+section.top-bar-section.left > ul > li {
+  padding-left: 0%;
+  padding-right: 5%;
+}
+
+.profile-card {
+	
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+
+  background-color: #fff; }
+
+  .profile-card img {
+
+    width: 10rem;
+
+    display: block;
+
+    margin: 0 auto 0 auto;
+
+    text-align: top;
+
+    border-radius: 100%;
+
+    box-shadow: 2px 2px 5px #888888; }
+
+  .profile-card .profile-info {
+
+    padding: 1rem; }
+
+    .profile-card .profile-info a {
+
+      margin-top: 0;
+
+      text-align: center; }
+
+    .profile-card .profile-info h4 {
+
+      margin-top: 0;
+
+      text-align: center;}
+
+     .profile-card .profile-info h6 {
+
+      margin-top: 0;
+
+      text-align: center;}
+
+    .profile-card .profile-info p {
+
+      text-align: center; }
+
+    .profile-card .profile-info .inline-list {
+
+      text-align: center;
+
+      margin-bottom: 1rem; }
+
+      .profile-card .profile-info .inline-list li {
+
+        float: none;
+
+        display: inline-block; }
+
+
+
+.orbit-container ul li { max-height: 400px; overflow: hidden; }
+ .orbit-container ul li img { width: 100%; }
+
+.container {
+   
+}
+
+.imageclass {
+     float:left;
+     height:75px;
+}
+
+.textclass {
+     float:left;
+     height:20px;
+}
+
+
+.li {
+  display:inline-block;
+  vertical-align: bottom;
+  text-align: center;
+}
+
+.ui-dialog-titlebar-close{
+    display: none;}
