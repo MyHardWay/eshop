@@ -102,6 +102,51 @@ section.top-bar-section.left > ul > li {
      height:20px;
 }
 
+.nav-panel a {
+	color: white;
+	line-height: inherit;
+	text-decoration: none;
+}
+
+.nav-panel a:visited {
+    color: white; /* Цвет посещённой ссылки */
+}
+ 
+.nav-panel a:hover {
+    color: #1E90FF; /* Цвет ссылки при наведении на нее курсора мыши */  
+    #text-decoration: underline; /* Добавляем подчеркивание */
+}
+
+.top-bar {
+	background-color: white;
+}
+
+.top-bar-section li:not(.has-form) a:not(.button) {
+	background: white;
+	line-height: 2.8125rem;
+	padding: 0 0.9375rem;
+}
+
+.top-bar-section li:not(.has-form) a:hover:not(.button) {
+	background: white;
+	color: black;
+	line-height: 2.8125rem;
+	padding: 0 0.9375rem;
+}
+
+#searchPanel a{
+	color: black;
+	line-height: inherit;
+	text-decoration: none;
+}
+
+.top-bar-section ul li > a {
+	color: #000;
+	border-top: 1px solid #e9eaec; 
+	border-left: 1px solid #e9eaec;
+	border-right: 1px solid #e9eaec;
+}
+
 
 .li {
   display:inline-block;

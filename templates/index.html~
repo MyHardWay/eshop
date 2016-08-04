@@ -2,63 +2,38 @@
 {% load get_product %}
 {% load staticfiles %}
 {% block Main %}
-	<!--Боковая панель -->
-	{% include "leftpanel.html" %}
 	<!-- Контент -->
-	<div class="small-10 columns" style="padding-top: 10px">
+	
+	<div style="background-color: black;" class="row">
+		<div class="small-8 small-centered columns" style="height: 550px;">
 		<!-- Слайдер -->
-		<div class="small-7 columns">
-			<ul class="example-orbit" data-orbit >
+			<ul class="example-orbit" data-orbit>
 			  <li>
-			    <img src="{% static 'img/books/Advertising-Omar-Hoyam.jpg'%}" alt="slide 1" />
+			    <img src="{% static 'img/advertising/main.jpg'%}" alt="slide 1" />
 			    <div class="orbit-caption">
 			      Caption One.
 			    </div>
 			  </li>
 			  <li class="active">
-			    <img src="{% static 'img/books/Advertising-Omar-Hoyam.jpg'%}" alt="slide 2" />
+			    <img src="{% static 'img/advertising/mind.jpg'%}" alt="slide 2" />
 			    <div class="orbit-caption">
 			      Caption Two.
 			    </div>
 			  </li>
-			  <li>
-			    <img src="{% static 'img/books/Advertising-Omar-Hoyam.jpg'%}" alt="slide 3" />
-			    <div class="orbit-caption">
-			      Caption Three.
-			    </div>
 			  </li>
 			</ul>
 		</div>
-		<!-- Баннер -->
-			<div class="small-5 columns">
-			<div class="profile-card" style="height: 445px">
-				 
-				<div class="profile-info">
+	</div>
+	<div class='row' style='padding: -30px;'>
+		<div class="small-8 small-centered columns" style="margin-top: -100px; background-color: white; padding: 0px;">
+			<!-- Перечень книг -->	
+			<ul class="small-block-grid-5">
+			{% for product in products %}
+				{% get_product product %}
+			{% endfor %}
 
-					    <h4 class="subheader">Мнения</h4>
-	
-					    <a href='/author/10/' ><h6> Литературная Россия</h6></a></div>
-
-		    		<img src="http://cit.press/images/news/2012-06/1/23937-res.jpg" alt="Inky">
-
-		 			 <div class="profile-info">
-
-					    <h4 class="subheader">Лев толстой</h4>
-
-					    <p>По мнению Толстого, историю делают массы, и её законы не могут зависеть от желания отдельного исторического лица.</p>
-
-		   			</div>
-			</div>
-                </div>
-		<ul class="small-block-grid-1"><li><h4>Бестселлеры</h4></li></ul>
-		<!-- Перечень книг -->	
-		<ul class="small-block-grid-5">
-		{% for product in products %}
-			{% get_product products %}
-		{% endfor %}
-
-		</ul>
-
+			</ul>
+		</div>
 	</div>
 
 

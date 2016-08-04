@@ -1,5 +1,5 @@
 {% load staticfiles %}
-<li>
+<li style='margin: 0px; padding: 0px; background-color: white;'>
 	<!-- Форма для отображения продукта с кнопкой добавить в корзину -->
 	{% include "product_body_object.html" %}
 	<a class="button" id="buy{{product.id}}" onclick="makePurchase({{product.id}}); return false;" data-carttext="" href="#">В КОРЗИНУ</a>		
