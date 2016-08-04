@@ -76,7 +76,7 @@
 	</div>
 </div>
 <!-- Панель выбора товара -->
-<div style="border:1px solid #e9eaec;"> 
+<div style="border-top:1px solid #e9eaec;"> 
 	<nav class="top-bar" data-topbar>
 		<section class="top-bar-section">
 			<div class="small-8 small-centered columns"> 
@@ -119,11 +119,26 @@
 	</div>
 {% block Main %}
 {% endblock %}
+<div class="row content-row" style="background-color: black; margin-top: 50px;" >
+		<div class="small-8 small-centered columns">
+			<div style="margin-top 150px; padding-bottom: 50px;">
+				<h2>Используемый стек технологий</h2>
+				<p style="color: white;">
+					Данный книжный магазин был разработан при помощи Django framework версии 1.9.4 на текущий момент. Все шаблоны были написанны самостоятельно на связке HTML + FOUNDATION
+					Framework. Для обеспечение динамики использован JavaScript + Jquery. Взаимодействие с базой данных MySQL осуществляется по средством ORM DJANGO. Некоторые составляющие сайта
+					, реализованы с использованием технологии AJAX.
+				</p>
+			</div>		
+		</div>
+</div>
+<div class="row content-row" style="background-color: #333333;" >
+		<div class="small-8 small-centered columns">
+			<h2> Контактная информация: <a href="http://vk.com/id1627239">Я вконтакте</a></h2>
+		</div>
+</div>
+
 <script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
 <script> $(document).foundation(); </script>
 </body>
 </html>
 
-
-
-'

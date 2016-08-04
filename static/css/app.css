@@ -151,6 +151,25 @@ section.top-bar-section.left > ul > li {
 	margin: 0px;
 }
 
+.content-row
+	{
+	min-width: 100% !important;
+}
+
+.banner {
+	height: 250px !important; 
+	width: 100%;
+	padding-top: 30px;
+}
+
+.content-row  a{
+	color: #1E90FF;	
+}
+
+.row h2{
+	color: white;	
+}
+
 
 .li {
   display:inline-block;

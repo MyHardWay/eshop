@@ -147,6 +147,29 @@ section.top-bar-section.left > ul > li {
 	border-right: 1px solid #e9eaec;
 }
 
+.product-buy-card .row {
+	margin: 0px;
+}
+
+.content-row
+	{
+	min-width: 100% !important;
+}
+
+.banner {
+	height: 250px !important; 
+	width: 100%;
+	padding-top: 30px;
+}
+
+юcontent-row  a{
+	color: #1E90FF;	
+}
+
+.row h2{
+	color: white;	
+}
+
 
 .li {
   display:inline-block;
