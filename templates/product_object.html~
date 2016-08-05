@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block Main %}
-<div class = "ssmall-8 small-centered columns" style="padding-top: 10px">
+<div class = "small-12 columns" style="padding-top: 10px">
 	{% include "leftpanel.html" %}
 	<div class="small-10 columns">
 	<h2>{{book.author}} : {{book.title}}</h2>

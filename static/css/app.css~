@@ -162,7 +162,16 @@ section.top-bar-section.left > ul > li {
 	padding-top: 30px;
 }
 
-юcontent-row  a{
+.container {
+	overflow:hidden;
+	position:relative;
+	min-width:2000px;
+	width:100%;
+	min-height:100%;
+}
+
+
+.content-row  a{
 	color: #1E90FF;	
 }
 
@@ -170,6 +179,11 @@ section.top-bar-section.left > ul > li {
 	color: white;	
 }
 
+hr {
+padding-bottom: 1px;
+background-color: #9b9b9b;
+border-bottom:1px solid #F4F4F4;
+}
 
 .li {
   display:inline-block;

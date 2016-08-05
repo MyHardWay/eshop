@@ -1,14 +1,35 @@
 {% extends 'base.html' %}
-{% load get_book %}
+{% load get_product %}
 {% load staticfiles %}
 {% block Main %}
 	<!--Боковая панель -->
-	{% include "leftpanel.html" %}
-	<div class="small-10 columns" style="padding-top: 10px">
-		<ul class="small-block-grid-5">
-				{% for book in books %}
-					{% get_book book %}
-				{% endfor %}
-		</ul>
+	<div class="small-8 small-centered columns" style="padding-top: 10px">
+		<!--	Хлебная крошка	-->
+		<h2>{{ products.0.genre }}({{products|length}})</h2>
+		<hr>
+		<div class="row">
+			<div class="small-2 columns">
+				<div class="search-in-genre" style ="height: 550px; min-height: 550px;">
+					<div class="row">
+						<div class="small-8 small-centered columns" style="padding-top: 10px ">
+						<a class="button" id="buy{{product.id}}" onclick="makePurchase({{product.id}}); return false;" data-carttext="" href="#" style ="width: 100%;">Отчистить всё</a>
+						</div>					
+					</div>				
+					<div class="row" style ="padding-top: 10px;">
+						<div class="small-10 columns" >Цена</div>
+						<div class="small-2 columns">
+								<img src="{% static 'img/banners/chistilishe_banner.jpg'%}">
+						</div>	
+					</div>							
+				</div>
+			</div>
+			<div class="small-10 columns">
+				<ul class="small-block-grid-4">
+						{% for product in products %}
+							{% get_product product %}
+						{% endfor %}
+				</ul>
+			</div>
+		</div>	
 	</div>
 {% endblock %}

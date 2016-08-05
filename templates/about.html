@@ -1,17 +1,15 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block Main %}
-<div class = "small-12 columns" style="padding-top: 10px">
-	{% include "leftpanel.html" %}
-	<div class="small-10 columns">
-	<h2>{{content}}</h2>
-		<div class="small-3 columns">			
-			<img src="../../static/{{content.get_picture}}">
-		</div>
-	        <div class="small-4 end columns">
-			<p>{{content.text}}</p>
-	        </div>
-	</div>
+<div class="row content-row">
+<div class = "small-8 small-centered columns" style="padding-top: 10px">
+		<h2>{{content}}</h2>
+			<div class="small-3 columns">			
+				<img src="../../static/{{content.get_picture}}">
+			</div>
+	      <div class="small-4 end columns">
+				<p>{{content.text}}</p>
+	      </div>
 </div>
-
+</div>
 {% endblock %}

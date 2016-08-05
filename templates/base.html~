@@ -26,80 +26,81 @@
 	</script>
 </head>
 <body>
+	<div class="container">
 <!-- Верхняя панель навигации -->
-<div style="background-color:#333333; color:white" class='nav-panel'>
-    <div class="row">
-        <div class="small-8 small-centered columns">
-        		<div class="small-1 columns"><a href="#/" >Адресс</a></div>
-        		<div class="small-4 large-offset-7 columns">
-					<div class="small-6 columns"><a href="#">Вопросы-ответы</a></div>
-					<div class="small-6 columns"><a href="#">Телефон</a></div>
-				</div>	
-		  </div>	
-    </div>
-</div>
+		<div style="background-color:#333333; color:white" class='nav-panel'>
+    		<div class="row">
+        		<div class="small-8 small-centered columns">
+        			<div class="small-1 columns"><a href="#/" >Адрес</a></div>
+        			<div class="small-4 large-offset-7 columns">
+						<div class="small-6 columns"><a href="#">Вопросы-ответы</a></div>
+						<div class="small-6 columns"><a href="#">Телефон</a></div>
+					</div>	
+		  		</div>	
+    		</div>
+		</div>
 <!-- Панель авторизации и поиска -->
-<div id="searchPanel" class="small-8 small-centered columns">
-	<div class="row" style="margin-top:20px">
-		<div class="large-2 columns">
-			<a href="/"><img src="{% static 'img/logo.jpg'%}" style="height:75px; width: 200px"></a>
-		</div>
-		<div class="large-6 columns" >
-		  <form method='GET' action='/search/' id='searchForm'>
-		  	<input type="text" placeholder="Поиск по сайту" style="height:75px" id="searchForm"  onchange="make_search(this)">
-		  </form>
+		<div id="searchPanel" class="small-8 small-centered columns">
+			<div class="row" style="margin-top:20px">
+				<div class="large-2 columns">
+					<a href="/"><img src="{% static 'img/logo.jpg'%}" style="height:75px; width: 200px"></a>
+				</div>
+				<div class="large-6 columns" >
+		  			<form method='GET' action='/search/' id='searchForm'>
+		  				<input type="text" placeholder="Поиск по сайту" style="height:75px" id="searchForm"  onchange="make_search(this)">
+		  			</form>
 
-		</div>
-		<div class="large-4 columns">
-			<div class="large-6 columns">
-				{% if username %}
-					<a class="groups-drop" href="#" data-dropdown="profile-references">
+				</div>
+				<div class="large-4 columns">
+					<div class="large-6 columns">
+						{% if username %}
+						<a class="groups-drop" href="#" data-dropdown="profile-references">
         					<img style="height:75px" align="top" src="{% static 'img/user-auth.jpg'%}">
-						{{username}}
-					</a>
+							{{username}}
+						</a>
     					<ul id="profile-references" class="f-dropdown" data-dropdown-content>
         					<li><a href="/auth/logout/">Выйти</a></li>
     					</ul>
 
-				{% else %}
-					<a href="/auth/login/"><img style="height:75px" align="top" src="{% static 'img/user-auth.jpg'%}">Вход</a>
-				{% endif %}
-			</div>
-			<div class="large-6 columns">
-				{% if username %}
-					<a href="/basket/"><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
-				{% else %}
-					<a><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
-				{% endif %}
+						{% else %}
+							<a href="/auth/login/"><img style="height:75px" align="top" src="{% static 'img/user-auth.jpg'%}">Вход</a>
+						{% endif %}
+					</div>
+					<div class="large-6 columns">
+						{% if username %}
+							<a href="/basket/"><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
+						{% else %}
+							<a><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
+						{% endif %}
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
 <!-- Панель выбора товара -->
-<div style="border-top:1px solid #e9eaec;"> 
-	<nav class="top-bar" data-topbar>
-		<section class="top-bar-section">
-			<div class="small-8 small-centered columns"> 
-	    		<ul class="left">
-					<li><a href="#" data-dropdown="Books" data-options="is_hover:true; hover_timeout:500">Книги</a></li>		 	
-				</ul>	
-	     	<ul class="right">
-	     	</ul>
-			</div>     
-		</section>
-	</nav>
-</div>
-	<div class="row">
-		<div class="medium-12 columns">  
-			<div id="Books" data-dropdown-content class="f-dropdown content mega">
-							<div class="small-12 columns"> 
-								<h4>Книги по категориям</h4>
-								<ul class="small-block-grid-3">
-									{% for genre in genres %}
-										<li><a href="/genre/{{genre.id}}"><i class="fi-fast-forward"></i>{{genre.title}}</a></li>
-									{% endfor %}
-								</ul>
-							</div>
+		<div style="border-top:1px solid #e9eaec;"> 
+			<nav class="top-bar" data-topbar>
+				<section class="top-bar-section">
+					<div class="small-8 small-centered columns"> 
+	    				<ul class="left">
+							<li><a href="#" data-dropdown="Books" data-options="is_hover:true; hover_timeout:500">Книги</a></li>		 	
+						</ul>	
+	     				<ul class="right">
+	     				</ul>
+					</div>     
+				</section>
+			</nav>
+		</div>
+		<div class="row">
+			<div class="medium-12 columns">  
+				<div id="Books" data-dropdown-content class="f-dropdown content mega">
+								<div class="small-12 columns"> 
+									<h4>Книги по категориям</h4>
+									<ul class="small-block-grid-3">
+										{% for genre in genres %}
+											<li><a href="/genre/{{genre.id}}"><i class="fi-fast-forward"></i>{{genre.title}}</a></li>
+										{% endfor %}
+									</ul>
+								</div>
 							<!-- Идея для реализации в дальнейшем 
 							<div class="small-4 columns"> 
 								<h4>Shop by Style</h4>
@@ -114,31 +115,32 @@
 							</div>
 						 	-->
 
+				</div>
 			</div>
 		</div>
-	</div>
-{% block Main %}
-{% endblock %}
-<div class="row content-row" style="background-color: black; margin-top: 50px;" >
-		<div class="small-8 small-centered columns">
-			<div style="margin-top 150px; padding-bottom: 50px;">
-				<h2>Используемый стек технологий</h2>
-				<p style="color: white;">
-					Данный книжный магазин был разработан при помощи Django framework версии 1.9.4 на текущий момент. Все шаблоны были написанны самостоятельно на связке HTML + FOUNDATION
-					Framework. Для обеспечение динамики использован JavaScript + Jquery. Взаимодействие с базой данных MySQL осуществляется по средством ORM DJANGO. Некоторые составляющие сайта
-					, реализованы с использованием технологии AJAX.
-				</p>
-			</div>		
+		{% block Main %}
+		{% endblock %}
+		<div class="row content-row" style="background-color: black; margin-top: 50px;" >
+				<div class="small-8 small-centered columns">
+					<div style="padding-bottom: 50px;">
+						<h2>Используемый стек технологий</h2>
+						<p style="color: white;">
+							Данный книжный магазин был разработан при помощи Django framework версии 1.9.4 на текущий момент. Все шаблоны были написанны самостоятельно на связке HTML + FOUNDATION
+							Framework. Для обеспечение динамики использован JavaScript + Jquery. Взаимодействие с базой данных MySQL осуществляется по средством ORM DJANGO. Некоторые составляющие сайта
+							, реализованы с использованием технологии AJAX.
+						</p>
+					</div>		
+				</div>
 		</div>
-</div>
-<div class="row content-row" style="background-color: #333333;" >
-		<div class="small-8 small-centered columns">
-			<h2> Контактная информация: <a href="http://vk.com/id1627239">Я вконтакте</a></h2>
+		<div class="row content-row" style="background-color: #333333;" >
+				<div class="small-8 small-centered columns">
+					<h2> Контактная информация: <a href="http://vk.com/id1627239">Я вконтакте</a></h2>
+				</div>
 		</div>
-</div>
 
-<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
-<script> $(document).foundation(); </script>
+		<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
+		<script> $(document).foundation(); </script>
+	</div>
 </body>
 </html>
 
