@@ -88,10 +88,6 @@ section.top-bar-section.left > ul > li {
 .orbit-container ul li { max-height: 400px; overflow: hidden; }
  .orbit-container ul li img { width: 100%; }
 
-.container {
-   
-}
-
 .imageclass {
      float:left;
      height:75px;
@@ -101,7 +97,7 @@ section.top-bar-section.left > ul > li {
      float:left;
      height:20px;
 }
-
+1675
 .nav-panel a {
 	color: white;
 	line-height: inherit;
@@ -165,10 +161,17 @@ section.top-bar-section.left > ul > li {
 .container {
 	overflow:hidden;
 	position:relative;
-	min-width:2000px;
+	min-width:1280px !important;
 	width:100%;
 	min-height:100%;
+	font-size: 1.2rem;
 }
+	
+.content-width {
+	width:1200px !important;
+	min-width:1200px !important;
+}    
+    
 
 
 .content-row  a{
@@ -200,9 +203,7 @@ border-bottom:1px solid #F4F4F4;
 	border-width: 3px 3px 3px 3px;
 }    
     
-    
-    
-    
+
     
     
     

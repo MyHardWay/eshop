@@ -30,20 +30,18 @@
 <!-- Верхняя панель навигации -->
 		<div style="background-color:#333333; color:white" class='nav-panel'>
     		<div class="row">
-        		<div class="small-8 small-centered columns">
-        			<div class="small-1 columns"><a href="#/" >Адрес</a></div>
-        			<div class="small-4 large-offset-7 columns">
-						<div class="small-6 columns"><a href="#">Вопросы-ответы</a></div>
-						<div class="small-6 columns"><a href="#">Телефон</a></div>
-					</div>	
+        		<div class="small-8 small-centered columns content-width">
+        			<div class="small-8 columns"><a href="#/" >Адрес</a></div>
+					<div class="small-3 columns"><a href="#">Вопросы-ответы</a></div>
+					<div class="small-1 columns"><a href="#">Телефон</a></div>
 		  		</div>	
     		</div>
 		</div>
 <!-- Панель авторизации и поиска -->
-		<div id="searchPanel" class="small-8 small-centered columns">
+		<div id="searchPanel" class="small-8 small-centered columns content-width" style="padding-right: 0px;">
 			<div class="row" style="margin-top:20px">
 				<div class="large-2 columns">
-					<a href="/"><img src="{% static 'img/logo.jpg'%}" style="height:75px; width: 200px"></a>
+					<a href="/"><img src="{% static 'img/logo.jpg'%}" ></a>
 				</div>
 				<div class="large-6 columns" >
 		  			<form method='GET' action='/search/' id='searchForm'>
@@ -51,8 +49,8 @@
 		  			</form>
 
 				</div>
-				<div class="large-4 columns">
-					<div class="large-6 columns">
+				<div class="large-4 columns" style="padding-right: 0px;">
+					<div class="large-9 columns" style='min-width:279px;'>
 						{% if username %}
 						<a class="groups-drop" href="#" data-dropdown="profile-references">
         					<img style="height:75px" align="top" src="{% static 'img/user-auth.jpg'%}">
@@ -63,14 +61,14 @@
     					</ul>
 
 						{% else %}
-							<a href="/auth/login/"><img style="height:75px" align="top" src="{% static 'img/user-auth.jpg'%}">Вход</a>
+							<a href="/auth/login/"><img style="height:75px;" align="top" src="{% static 'img/user-auth.jpg'%}">Вход</a>
 						{% endif %}
 					</div>
-					<div class="large-6 columns">
+					<div class="large-3 columns">
 						{% if username %}
-							<a href="/basket/"><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
+							<a href="/basket/"><img style="height:75px" align="top" src="{% static 'img/basket.png'%}"></a>
 						{% else %}
-							<a><img style="height:75px" align="top" src="{% static 'img/basket.png'%}">Корзина</a>
+							<a><img style="height:75px;" align="top" src="{% static 'img/basket.png'%}"></a>
 						{% endif %}
 					</div>
 				</div>
@@ -80,7 +78,7 @@
 		<div style="border-top:1px solid #e9eaec;"> 
 			<nav class="top-bar" data-topbar>
 				<section class="top-bar-section">
-					<div class="small-8 small-centered columns"> 
+					<div class="small-8 small-centered columns content-width"> 
 	    				<ul class="left">
 							<li><a href="#" data-dropdown="Books" data-options="is_hover:true; hover_timeout:500">Книги</a></li>		 	
 						</ul>	
@@ -137,10 +135,9 @@
 					<h2> Контактная информация: <a href="http://vk.com/id1627239">Я вконтакте</a></h2>
 				</div>
 		</div>
-
+	</div>
 		<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
 		<script> $(document).foundation(); </script>
-	</div>
 </body>
 </html>
 
