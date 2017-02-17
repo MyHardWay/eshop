@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<li style='margin: 0px; padding: 0px; background-color: white;'>
+	<div class="product-body-object">
+		<div class="row">
+			<center>
+			<a href="{{quotation.author.get_absolute_url}}" title={{quotation.title}} >
+			<img  class= 'img-circle' src="../../static/{{quotation.author.get_picture}}" alt="{{quotation.author.title}}" title="{{quotation.author.title}}">
+			</center>
+		</div>
+		
+		<div class="row">
+			<center>
+				<a href="{{quotation.author.get_absolute_url}}" title="{{quotation.author.author}}"><span>{{quotation.author}}</span></a>
+			</center>	
+		</div>
+			<div class="small-8 small-centered columns">
+			<span class="quotations">{{quotation.text}}</span>
+		</div>		
+	</div>
+	
+</li>

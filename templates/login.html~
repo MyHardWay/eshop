@@ -3,6 +3,8 @@
 <html>
 <head>
 	<title>Authorization</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
 </head>
 <body>
 <div class='large-3 large-offset-3 columns'>

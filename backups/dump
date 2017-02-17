@@ -1,0 +1,2160 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.12
+-- Dumped by pg_dump version 9.6.1
+
+-- Started on 2017-02-17 15:44:34 MSK
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = off;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET escape_string_warning = off;
+SET row_security = off;
+
+--
+-- TOC entry 1 (class 3079 OID 11791)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 2252 (class 0 OID 0)
+-- Dependencies: 1
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 188 (class 1259 OID 46133)
+-- Name: Main_author; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_author" (
+    id integer NOT NULL,
+    "personalData" character varying(100) NOT NULL,
+    text text NOT NULL,
+    picture character varying(100) NOT NULL
+);
+
+
+ALTER TABLE "Main_author" OWNER TO way;
+
+--
+-- TOC entry 187 (class 1259 OID 46131)
+-- Name: Main_author_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_author_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_author_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2253 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: Main_author_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_author_id_seq" OWNED BY "Main_author".id;
+
+
+--
+-- TOC entry 190 (class 1259 OID 46141)
+-- Name: Main_book; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_book" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL,
+    text text NOT NULL,
+    picture character varying(100) NOT NULL,
+    prize integer NOT NULL,
+    author_id integer NOT NULL,
+    genre_id integer NOT NULL,
+    publishing_id integer NOT NULL
+);
+
+
+ALTER TABLE "Main_book" OWNER TO way;
+
+--
+-- TOC entry 189 (class 1259 OID 46139)
+-- Name: Main_books_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_books_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_books_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2254 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: Main_books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_books_id_seq" OWNED BY "Main_book".id;
+
+
+--
+-- TOC entry 192 (class 1259 OID 46152)
+-- Name: Main_category; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_category" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL
+);
+
+
+ALTER TABLE "Main_category" OWNER TO way;
+
+--
+-- TOC entry 191 (class 1259 OID 46150)
+-- Name: Main_category_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_category_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_category_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2255 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: Main_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_category_id_seq" OWNED BY "Main_category".id;
+
+
+--
+-- TOC entry 194 (class 1259 OID 46160)
+-- Name: Main_genre; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_genre" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL
+);
+
+
+ALTER TABLE "Main_genre" OWNER TO way;
+
+--
+-- TOC entry 193 (class 1259 OID 46158)
+-- Name: Main_genre_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_genre_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_genre_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2256 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: Main_genre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_genre_id_seq" OWNED BY "Main_genre".id;
+
+
+--
+-- TOC entry 196 (class 1259 OID 46168)
+-- Name: Main_order; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_order" (
+    id integer NOT NULL,
+    date date NOT NULL,
+    "time" time without time zone NOT NULL,
+    user_id integer NOT NULL,
+    status_id integer NOT NULL
+);
+
+
+ALTER TABLE "Main_order" OWNER TO way;
+
+--
+-- TOC entry 195 (class 1259 OID 46166)
+-- Name: Main_order_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_order_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_order_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2257 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: Main_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_order_id_seq" OWNED BY "Main_order".id;
+
+
+--
+-- TOC entry 198 (class 1259 OID 46176)
+-- Name: Main_orderproduct; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_orderproduct" (
+    id integer NOT NULL,
+    numbers integer NOT NULL,
+    order_id integer NOT NULL,
+    product_id integer NOT NULL
+);
+
+
+ALTER TABLE "Main_orderproduct" OWNER TO way;
+
+--
+-- TOC entry 197 (class 1259 OID 46174)
+-- Name: Main_orderproduct_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_orderproduct_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_orderproduct_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2258 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: Main_orderproduct_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_orderproduct_id_seq" OWNED BY "Main_orderproduct".id;
+
+
+--
+-- TOC entry 200 (class 1259 OID 46184)
+-- Name: Main_publishing; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_publishing" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL,
+    text text NOT NULL,
+    picture character varying(100) NOT NULL
+);
+
+
+ALTER TABLE "Main_publishing" OWNER TO way;
+
+--
+-- TOC entry 199 (class 1259 OID 46182)
+-- Name: Main_publishing_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_publishing_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_publishing_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2259 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: Main_publishing_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_publishing_id_seq" OWNED BY "Main_publishing".id;
+
+
+--
+-- TOC entry 206 (class 1259 OID 46379)
+-- Name: Main_quotations; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_quotations" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL,
+    text text NOT NULL,
+    author_id integer NOT NULL
+);
+
+
+ALTER TABLE "Main_quotations" OWNER TO way;
+
+--
+-- TOC entry 205 (class 1259 OID 46377)
+-- Name: Main_quotations_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_quotations_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_quotations_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2260 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: Main_quotations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_quotations_id_seq" OWNED BY "Main_quotations".id;
+
+
+--
+-- TOC entry 202 (class 1259 OID 46192)
+-- Name: Main_review; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_review" (
+    id integer NOT NULL,
+    text text NOT NULL,
+    product_id integer NOT NULL,
+    user_id integer NOT NULL
+);
+
+
+ALTER TABLE "Main_review" OWNER TO way;
+
+--
+-- TOC entry 201 (class 1259 OID 46190)
+-- Name: Main_review_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_review_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_review_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2261 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: Main_review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_review_id_seq" OWNED BY "Main_review".id;
+
+
+--
+-- TOC entry 204 (class 1259 OID 46261)
+-- Name: Main_status; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_status" (
+    id integer NOT NULL,
+    title character varying(20) NOT NULL
+);
+
+
+ALTER TABLE "Main_status" OWNER TO way;
+
+--
+-- TOC entry 203 (class 1259 OID 46259)
+-- Name: Main_status_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_status_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_status_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2262 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: Main_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_status_id_seq" OWNED BY "Main_status".id;
+
+
+--
+-- TOC entry 178 (class 1259 OID 46026)
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_group (
+    id integer NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE auth_group OWNER TO way;
+
+--
+-- TOC entry 177 (class 1259 OID 46024)
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_id_seq OWNER TO way;
+
+--
+-- TOC entry 2263 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
+
+
+--
+-- TOC entry 180 (class 1259 OID 46036)
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_group_permissions OWNER TO way;
+
+--
+-- TOC entry 179 (class 1259 OID 46034)
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_permissions_id_seq OWNER TO way;
+
+--
+-- TOC entry 2264 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
+
+
+--
+-- TOC entry 176 (class 1259 OID 46018)
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_permission (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE auth_permission OWNER TO way;
+
+--
+-- TOC entry 175 (class 1259 OID 46016)
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_permission_id_seq OWNER TO way;
+
+--
+-- TOC entry 2265 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
+
+
+--
+-- TOC entry 182 (class 1259 OID 46044)
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_user (
+    id integer NOT NULL,
+    password character varying(128) NOT NULL,
+    last_login timestamp with time zone,
+    is_superuser boolean NOT NULL,
+    username character varying(30) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(254) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE auth_user OWNER TO way;
+
+--
+-- TOC entry 184 (class 1259 OID 46054)
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_user_groups (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_groups OWNER TO way;
+
+--
+-- TOC entry 183 (class 1259 OID 46052)
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_groups_id_seq OWNER TO way;
+
+--
+-- TOC entry 2266 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
+
+
+--
+-- TOC entry 181 (class 1259 OID 46042)
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_id_seq OWNER TO way;
+
+--
+-- TOC entry 2267 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
+
+
+--
+-- TOC entry 186 (class 1259 OID 46062)
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE auth_user_user_permissions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_user_permissions OWNER TO way;
+
+--
+-- TOC entry 185 (class 1259 OID 46060)
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE auth_user_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_user_permissions_id_seq OWNER TO way;
+
+--
+-- TOC entry 2268 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permissions.id;
+
+
+--
+-- TOC entry 208 (class 1259 OID 46396)
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    content_type_id integer,
+    user_id integer NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE django_admin_log OWNER TO way;
+
+--
+-- TOC entry 207 (class 1259 OID 46394)
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_admin_log_id_seq OWNER TO way;
+
+--
+-- TOC entry 2269 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
+
+
+--
+-- TOC entry 174 (class 1259 OID 46008)
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE django_content_type (
+    id integer NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE django_content_type OWNER TO way;
+
+--
+-- TOC entry 173 (class 1259 OID 46006)
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_content_type_id_seq OWNER TO way;
+
+--
+-- TOC entry 2270 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
+
+
+--
+-- TOC entry 172 (class 1259 OID 45997)
+-- Name: django_migrations; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE django_migrations (
+    id integer NOT NULL,
+    app character varying(255) NOT NULL,
+    name character varying(255) NOT NULL,
+    applied timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE django_migrations OWNER TO way;
+
+--
+-- TOC entry 171 (class 1259 OID 45995)
+-- Name: django_migrations_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE django_migrations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_migrations_id_seq OWNER TO way;
+
+--
+-- TOC entry 2271 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 46419)
+-- Name: django_session; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE django_session OWNER TO way;
+
+--
+-- TOC entry 1991 (class 2604 OID 46136)
+-- Name: Main_author id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_author" ALTER COLUMN id SET DEFAULT nextval('"Main_author_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1992 (class 2604 OID 46144)
+-- Name: Main_book id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_book" ALTER COLUMN id SET DEFAULT nextval('"Main_books_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1993 (class 2604 OID 46155)
+-- Name: Main_category id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_category" ALTER COLUMN id SET DEFAULT nextval('"Main_category_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1994 (class 2604 OID 46163)
+-- Name: Main_genre id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_genre" ALTER COLUMN id SET DEFAULT nextval('"Main_genre_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1995 (class 2604 OID 46171)
+-- Name: Main_order id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_order" ALTER COLUMN id SET DEFAULT nextval('"Main_order_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1996 (class 2604 OID 46179)
+-- Name: Main_orderproduct id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_orderproduct" ALTER COLUMN id SET DEFAULT nextval('"Main_orderproduct_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1997 (class 2604 OID 46187)
+-- Name: Main_publishing id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_publishing" ALTER COLUMN id SET DEFAULT nextval('"Main_publishing_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2000 (class 2604 OID 46382)
+-- Name: Main_quotations id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_quotations" ALTER COLUMN id SET DEFAULT nextval('"Main_quotations_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1998 (class 2604 OID 46195)
+-- Name: Main_review id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_review" ALTER COLUMN id SET DEFAULT nextval('"Main_review_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1999 (class 2604 OID 46264)
+-- Name: Main_status id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_status" ALTER COLUMN id SET DEFAULT nextval('"Main_status_id_seq"'::regclass);
+
+
+--
+-- TOC entry 1986 (class 2604 OID 46029)
+-- Name: auth_group id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_seq'::regclass);
+
+
+--
+-- TOC entry 1987 (class 2604 OID 46039)
+-- Name: auth_group_permissions id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- TOC entry 1985 (class 2604 OID 46021)
+-- Name: auth_permission id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permission_id_seq'::regclass);
+
+
+--
+-- TOC entry 1988 (class 2604 OID 46047)
+-- Name: auth_user id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq'::regclass);
+
+
+--
+-- TOC entry 1989 (class 2604 OID 46057)
+-- Name: auth_user_groups id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user_groups_id_seq'::regclass);
+
+
+--
+-- TOC entry 1990 (class 2604 OID 46065)
+-- Name: auth_user_user_permissions id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- TOC entry 2001 (class 2604 OID 46399)
+-- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_admin_log_id_seq'::regclass);
+
+
+--
+-- TOC entry 1984 (class 2604 OID 46011)
+-- Name: django_content_type id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django_content_type_id_seq'::regclass);
+
+
+--
+-- TOC entry 1983 (class 2604 OID 46000)
+-- Name: django_migrations id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_migrations_id_seq'::regclass);
+
+
+--
+-- TOC entry 2223 (class 0 OID 46133)
+-- Dependencies: 188
+-- Data for Name: Main_author; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_author" (id, "personalData", text, picture) FROM stdin;
+1	Гомер	Гомер - знаменитый древнегреческий поэт, чье творчество не просто являлось образцом для всех античных творцов - его считают прародителем европейской литературы. У многих представителей современных поколений именно с его именем ассоциируется античная культура, а знакомство с мировой литературой обычно начинается с поэм «Илиада» и «Одиссея», принадлежащих (или приписываемых) этому легендарному автору. Гомер является первым древнегреческим поэтом, творческое наследие которого дошло до наших дней, причем около половины обнаруженных на сегодняшний день древнегреческих папирусов литературного содержания представляют собой фрагменты его произведений.\r\n\r\nДостоверные, подтвержденные исторически данные о личности Гомера, его жизненном пути отсутствуют, причем они были неизвестны даже в древности. В эпоху античности было создано 9 биографий Гомера, и все они основывались на легендах. Неизвестны не только годы его жизни, но и столетие. По мнению Геродота, это был IX в. до н. э. Ученые нашего времени называют ориентировочно VIII в. (или VII в.) до н. э. Нет никаких точных сведений и о месте рождения великого поэта. Считается, что жил он в одной из местностей Ионии. Легенда гласит, что целых семь городов - Афины, Родос, Смирна, Колофон, Аргон, Саламин, Хиос - оспаривали друг у друга честь называть себя родиной Гомера.\r\n\r\nСогласно традиции, великого поэта изображают слепым стариком, однако ученые придерживаются мнения, что это влияние представлений древних греков, особенности биографического жанра. Греки видели взаимосвязь поэтического таланта и пророческого дара на примере многих знаменитых личностей, которые были лишены зрения, и полагали, что и Гомер принадлежал к этой славной когорте. Помимо этого, в «Одиссее» есть такой персонаж, как слепой певец Демодок, который отождествлялся с самим автором произведения.\r\n\r\nИз жизнеописания Гомера известен такой эпизод, как поэтическое соревнование с Гесиодом на острове Эвбей. Поэты читали свои лучшие произведения на играх, организованных в память о погибшем Амфидеме. Победа, согласно воле судьи, досталась Гесиоду, поскольку тот воспевал мирную жизнь и труд земледельцев, однако предание гласит, что публика больше симпатизировала Гомеру.\r\n\r\nКак и все остальное в биографии Гомера, доподлинно неизвестно, принадлежат ли знаменитые поэмы «Илиада» и «Одиссея» именно его перу. В науке с XVIII в. существует так называемый гомеровский вопрос - так называется полемика вокруг авторства и истории написания легендарных произведений. Как бы там ни было, именно они принесли автору славу на все времена и вошли в сокровищницу мировой литературы. Обе поэмы основаны на сказаниях, мифах о Троянской войне, т.е. о военных действиях греков-ахейцев против жителей малоазиатского города, и представляют собой героический эпос - масштабное полотно, действующими лицами которого являются и исторические персонажи, и герои мифов.\r\n\r\nДревние греки считали эти поэмы священными, торжественно исполняли их на государственных праздниках, с них начинали и ими же завершали процесс обучения, видя в них сокровищницу самых разнообразных знаний, уроки мудрости, красоты, справедливости и других добродетелей, а их автор почитался едва ли не как божество. По словам великого Платона, духовным развитием Греция обязана именно Гомеру. Поэтика этого мастера слова оказывала огромное влияние на творчество не только античных авторов, но и признанных классиков европейской литературы, живущих многие столетия спустя.\r\n\r\nСуществуют так называемые Гомеровы гимны, которые в древности приписывали великому слепцу, но ни они, ни другие произведения, автором которых называли Гомера, не относятся к его творческому наследию.\r\n\r\nПо данным Геродота и Павсания, смерть настигла Гомера на острове Иос (архипелаг Киклады).	Gomer.jpg
+2	Герман Гессе	асположенном на юге Германии в районе горного массива Шварцвальд. Доподлинное место рождения - дом на рыночной площади Марктплац 6, где с 1874 г. жили его родители Мария (урожд. Гундерт) и Иоганнес Гессе. Маленькому Герману всего только четыре года, когда его отца, миссионера, происхождением из прибалтийских немцев, направляют учителем в школу протестантской миссии в Базеле. В 1886 г. семья возвращается назад в Кальв, и девятилетний Герман начинает посещать реальный лицей. Сначала семья живет в том же доме, где помещается издательский союз и где работает отец, а затем на Ледергассе. Мир, который познает и в который, взрослея, входит будущий писатель, это одновременно и узкий провинциальный мирок, и широкий мир познания протестантских идей, Библии и индийской филологии.\r\n\r\nВ 1890 г. мальчика отдают в "иногороднюю" латинскую школу в Гёппингине, специально предназначенную для подготовки к сдаче швабского "земельного" экзамена. За четыре года учебы в лицее, несмотря на несчастливое школьное время, Кальв, который для Гессе "самый прекрасный город между Бременем и Неаполем, между Веной и Сингапуром", стал для него символом родины.	Hermann-Hesse.jpg
+3	Катаев Валентин Петрович	Катаев Валентин Петрович родился 28 января (по новому стилю) 1897 года в Одессе в семье учителя. Первое стихотворение «Осень» Катаев опубликовал еще гимназистом в 1910 году в газете «Одесский вестник». Печатался также в «Южной мысли», «Одесском листке», «Пробуждении», «Лукоморье» и др. В 1915, не окончив гимназии, пошел добровольцем на фронт, был дважды ранен, отравлен газами. Выступал с корреспонденциями и очерками об «окопной» жизни солдат, полными сочувствия к рядовому человеку на войне.\r\n \r\nВ 1919 Катаев был мобилизован в Красную Армию, командовал артиллерийской батареей на Донском фронте. Возвратившись в Одессу, работал в ЮгРОСТА, посещал различные литературные кружки и объединения. Сблизился с Ю.К.Олешей, Э.Г.Багрицким, вместе с которыми сочинял агитационные тексты для плакатов.\r\n\r\nС 1922 жил в Москве, являлся постоянным сотрудником газеты «Гудок» (с 1923), печатал юморески и фельетоны в «Правде», «Рабочей газете», «Труде» (псевдонимы: Старик Саббакин, Ол.Твист, Митрофан Горчица). В раннем творчестве Катаева своеобразный сплав реализма, острой житейской наблюдательности, иронии, доходящей до сарказма, романтической приподнятости и дерзкой фантазийности проявился в рассказах о Гражданской войне ( «Опыт Кранца», 1919; «Золотое перо», 1920; «Записки о Гражданской войне», 1924, где налицо тенденциозно-контрастное «черно-белое» изображение происходящего, с возвышенным описанием «красных» героев и сатирической прорисовкой белогвардейцев). В этот период были написаны авантюрно-утопические романы о мировой революции ( «Остров Эрендорф» , «Повелитель железа» , оба 1924) .\r\nКатаев был увлечен экспериментами в области формы, в его прозе появились странные персонажи - загадочный оксфордский студент сэр Генри, черт в темном пиджаке и белых манжетах и другие фигуры, заставляющие вспомнить об Э. Т. А. Гофмане и Э. По («Сэр Генри и черт», 1920; «Железное кольцо», 1923).\r\n\r\nПараллельно Катаев шел от насмешливого обыгрывания анекдотических случаев (сборники рассказов «Бородатый малютка», 1924; «Самое смешное», 1927) к обличительному пафосу развенчания культа наживы и «красивой» жизни. Первый значительный успех принесла писателю повесть «Растратчики» (1926 ). Это фантасмагорическая история бухгалтера Прохорова и кассира Ванечки, которые, соря казенными деньгами, колесят по России в поисках красивой жизни. Действие происходит в период НЭПа, и перед персонажами предстает безотрадная картина убогого советского быта и наглого нэпманства. Повесть была переведена за рубежом, стала бестселлером в США.\r\n\r\nОстротой социальной и психологической сатиры, направленной против обывательской пошлости и мещанского культа собственности, отмечена комедия «Квадратура круга» (1928). После поездки в Магнитогорск Катаев написал роман-хронику «Время, вперед!» (1932), название которого подсказал ему В. Маяковский. Книга проникнута верой Маяковского в то, что начало первой пятилетки может быть воспринято как заря новой эры. Главные герои романа - инженер Маргулиес, Загиров, бригадир бетонщиков Саенко - видят смысл своей жизни в труде, опережающем время и преображающем жизнь.\r\n\r\nВ повести «Белеет парус одинокий» (1936) , главными героями которой стали одесские мальчишки, которые оказываются в водовороте революционных событий 1905. Увлекательный сюжет, живописная предметность описания «фона» происходящего – суеты одесских улиц, рынка, порта, пляжа, несмолкаемого моря, гимназической жизни и т.д., сплав юмора, лиризма и героической патетики сделали это произведение одной из любимых детских книг.\r\n\r\nСтремлением показать историю страны через судьбу человека отмечена и повесть Катаева «Я, сын трудового народа» (1937), действие которой происходит во время немецкой оккупации Украины в 1919, главными героями выступают фольклорные персонажи – бравый солдат Семен Котко и девица-краса Софья, повествование, развертывающееся в стилистике народных сказов, насыщено описаниями украинских пейзажей, обрядов и обычаев, звуками украинской речи.\r\nКатаев о Великой Отечественной войне\r\n\r\nВ годы Великой Отечественной войны военный корреспондент Катаев писал фельетоны, очерки, рассказы. Огромную популярность принесла писателю повесть «Сын полка» (1945; Государственная премия, 1946), рассказ о судьбе мальчика-сироты, усыновленного боевым полком. Институт «сыновей полка» с тех пор утвердился в отечественной армии; по повести была написана одноименная пьеса, снят фильм (1946, реж. В.М.Пронин). Точным ощущением современности, достоверностью деталей, остроумным сюжетом, сплавом лиризма и гротеска, как и другие его драматургические произведения, отличалась пьеса «День отдыха» (1947).\r\nКатаев и журнал «Юность»\r\n\r\nВ 1957–1962, будучи главным редактором журнала «Юность», Катаев способствовал его превращению в одно из ведущих периодических изданий страны, «рупор» т.н. шестидесятников, открывший путь к читателю многим видным литераторам (в т.ч. В.П.Аксенову и А.Т.Гладилину). В 1964 писатель опубликовал художественно-публицистическую повесть о В.И.Ленине «Маленькая железная дверь в стене». В цикле мемуарных произведений Катаева (повести «Святой колодец», 1965; «Трава забвения», 1967; «Разбитая жизнь, или Волшебный рог Оберона», 1972; «Алмазный мой венец», 1975; «Сухой Лиман», 1986, где, одухотворенные поэтической фантазией автора, сошлись герои и сюжеты многих книг Катаева), открылись новые грани таланта писателя: глубина проникновения в смысл событий и характеры людей, исповедальность и наблюдательность, соединенные с живой способностью к художественному смещению времени и пространства.\r\n\r\nВ повести «Уже написан Вертер» (1979) Катаев показывает Гражданскую войну в России как бессмысленную братоубийственную бойню, в которую вовлечен герой повести, искренний и чистый юнкер Дима, и в которой вершат свой кровавый суд комиссары в черных кожанках, расстреливающие без суда и следствия свои жертвы в гаражах.\r\n\r\nВ «Юношеском романе» (1982) Катаев рассказал историю, похожую на старинный романс: о любви молодого солдата Пчелкина к генеральской дочке. Это роман в письмах, строительным материалом которого стали архивные находки.\r\nПоследние годы жизни Катаева\r\n\r\nПоследняя книга Катаева «Сухой Лиман» (1986) почти не была замечена критикой. Это своего рода эпилог его многотомного романа: в последний раз сошлись вместе герои, объединились сюжеты многих книг. Жизнь пропущена сквозь призму далеких воспоминаний в соединении с поэтической фантазией.\r\n\r\nУмер Катаев в Москве 12 апреля 1986.	Kataev-V.P.jpg
+4	Лев Николаевич Толстой	сиротевших Толстых- левушку его троих братьев и сестру - оказала дальняя родственница Татьяна Александровна Ергольская, заменившая им мать. недостающюю доброту и ласку возмещал детям их домашний учитель Федор Иванович Рассель.Его под именем Карла Ивановича вывел в повести "детство"(1852года). В1844 году Л.Толстой поступает на восточное отделнние филосовского факультета Казанского университета. Учится ему было скучно,и он оказалсянекудышным студентом. Перемена факультета на юредический ничего не дала.В это время Толстой больше балами и другими светскими развлечениями, чем науками.В результате он подал прошение об исключении из университета. Впоследсвии,из года в год , до самой глубокой старости,писатель бкдет преобритать знания самостоятельно.\r\n    В 1847 году Толстой отправился в Ясную Поляну - он решил попробовать себя в роли рачительного хазяина и улучшить жизнь вверенных ему крестьян.Но задача непосильной для молодого человека.Все горести и неудачи л. Толстой привык отражать в дневник,который очень рано начал приобритать литературный характер,обрастая художественными набросками и творческими замыслами.\r\n    В 1851 году Лев Толстой братом Николаем отправился на Кавказ воевать против горцев.Там же и была написана повесть "Детство", которая сразу принесла автору славу. Кавказкие впечатления легли в основу произведений, открывших в Л Толстом не только психолога,но и живописца,и быто писателя. Некоторые из рассказов "Набег" "рубка" появились уже в 50-х годах,анекоторые вышли спустя много лет.Рассказ" Кавказкий пленник" был написан спустя два десятилетия.Он имел Авто биографический характер, Толстой сам едва не попал в плен к горцам. С Кавказа Лев Толстой перевелся в Крымскую армию, Так родились "Севастопольские расказы". Антивоенная тема возникла впоследствии в крупнейшем произведении Л.Толстого - романе " Война и мир" ( 1869).Во всем мире Толстой известен своими романами "АннаКаренина"(1877г)"Воскресение"(1899г) Лев Тостой ушел из жизни в 1910 году, в самом начале 20 столетия, до мировой войны до революции. Однако он успел перед современниками едвали не все важнейшие вопросы нового века. Названия его последних статей говорят сами за себя - " Неужели это так надо?"(1900), " Не могу молчать" (1908).	Lev-Tolstoi.jpg
+5	Максим Горький	Настоящее имя Максима Горького - Алексей Максимович Пешков. Будущий знаменитый прозаик, драматург, один из выдающихся представителей русской литературы, получивших широкую известность и завоевавших авторитет за рубежом, родился в Нижнем Новгороде 28 марта (16 марта по ст. ст.) 1868 г. в небогатой семье столяра. Семилетнего Алешу отправили в школу, однако учеба закончилась, причем навсегда, уже через несколько месяцев, после того, как мальчик заболел оспой. Солидный багаж знаний он накопил исключительно благодаря самообразованию.\r\n\r\nДетские годы Горького были очень непростыми. Рано став сиротой, он провел их в доме своего деда, отличавшегося крутым нравом. Одиннадцатилетним мальчиком Алеша ушел «в люди», зарабатывая себе кусок хлеба на протяжении многих лет в самых разных местах: в магазине, пекарне, иконописной мастерской, в буфете на пароходе и т.п.\r\n\r\nЛетом 1884 г. Горький приезжает в Казань, чтобы получить образование, однако затея поступить в университет провалилась, поэтому он вынужден был и дальше тяжело работать. Постоянная нужда и огромная усталость даже привели 19-летнего юношу к попытке суицида, которую он предпринял в декабре 1887 г. В Казани состоялось знакомство и сближение Горького с представителями революционного народничества, марксизма. Он посещает кружки, предпринимает первые попытки агитации. В 1888 г. он впервые подвергся аресту (который в его биографии станет далеко не единственным), и работал потом на железной дороге под неусыпным полицейским надзором.\r\n\r\nВ 1889 г. состоялось его возвращение в Нижний Новгород, где он поступает на работу к адвокату А.И. Ланину письмоводителем, одновременно поддерживая отношения с радикалами и революционерами. В этот период М. Горький пишет поэму «Песнь старого дуба» и просит оценить ее В.Г. Короленко, знакомство с которым состоялось зимой 1889-1890 гг.\r\n\r\nВесной 1891 г. Горький покидает Нижний Новгород и отправляется по стране. В ноябре 1891 г. он был уже в Тифлисе, и именно местная газета в сентябре 1892 г. напечатала дебютный рассказ 24-летнего Максима Горького – «Макар Чудра».\r\n\r\nВ октябре 1892 г. Горький возвращается в Нижний Новгород. Снова работая у Ланина, публикуется в газетах не только Нижнего, но и Самары, Казани. Переехав в феврале 1895 г. в Самару, работает в городской газете, иногда выступает в роли редактора, активно печатается. Изданный большим для начинающего автора тиражом в 1898 г. двухтомник под названием «Очерки и рассказы» становится предметом активного обсуждения. В 1899 г. Горький пишет свой первый роман – «Фома Гордеев», в 1900-1901 гг. лично знакомится с Чеховым и Толстым.\r\n\r\nВ 1901 г. прозаик впервые обратился к жанру драматургии, написав пьесы «Мещане» (1901) и «На дне» (1902). Перенесенные на сцену, они пользовались огромной популярностью. «Мещан» поставили в Берлине и Вене, что принесло Горькому известность европейского масштаба. С этого времени его творчество стали переводить на иностранные языки, и зарубежные критики уделяли ему достаточно много внимания.\r\n\r\nГорький не остался в стороне от революции 1905 г., осенью стал членом Российской социал-демократической рабочей партии. В 1906 г. начался первый в его биографии период эмиграции. До 1913 г. он жил на итальянском острове Капри. Именно в этот период (1906) он пишет роман «Мать», который положил начало новому направлению в литературе - социалистического реализму.\r\n\r\nПосле объявления политической амнистии в феврале 1913 г. Горький вернулся в Россию. В этом же году он приступает к написанию художественной автобиографии, 3 года работает над «Детством» и «В людях» (заключительную часть трилогии – «Мои университеты» - он напишет в 1923 г.). В этот период он выступает редактором газет большевиков «Правда» и «Звезда»; объединив вокруг себя пролетарских писателей, издает сборник их произведений.\r\n\r\nЕсли Февральскую революцию Максим Горький встретил с энтузиазмом, то на события октября 1917 г. его реакция была более противоречивой. О колебаниях, опасениях писателя красноречиво свидетельствовали курс издаваемой им газеты «Новая жизнь» (май 1917 - март 1918), многочисленные статьи, а также «Книга несвоевременные мысли. Заметки о революции и культуре». Тем не менее уже во 2-ой половине 1918 г. Горький является союзником власти большевиков, хотя демонстрирует несогласие с рядом их принципов и методов, в частности, по отношению к интеллигенции. В период 1917-1919 гг. общественно-политическая работа была весьма интенсивной; благодаря усилиям писателя многие представители интеллигенции в те тяжелые годы избежали голодной смерти и репрессий. В период Гражданской войны Горький приложил много усилий для того, чтобы отечественная культура сохранялась и развивалась.\r\n\r\nВ 1921 г. Горький уезжает за границу. Согласно широко распространенной версии, он сделал это по настоянию Ленина, который беспокоился за здоровье великого писателя в связи с обострением его болезни (туберкулеза). Между тем более глубинной причиной могло стать нарастание идейных противоречий в позициях Горького, вождя мирового пролетариата и других лидеров советского государства. На протяжении 1921-1923 гг. местом его жительства были Гельсингфорс, Берлин, Прага, с 1924 г. - итальянский Сорренто.\r\n\r\nВ честь 60-летия литератора в 1928 г. советское правительство и лично товарищ Сталин пригласили Горького приехать в Советский Союз, организовав ему торжественный прием. Писатель совершает многочисленные поездки по стране, где ему демонстрируют достижения социализма, предоставляют возможность выступить на собраниях, митингах. СНК СССР отмечает литературные заслуги Горького особым актом, его избирают в Коммунистическую академию, оказывают другие почести.\r\n\r\nВ 1932 г. Максим Горький возвращается на родину окончательно и становится лидером новой советской литературы. Великий пролетарский писатель, как его стали называть, ведет активную общественно-организаторскую работу, основывает большое количество печатных изданий, книжных серий, среди которых «Жизнь замечательных людей», «Библиотека поэта», «История гражданской войны», «История фабрик и заводов», не забывая при этом и о литературном творчестве (пьесы «Егор Булычев и другие» (1932), «Достигаев и другие» (1933)). В 1934 г. под председательством Горького проходит Первый всесоюзный съезд советских писателей; в подготовку этого мероприятия он внес большой вклад.\r\n\r\nВ 1936 г., 18 июня, страну облетело известие о том, что Максим Горький скончался на своей даче в Горках. Местом погребения его праха становится Кремлевская стена на Красной площади. Смерть Горького и его сына Максима Пешкова многие связывают с отравлением как орудием политического заговора, однако официального подтверждения этому нет.\r\nИсточник: http://www.wisdoms.ru/avt/b63.html	Maxim-Gorkiy.jpg
+6	Зощенко Михаил Михайлович	Родился 29 июля (10 августа н.с.) в Полтаве в семье художника. После окончания гимназии в Петербурге в 1913 поступил на юридический факультет Петербургского университета. Начавшаяся мировая война прервала обучение. В 1915, закончив ускоренные военные курсы, Зощенко ушел на фронт. Участвовал во многих боях, был ранен и отравлен газами. Имел четыре боевых ордена.\r\n\r\nВ 1915 — 1917 занимал разные военные должности, а после Февральской революции был комендантом Главного почтамта и телеграфа Петрограда. После Октябрьской революции вступил в Красную Армию и служил в пограничных войсках в Кронштадте, затем перевелся в действующую армию и до весны 1919 был на фронте.\r\n\r\nВ апреле 1919 был демобилизован по болезни сердца и начал службу следователем в Уголовном надзоре. В 1920 поступил в Петроградский военный порт делопроизводителем, с этого времени стал заниматься литературной деятельностью. В 1922 вышла первая книга рассказов М. Зощенко "Рассказы Назара Ильича, господина Синебрюхова", затем следует целый ряд сборников рассказов: "Сентиментальные повести" (1923 — 36), "Голубая книга" (1935), "Исторические повести" и др. Всего с 1922 до 1946 насчитывается 91 издание и переиздание его книг.\r\n\r\nЗначительное место в творчестве Зощенко занимают фельетоны, представляющие собой прямые отклики на "сообщения с мест" и письма читателей. Работал писатель в ленинградских газетах, на радио и в журнале "Крокодил".\r\n\r\nС начала Великой Отечественной войны был в эвакуации в Алма-Ате (работал в сценарной студии "Мосфильма"). Весной 1943 вернулся из эвакуации в Москву, был членом редколлегии журнала "Крокодил".\r\n\r\nВ этом же году закончил повесть "Перед восходом солнца", которая подверглась самой резкой критике.\r\n\r\nВ 1944 — 1946 много работал для театров. Две его комедии были поставлены в Ленинградском драматическом театре, одна из которых — "Парусиновый портфель"— выдержала 200 представлений за год.\r\n\r\nВ августе 1946, после постановления ЦК о журналах "Звезда" и "Ленинград", творчество Зощенко было избрано главным объектом нападок, и он был исключен из Союза писателей. Повод для нападок был ничтожным — рассказ для детей "Приключения обезьяны" (1945).\r\n\r\nВ период 1946 — 1953 писатель главным образом занимался переводческой деятельностью.\r\n\r\nВ июле 1953 Зощенко был вновь принят в Союз писателей. В последние годы жизни печатался в журналах "Крокодил" и "Огонек".\r\n\r\nУмер М. Зощенко в Ленинграде 22 июля 1958, похоронен в Сестрорецке.	Mihail-Zoshenko.jpg
+7	Гоголь Николай Васильевич	Родился 20 марта (01 апреля) 1809 г. в местечке Великие Сорочинцы Полтавской губернии, в семье небогатых помещиков Василия Афанасьевича и Марии Ивановны Гоголь-Яновских.\r\n     Образование получил в Нежинской гимназии высших наук, основанной в 1821 году, где проявились его интерес к литературе и живописи и незаурядный актёрский талант.\r\n    Предполагая посвятить себя юстиции, в 1828 году он переезжает в Петербург. Первые литературные опыты (стихи, поэма «Ганц Кюхельгартен», опубликованные под псевдонимом В. Алов) были подражательными и успеха не имели. В 1831 году состоялось его знакомство с А.С. Пушкиным, сыгравшим важную роль в формировании личности Гоголя как писателя. Первая принесшая ему славу книга «Вечера на хуторе близ Диканьки» появилась в 1831–1832 гг. В 30-е же годы написаны и так называемые петербургские повести – «Невский проспект», «Записки сумасшедшего», «Портрет», «Шинель», «Нос». В 1835 г. Гоголь пишет свою знаменитую комедию «Ревизор». 19 апреля 1836 г. в Александринском театре состоялась премьера. Сатирическая сила этого произведения была такова, что автор навлек на себя ожесточённые нападки реакционных кругов.\r\n     В июне 1836 году Н.В. Гоголь уехал за границу и пробыл там до 1848 (дважды приезжал в Россию). Он жил главным образом в Риме. В Италии писатель работал над главным своим созданием – романом-поэмой «Мёртвые души». Согласно окончательному замыслу, она должна была состоять из трёх томов. Первый том поэмы вышел в мае 1842 г. в Москве (без «Повести о капитане Копейкине»), под названием «Похождения Чичикова, или Мертвые души». В том же году в С.-Петербурге выходят «Сочинения Николая Гоголя» в 4 томах. Туда вошли ранее не печатавшиеся комедии «Женитьба» и «Игроки» (1833), драматические сцены и др.\r\n      Последующее творчество Гоголя протекает всё более тяжело и неровно. В 1842–1845 гг. Гоголь снова за границей; он переезжает с места на место и работает над 2-м томом «Мертвых душ». В 1847 г. были изданы «Выбранные места из переписки с друзьями».\r\n     В 1848 г. Гоголь совершил паломничество в Иерусалим, где у гроба Господня молился о помощи в его труде. С 11 на 12 февраля 1852 г. Гоголь сжег набело переписанную рукопись 2-го тома «Мертвых душ». Через 10 дней, 21 февраля (4 марта), он умер. На его похороны пришло несколько тысяч людей. Гоголь был погребён на кладбище Данилова монастыря в Москве. В 1931 году его прах был перенесён на Новодевичье кладбище.	Nikolai-Gogol.jpg
+8	Омар Хайям	Гиясаддин Абу-ль-Фатх Омар ибн Ибрахим аль-Хайям Нишапури родился 18 мая 1048 года в Иране (Нишапур), умер 4 декабря 1122 года. Занимался поэзией, математикой, астрономией и философией.\r\n     В литературе добился признания своими четверостишиями ("рубаи"), в алгебре построил классификацию кубических уравнений, плюс создал более точный, чем европейский, календарь.\r\n     Родился Омар в семье палаточника. Его детство было тяжелым, ведь оно пришлось на период сельджукского завоевания Центральной Азии.\r\n     Омар был способный и умный, он все схватывал на лету. В 8 лет уже знал Коран (священная книга мусульман) по памяти, глубоко занимался астрономией, математикой и философией. В 12 лет стал учеником Нишапурского медресе (мусульманское учебное заведение, выполняющее роль средней школы и мусульманской духовной семинарии). Он блестяще закончил курс по мусульманскому праву и медицине, получив квалификацию хакима, то есть врача. Но медицинская практика мало интересовала Омара. Он изучал сочинения известного математика и астронома Сабита ибн Курры, труды греческих математиков.\r\n     Слово "Хайям" буквально означает "палаточный мастер", от слова "хайма" - палатка, от этого же слова происходит старорусское "хамовник", т.е. текстильщик. Ибн Ибрахим - значит сын Ибрахима. Таким образом, отца Хайяма звали Ибрахим и происходил он из рода ремесленников. Можно предположить, что этот человек имел достаточные средства и не жалел их, чтобы дать сыну образование, соответствующее его блестящим способностям.\r\n     В возрасте шестнадцати лет Хайям пережил первую в своей жизни утрату: во время эпидемии умер его отец, а потом и мать. Омар продал отцовский дом и мастерскую и отправился в Самарканд. В Самарканде Хайям становится вначале учеником одного из медресе, но после нескольких выступлений на диспутах он настолько поразил всех своей учёностью, что его сразу же сделали наставником.\r\n     В 1074г., вскоре после того, как после длительного противостояния сельджукам Шамс ал-Мулук признал себя вассалом султана Малик-шаха, Хайям был приглашен в столицу огромного Сельджукского государства Исфахан ко двору Малик-шаха для руководства реформой иранского солнечного календаря. Приглашение было, по-видимому, сделано сельджукским визирем Низам ал- Мулком. Тем самым другом юности Хайяма, если все-таки верить легенде, вопреки упоминавшемуся выше расхождению в возрасте Хайяма и знаменитого визиря. 1074 год стал знаменательной датой в жизни Омара Хайяма: ею начался двадцатилетний период его особенно плодотворной научной деятельности, блестящей по достигнутым результатам.\r\n     Омар Хайям был приглашен султаном Малик-шахом - по настоянию Низам ал-Мулка - для строительства и управления дворцовой обсерваторией. Собрав у себя при дворе "лучших астрономов века", как об этом говорят источники, и, выделив крупные денежные средства для приобретения самого совершенного оборудования, султан поставил перед Омаром Хайямом задачу - разработать новый календарь.\r\n     Хайям известен благодаря своим четверостишиям — мудрым, полным юмора, лукавства и дерзости рубаи. Долгое время был забыт, но его творчество стало известным европейцам в новое время благодаря переводам Эдварда Фицджеральда.\r\n     Не спрашивают мяч согласия с броском.\r\n     По полю носится, гонимый Игроком.\r\n     Лишь Тот, Кто некогда тебя сюда забросил, —\r\n     Тому все ведомо, Тот знает обо всем.	Omar-Hoyam.jpg
+9	Зигмунд Фрейд	Зигмунд Фрейд родился 6 мая 1856 г. в Фрейберге в Моравии, маленьком городке в нынешней Чехословакии. Фрейд учился в университете Вены и всегда был способным студентом, но несколько раз переходил с одного факультета на другой. В конце концов, Зигмунд Фрейд остановил свой выбор на медицине. Фрейд стал проводить научные исследования, изучая нервную систему человека. Это привело его к изучению болезней нервной системы и возможных способов их лечения. Он экспериментировал с гипнозом, изучал кокаин как терапевтическое средство, а в 1896 году занялся частной практикой как специалист по заболеваниям нервной системы. В том же году, в возрасте 30 лет, он женился на Марте Бернейз.\r\n\r\nВ 90-х гг. Фрейд потерял отца, а вскоре после его смерти познакомился и подружился с Вильгельмом Флиссом, крупным берлинским специалистом по болезням уха, горла и носа. Они очень привязались друг к другу, часто обменивались письмами. В конце XIX в. психология и психиатрия переживали определённый кризис. Новые научные методы лечения и исследования соседствовали с широко распространённым гипнотическим внушением и месмеризмом, классификация психических расстройств отличалась неопределённостью, так как не было устоявшейся теории этого рода заболеваний. Венский психиатр Йозеф Брейер, занимавшийся изучением проблемы лечения истерии, натолкнул Фрейда на мысль о том, что душевные расстройства напрямую связаны с травматическими переживаниями, испытанными психикой больного. Несмотря на то, что большинство учёных считали сновидения либо набором механических воспоминаний о прошедшем дне, либо бессмысленным набором фантастических образов, Фрейд развивал точку зрения других исследователей о том, что сновидение есть зашифрованное сообщение. Анализируя ассоциации, возникающие у больных в связи с той или иной деталью сновидения, Фрейд делал вывод об этиологии расстройства. Осознавая происхождение своего заболевания, пациенты, как правило, излечивались.\r\n\r\nВпервые термин «психоанализ» был введен Фрейдом в 1896 г. В 1899 г. он выпускает свою первую самостоятельную работу «Толкование сновидений», которая посвящена анализу неврозов с помощью изучения сновидений пациента. Проводя исследования с использованием метода свободных ассоциаций, он пришёл к выводу, что источником неврозов большинства пациентов являются подавленные сексуальные желания (либидо). При нарушениях развития либидо оно не может быть удовлетворено и проявляется в виде симптомов психического заболевания. Также неудовлетворенное влечение может быть перенаправлено на несексуальные цели (сублимация). В соответствии с этой концепцией проявления подавленных сексуальных желаний могут быть найдены не только в сновидениях и неврозах, но также в литературе и искусстве (а также в иных порождениях человеческого сознания).\r\n\r\nВ ранних работах Фрейда в качестве источника неврозов рассматривается конфликт бессознательного и сознания, которое стремится к самосохранению. Впоследствии основное внимание сосредотачивается на конфликте внутри психической инстанции, руководствующейся принципом реальности. В работе «Я и Оно» Фрейд выделяет в структуре психики три компонента — Оно (Ид), Я (Эго) и Сверх-Я (Суперэго). Оно представляет бессознательные влечения, Я — принцип реальности. Сверх-Я формируется в процессе усвоения человеком социальных норм, господство которых над психикой также становится бессознательным, приводит к возникновению совести и неосознанного чувства вины.\r\n\r\nФрейд стал использовать метод свободных ассоциаций. Пациентам предлагалось расслабиться на кушетке и говорить все, что приходит им в голову, каким бы абсурдным, неприятным или непристойным оно не представлялось. Когда это происходило, оказывалось, что мощные эмоциональные влечения уносили неконтролируемое мышление по направлению к психическому конфликту. Фрейд утверждает, что первая случайная мысль содержит как раз то, что нужно, и представляет собой забытое продолжение воспоминания. Позже, он делает оговорку, что это не всегда бывает так. Случайная мысль должна относиться к вытесненной как намек.\r\n\r\nАнализ сновидения заключается в том, что в нём отыскивают скрытое содержание, деформированную бессознательную истину, которая таится в каждом сновидении. Чем оно запутаннее, тем больше значимость скрытого содержания для человека. Это явление на языке психоанализа называется сопротивлениями, и они проявляются даже тогда, когда видевший сон отказывается от толкования ночных образов, населяющих его ум. С помощью сопротивлений бессознательное устанавливает барьеры для собственной защиты. Они отделяют бессознательное от сознательного мира, делают бессознательное неясным или деформируют беспокойные мысли. Сновидение выражает тайные желания посредством символов. У ребенка различия между явным содержанием и скрытым менее заметны. Если сновидение неудачно воплощает желание, у видящего сон появляется страх, который становится кошмаром. Наконец, с помощью символов сновидение раскрывает скрытые, часто недоступные мысли, которые из бессознательного проникают в сознание. Интерпретировать сновидение означает выявить его смысл. Фрейд решил обрабатывать сновидения как симптомы болезней и применять для этого тот же метод, что и для анализа, т.е. метод свободной ассоциации. Фрейд замечает, что для правильного применения этого метода не следует рассматривать сновидение как нечто единое целое, потому что такое «расследование» ведет в никуда. Напротив, при рассмотрении сновидения нужно брать элемент за элементом, фрагмент за фрагментом и применять правило ассоциаций. Сновидение для Фрейда представляет не только объект, достойный научного интереса, но ещё и средство глубже познать самого себя и других, обнаруживая скрытое содержание, которое прячется за внешним.\r\n\r\nВ 1938 году, после присоединения Австрии к Германии (аншлюса) и последовавшим за этим гонением на евреев со стороны нацистов, Фрейд эмигрировал в Лондон, где умер 23 сентября 1939 года.	zigmund_freid.jpg
+10	Федотов Василий Антонович	29 октября 2016 года исполняется 80 лет заведующему кафедрой растениеводства, доктору с.-х. наук, профессору, заслуженному работнику высшей школы РФ, ФЕДОТОВУ ВАСИЛИЮ АНТОНОВИЧУ!\r\nРодился В.А. Федотов в семье служащих 29 октября 1936 года в г. Малоархангельске Орловской области. Детство Василия Антоновича пришлось на военные годы, в которые ему с лихвой пришлось испытать на себе оккупацию, голод, детдом. Только в 1944 г. ему довелось пойти в школу. Учился на «хорошо» и «отлично». После окончания семилетней школы поступил в Глазуновский сельскохозяйственный техникум на агрономическое отделение. Проучившись там 2 года, он сдал экзамены за 8-9 классы и вернулся в школу в 10-й класс. В 1954 г. Василий Антонович поступил на агрономический факультет Воронежского СХИ. В то время на факультете преподавали такие видные ученые как П.И. Подгорный, В.В. Квасников, П.В. Карпенко, В.Ф. Лейсле, Н.А. Успенский, А.А. Зелько и др. Во время учебы в институте В. А. Федотов был отличником, получал стипендию им. М.И. Калинина, занимался спортом, был комсоргом курса, активно участвовал в общественной деятельности вуза.\r\nПосле окончания вуза два с половиной года Василий Антонович успешно работал главным агрономом в колхозе «Россия» Петропавловского района Воронежской области. В 1962 г. он поступил в аспирантуру при кафедре растениеводства к профессору Подгорному П. И. Уже в 1963 г. у него появилась первая научная публикация.\r\nВ марте 1966 г. он защитил кандидатскую диссертацию на тему: «Лучшие из зернобобовых культур в качестве предшественников озимой пшеницы». В 1967 г. ему присвоено ученое звание доцента.\r\nВ мае 1991 г. он защитил докторскую диссертацию на тему «Озимая пшеница в Центрально-Черноземном регионе РСФСР (вопросы теории и практики повышения устойчивости, величины и качества урожаев)». В 1992 г. ему присвоено звание профессора.\r\nВ Воронежском госагроуниверситете Василий Антонович трудится с 1965 г. – сначала научным сотрудником, затем ассистентом, 24 года - доцентом, а с 1992 г. – профессором и заведующим кафедрой растениеводства, кормопроизводства и агротехнологий.\r\nВ.А. Федотов в процессе многолетней педагогической деятельности освоил все виды и формы обучения и контроля знаний студентов по растениеводству на разных факультетах. В настоящее время читает курс лекций «Растениеводство» студентам агрономического факультета.\r\nВ.А. Федотовым опубликовано более 350 научных и учебно-методических трудов, из них 15 монографий, 3 учебника, 12 учебных пособий (с грифом УМО) и 14 брошюр. Им подготовлены 8 докторов и 24 кандидата с.х. наук.\r\nАктивно участвует в развитии растениеводческой отрасли с.-х. производства в качестве научного консультанта в ряде хозяйств Воронежской, Липецкой и других областей ЦЧР.\r\nНаучная деятельность проф. Федотова В.А. многогранна. Он стал крупным ученым, имеющим большие заслуги в разработке важных научных направлений в решении народнохозяйственных проблем по разработке адаптивно интенсивных технологий возделывания озимой и яровой пшеницы, сои, нута и других зернобобовых и кормовых (люпина, галега, озимая вика, сорго и др.) культур, картофеля, амаранта. Им создана научная школа современных агротехнологий полевых культур, разработаны научные и практические пути получения высоких урожаев основных полевых культур нашей зоны. В.А. Федотов стал ведущим ученым не только по вопросам частного, но и общего земледелия.\r\nВ.А. Федотов регулярно участвует в работе внутривузовских, региональных, общероссийских научных конференций, является членом НТС при ГУ АПК Воронежской области.\r\nКоллеги и студенты высоко оценивают научно-организаторские способности, педагогическое мастерство и человеческие качества В.А. Федотова. Он пользуется большим авторитетом и уважением.\r\nСпециалисты-аграрники и коллеги по научной и педагогической деятельности в ряде НИИ и аграрных вузов страны хорошо знают В.А. Федотова как крупного ученого и опытного педагога, обладающего богатой эрудицией и творческим потенциалом.\r\nЗа высокие достижения в научной и педагогической деятельности и большой вклад в подготовку специалистов для АПК неоднократно поощрялся Почетными грамотами Министерства сельского хозяйства РФ, администрации Воронежской и Липецкой областей, Воронежской областной думы, администрацией г. Воронежа и приказами ректора Воронежского ГАУ.\r\nНагражден медалью «Ветеран труда», значком «Заслуженный работник высшей школы Российской Федерации», званием Заслуженный деятель науки РФ.\r\nСо своей женой Анной Иосифовной Василий Антонович в браке уже 59. Они родили и воспитали двух сыновей и трех дочерей. У них 11 внуков и 9 правнуков. Большая и дружная семья Василия Антоновича всегда служила для него стимулом для работы и была поддержкой и опорой в трудные минуты.\r\nНесмотря на солидный возраст, Василий Антонович находится в прекрасной физической и творческой форме. По-прежнему он ведет занятия, возглавляет кафедру, руководит научной работой сотрудников, аспирантов, магистров, бакалавров. Почти ежедневно его можно встретить в дендропарке ВГАУ, активно занимающимся спортом на свежем воздухе. Он являет собой отличный пример для подражания.	Fedotov-V.A.jpg
+11	Каку Митио	Митио (Мичио) Каку — американский учёный, специалист в области теоретической физики. Известен как активный популяризатор науки, автор научно-популярных книг.\r\n\r\nМитио родился 24 января 1947 года в Сан-Хосе, Калифорния. Предки его были японскими иммигрантами. Его дед приехал в Америку, чтобы стать участником операции по ликвидации последствий землетрясения в Сан-Франциско 1906 года. Отец Митио родился в Калифорнии, но образование получил в Японии и немного говорил по-английски. Во время Второй мировой войны оба его родителя были отправлены в военный лагерь для интернированных японцев в Калифорнии, где они встретились, и где родился его брат.\r\n\r\nКаку учился в Высшей школе Кибберли в Пало-Альто в начале 1960-х и был капитаном в его шахматной команде. На национальной научной ярмарке в Альбукерке, Нью-Мексико, он привлёк внимание физика Эдварда Теллера, который взял Каку как протеже, присудив ему стипендию фонда Герца.\r\n\r\nКаку закончил с отличием Гарвардский университет со степенью бакалавра в 1968 году и был первым в его классе по физике. Далее он поступил в радиационную лабораторию в Беркли, которая находится в Университете Калифорнии, где и получил степень доктора философии (Ph.D) в 1972 и начал вести лекции в Принстонском университете в 1973 году.\r\n\r\nВо время вьетнамской войны Каку закончил базовую подготовку в форте Беннинг, Джорджия, и тренинг для пехоты в форте Льюис, Вашингтон. Война закончилась до того, как он попал на фронт.\r\n\r\nСемейное положение: женат на Сидзуэ Каку, имеет двух дочерей. В настоящее время проживает с семьёй в Нью-Йорке.\r\n\r\nНа сегодняшний день доктор Митио Каку преподает в нью-йоркском Сити-колледже, где он уже проработал более 25 лет.\r\n\r\nМитио Каку — активный популяризатор теоретической физики и современных концепций об устройстве мироздания, автор книг, целью которых прежде всего является попытка донести сложные научные теории до любого читателя доступным языком. Каку часто выступает по радио и телевидению, а также снимается во многих документальных фильмах (например в качестве ведущего в программах How the Universe works и Sci Fi Science производства телеканала Discovery). Некоторые из них переведены на многие языки мира. Также Каку проводит конференции в Нью-Йорке.	Kaku-Mitio.jpg
+13	Платт Чарльз	В настоящий момент информация о Чарльз Платт подготавливается для размещения на сайте. Если вы хотите принять участие в написании или дополнении биографии об этом авторе, то присылайте свои замечания на наш электронный адрес. На этой странице можно будет прочитать интересные факты, отзывы и биографию Чарльз Платт, ознакомиться со списком книг автора. А если вам интересно узнать подробнее где родился, жил и работал автор Чарльз Платт, то предлагаем ознакомиться с его полной биографией. Также здесь можно увидеть самые популярные книги, прочитать на них рецензии, отзывы и цитаты из книг Чарльз Платт.	plat_charlz.jpeg
+14	Тони Тёрнер	В настоящий момент информация о Чарльз Платт подготавливается для размещения на сайте. Если вы хотите принять участие в написании или дополнении биографии об этом авторе, то присылайте свои замечания на наш электронный адрес. На этой странице можно будет прочитать интересные факты, отзывы и биографию Чарльз Платт, ознакомиться со списком книг автора. А если вам интересно узнать подробнее где родился, жил и работал автор Чарльз Платт, то предлагаем ознакомиться с его полной биографией. Также здесь можно увидеть самые популярные книги, прочитать на них рецензии, отзывы и цитаты из книг Чарльз Платт.	toni_terner.jpg
+15	Валентин Холмогоров	Родился 5 июля 1977 года в Ленинграде. В 1999 году окончил Санкт-Петербургский Государственный Университет телекоммуникаций им. проф. М. А. Бонч-Бруевича, факультет Технологий средств связи и биомедицинской электроники. В средствах массовой информации начал публиковаться с 1994 года, в 1997—1999 работал заместителем Главного редактора журнала «Магия ПК» (издательство «Технопресс»). С 2001 года занимается преподавательской деятельностью в сотрудничестве с негосударственным образовательным учреждением «Санкт-Петербургская Академия Экономики Философии и Права», где был назначен на должность профессора, в 2002 году получил степень доктора философии (Ph.D). Является автором нескольких десятков технических книг, посвященных компьютерным технологиям, а также целого ряда литературных художественных произведений. Принимал участие в написании сценариев для комедийных телепрограмм творческого объединения «Маски». В настоящий момент проживает в Санкт-Петербурге. Женат, воспитывает сына и дочь.	valentin-holmogorov.jpg
+16	Аристотель	Аристотель (Aristotélçs) (384 — 322 до н. э.) — древнегреческий ученый, философ, основатель Ликея, учитель Александра Македонского. Был сторонником умеренной демократии.\r\n\r\nАристотель родился в 384 до н. э., в Стагире, на полуострове Халкидика, Северной Греции. В 367 году отправился в Афины и, став учеником Платона, в течение 20 лет, вплоть до его смерти (347), был участником Академии платоновской. В 343 был приглашен Филиппом II (царём Македонии) воспитывать его сына Александра. В 335 вернулся в Афины и создал там свою школу (Ликей, или перипатетическую школу).\r\n\r\nМестом школы стал гимнасий неподалеку от храма Апполона Ликейского, поэтому школа Аристотеля получила название Ликей. Читать лекции Аристотель любил, прогуливаясь с учениками по дорожкам сада. Так появилось еще одно название Ликея — перипатетическая школа (от перипато — прогулка). Представители перипатетической школы помимо философии занимались и конкретными науками (историей, физикой, астрономией, географией).\r\n\r\nДошедшие до нас сочинения Аристотеля делятся по содержанию на 7 групп:\r\n\r\n    Логические трактаты, объединённые в своде «Органон»: «Категории» (рус. пер., 1859, 1939), «Об истолковании» (рус. пер., 1891), «Аналитики первая и вторая» (рус. пер., 1952), «Топика».\r\n    Физические трактаты: «Физика», «О происхождении и уничтожении», «О небе», «О метеорологических вопросах».\r\n    Биологические трактаты: «История животных», «О частях животных» (рус. пер., 1937), «О возникновении животных» (рус. пер., 1940), «О движении животных», а также трактат «О душе» (рус. пер., 1937).\r\n    Сочинения о «первой философии», рассматривающее сущее как таковое и получившее впоследствии название «Метафизики» (рус. пер., 1934).\r\n    Этические сочинения — т. н. «Никомахова этика» (посвященная Никомаху, сыну Аристотеля; русский перевод, 1900, 1908) и «Эвдемова этика» (посвященная Эвдему, ученику Аристотеля).\r\n    Социально-политические и исторические сочинения: «Политика» (рус. пер., 1865, 1911), «Афинская полития» (рус. пер., 1891, 1937).\r\n    Работы об искусстве, поэзии и риторике: «Риторика» (рус. пер., 1894) и дошедшая неполностью «Поэтика» (рус. пер., 1927, 1957).\r\n\r\nВ политике Аристотель дал классификацию форм государственного устройства, к наилучшим формам он отнес монархию, аристократию и политию (умеренную демократию), к наихудшим — тиранию, олигархию, охлократию. В учении об искусстве он утверждал, что суть искусства — подражание (мимесис). Он ввел понятие катарсиса (очищения человеческого духа), как цели театральной трагедии, предложил общие принципы построения художественного произведения.\r\n\r\nАристотель охватил почти все доступные для его времени отрасли знания. В своей «первой философии» («метафизике») подверг критике учение Платона об идеях и дал решение вопроса об отношении в бытии общего и единичного. Единичное — то, что существует только «где-либо» и «теперь», оно чувственно воспринимаемо. Общее — то, что существует в любом месте и в любое время («повсюду» и «всегда»), проявляясь при определенных условиях в единичном, через которое оно познаётся. Общее составляет предмет науки и постигается умом.	Aristotel.jpg
+12	Козырева Ольга Анатольевна	Образование\r\n\r\n1. НПУ 1989-1993«Учитель начальных классов»\r\n\r\n2. КГПУ 1993-1998гг (с красным дипломом) «Учитель и логопед для детей с нарушением интеллекта по специальности «Олигофренопедагогика» с дополнительной специальностью «Логопедия»\r\n\r\n3. КГПУ 2000г «Управление образовательным учреждением» (переподготовка)\r\n\r\n4. ТГПУ 2002-2004гг заочная аспирантура, защита диссертации по специальности 13.00.01\r\n\r\nПовышение квалификации:\r\n\r\n1."Проектирование и реализация основных профессиональных образовательных программ бакалавриата по направлению подготовки "Специальное дефектологическое образование" (Учитель-дефектолог)", 25.08-05.09.2014г., МГГУ им. М.А.Шолохова, 72ч. №251-62\r\n\r\n2."Методические и теоретические основы современной логопедии", 25.01-31.01.2015г., ЧОУ ДПО "Центр повышения квалификации", 72ч. №2243\r\n\r\n3."Модернизация магистерских программ в сетевом взаимодействии", 17.03-28.04.2015г., КГПУ им. В.П.Астафьева, 72ч. №223\r\nСфера научных интересов и достижений\r\n\r\nИнклюзивная образовательная среда современной школы\r\nОбразовательная деятельность\r\n\r\nЧитаемые дисциплины:\r\n\r\nМагистратура «Психолого-педагогическая реабилитация лиц с ОВЗ»:\r\n\r\nСовременные проблемы науки и специального дефектологического образования.\r\n\r\nОлигофренопедагогика, бакалавриат:\r\n\r\nТехнологии обследования грамматического строя речи у школьников с недоразвитием речи.\r\n\r\nЛогопедия, бакалавриат:\r\n\r\n-Логопедия,\r\n\r\n-Логопедические технологии	kozireva-olga.jpg
+\.
+
+
+--
+-- TOC entry 2272 (class 0 OID 0)
+-- Dependencies: 187
+-- Name: Main_author_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_author_id_seq"', 16, true);
+
+
+--
+-- TOC entry 2225 (class 0 OID 46141)
+-- Dependencies: 190
+-- Data for Name: Main_book; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_book" (id, title, text, picture, prize, author_id, genre_id, publishing_id) FROM stdin;
+2	Политика	"Средний класс", "экономика", "семья как ячейка государства", "Политика", "конституция", "гражданский долг" - мы произносим эти слова и выражения, даже не зная, что самим их существованием обязаны Аристотелю, гениальному мыслителю, который впервые ввел их в оборот в своем произведении "Политика", где и изобрел социальную и политическую философию, впервые в истории выделив изучение общественных отношений в самостоятельную науку.\r\n"Человек по природе своей существо политическое", - говорил Аристотель. Но какое политическое устройство он полагал справедливым? На какие социальные слои предлагал опираться, чтобы наилучшим образом организовать совместную жизнь в государстве? И в чем видел залог правильного и разумного государственного управления?\r\n\r\nПодробнее: http://www.labirint.ru/books/556028/	aristotel - politika.jpg	700	16	6	2
+3	Риторика	Аристотель - древнегреческий ученый, философ, основоположник формальной логики. Первым создал всестороннюю философскую систему, охватившую все сферы существования. Его учение считается обобщающим и завершающим греческую философию.\r\n"Риторика" Аристотеля - это наиболее глубокое и систематизированное исследование проблем ораторского искусства, ставшее большим культурным и научным событием. Трактат разделен на три части: первая посвящена предмету риторики и видам ораторских речей. Во второй речь идет о личных свойствах оратора и о "причинах, возбуждающих доверие к говорящему". Третья часть касается технической стороны риторики.\r\nКак и другие книги серии "Великие идеи", книга будет просто незаменима в библиотеке студентов гуманитарных специальностей, а также для желающих познакомиться с ключевыми произведениями и идеями мировой философии и культуры.\r\nПодробнее: http://www.labirint.ru/books/502379/	aristotel - ritorika.jpg	300	16	6	1
+4	Растениеводство	Изложены краткая история, основы растениеводства как отрасли и как науки, основы семеноводства и семеноведения. Приведена характеристика современных агротехнологий, показаны сорта зерновых, технических и кормовых культур. Раскрыты значение, распространение, урожайность, морфобиологические особенности полевых культур, их агротехнологии и резервы, использование которых позволяет получить высокие экономически эффективные урожаи с хорошим качеством продукции. Учебник предназначен для студентов аграрных вузов, обучающихся по направлению подготовки "Агрономия" (бакалавр).\r\nПодробнее: http://www.labirint.ru/books/504605/	Fedotov - Rastenevodstvo uchebnik.jpg	900	10	4	2
+5	Игра в биссер	Перед вами - книга, без которой немыслима вся культура постмодернизма Европы - в литературе, в кино, в театре.\r\nЧто это - гениальный авангардистский роман, стилизованный под философию сюрреализма, или гениальное философское эссе, стилизованное под сюрреалистический роман? Пожалуй, теперь это и не важно.\r\nВажно одно - идут годы и десятилетия, а изысканной, болезненной и эзотеричной "игре в бисер" по-прежнему нет конца. Ибо такова игра, в которую играют лучшие из люде\r\nПодробнее: http://www.labirint.ru/books/433121/	german gesse - igra v bisser.jpg	550	2	1	2
+6	Иллиада	Ни одно из многочисленных литературных произведений древности не оказало такого сильного влияния на дальнейшее развитие мировой культуры, как бессмертная поэма Гомера "Илиада". Минули века, однако притягательная сила поэмы легендарного эпического поэта Древней Греции неумолима. Притягательность гомеровской поэмы не только в том, что ее автор вводит нас в мир, отделенный от современности десятками столетий и все же необычайно реальный благодаря гению поэта, сохранившего в своей поэме биение современной ему жизни. Бессмертие Гомера в том, что в его гениальных творениях заключены неисчерпаемые запасы общечеловеческих непреходящих ценностей - разума, добра и красоты.\r\nТекст всемирно известной поэмы, стоящей у истоков европейской литературной традиции, дан в знаменитом переводе Н.И. Гнедича (впервые издан в 1829 году). Этот перевод отличается наибольшей близостью к подлиннику и сих пор сохраняет актуальность для читателя. Издание снабжено примечаниями, подробным...\r\nПодробнее: http://www.labirint.ru/books/557834/	Gomer - Illiada.jpg	1200	1	1	1
+7	Будующее разума	Обстоятельный рассказ о том, чего можно ожидать от научно-технического прогресса в ближайшие сто лет или около того… захватывающий и изложенный с похвальной ясностью.\r\nThe Wall Street Journal\r\n\r\nКаку обладает неподражаемой способностью брать сложные научные теории и превращать их в увлекательные сказки о том, на что наша жизнь будет похожа в будущем… весело, захватывающе. И совсем чуть-чуть страшно.\r\nUSA Today\r\n\r\nВ последней книге Каку старается объяснить, почему одни фантазии о будущем могут в конечном итоге реализоваться, тогда как другие выходят за рамки возможного… Часто такие вопросы исследует научная фантастика, наука же обычно хранит молчание по этому поводу. Работы Каку помогают заполнить эту брешь.\r\nThe Economist\r\n\r\nО чем книга "Будущее разума"\r\nПрямое мысленное общение с компьютером, телекинез, имплантация новых навыков непосредственно в мозг, видеозапись образов, воспоминаний и снов, телепатия, аватары и суррогаты как помощники...\r\nПодробнее: http://www.labirint.ru/books/463045/	kaku mitio - buduushee razuma.jpg	3000	11	7	2
+8	Физика будующего	Кому как не ученым-физикам рассуждать о том, что будет представлять собой мир в 2100 году? Как одним усилием воли будут управляться компьютеры, как силой мысли человек сможет двигать предметы, как мы будем подключаться к мировому информационному полю? Возможно ли это? Оказывается, возможно и не такое. Искусственные органы; парящие в воздухе автомобили; невероятная продолжительность жизни и молодости - все эти чудеса не фантастика, а научно обоснованные прогнозы серьезных ученых, интервью с которыми обобщил в своей книге Митио Каку.\r\n4-е издание.\r\nПодробнее: http://www.labirint.ru/books/313225/	kaku mitio - fizika buduushego.jpg	1500	11	7	2
+9	Космос Энштейна	Цитата\r\nКаку дает читателю возможность видеть и думать как Эйнштейн, делая наше понимание более полным и простым.\r\nPopular Science\r\n\r\nДоступное и лаконичное описание жизни и творчества Эйнштейна...\r\nЧет Раймо, Toronto Globe and Mail.\r\n\r\nО чем книга "Космос Эйнштейна: Как открытия Альберта Эйнштейна изменили наши представления о пространстве и времени"\r\nОписывая жизнь Альберта Эйнштейна, Митио Каку погружает нас в бурлящую атмосферу первой половины XX в. - две мировые войны, революция в Германии, создание атомной бомбы. Он показывает читателю невидимый обычно за триумфальной стороной открытий и озарений мир ученого - этапы становления, баталии в научном мире, зачастую непростые отношения с близкими. В книге представлен свежий взгляд на новаторскую деятельность Эйнштейна, перевернувшего представления человечества о пространстве и времени.\r\n\r\nПочему книга "Космос Эйнштейна: Как открытия Альберта Эйнштейна изменили наши представления о пространстве и времени"...\r\nЧитать полностью\r\nПодробнее: http://www.labirint.ru/books/507517/	kaku mitio - Kosmos enshtiena.jpg	100	11	7	1
+10	Формирование Лексико-Грамматических Средств	Тетрадь по формированию лексико-грамматических средств языка и развитию связной речи предназначена для работы с детьми с ЗПР в дошкольных образовательных учреждениях компенсирующего вида с целью оказания помощи в подготовке и проведении фронтальных занятий.\r\nМатериалы тетради будут способствовать как формированию грамматического строя родного языка и развитию связной речи, так и расширению кругозора дошкольника, раз­витию у него общеинтеллектуальных умений и внимания. Многие задания тетради помогут подготовить руку ребенка к письму.\r\nПодробнее: http://www.labirint.ru/books/506960/	kozireva olga - formirovanie leksiko grammaticheskih sredstv.jpg	700	12	8	2
+11	Обучение Грамоте	В соответствии с ФГОС ДО, дошкольные образовательные организации при составлении основной образовательной программы могут использовать кроме примерной образовательной программы дошкольного образования и парциальные программы. Одной из таких программ является парциальная программа "Обучение грамоте детей дошкольного возраста". Программа учитывает образовательные потребности, интересы и мотивы дошкольников и членов их семей и предназначена для обучения грамоте детей дошкольного возраста в различных подразделениях ДОО, в учреждениях дополнительного образования, в семье. Парциальная программа может использоваться при составлении основной общеобразовательной программы дошкольного образования на основе любой примерной образовательной программы. Рекомендована учителям-логопедам и воспитателям ДОО, педагогам дополнительного образования, родителям дошкольников.\r\nПодробнее: http://www.labirint.ru/books/481413/	kozireva olga -  obuchenie gramote.jpg	1800	12	8	2
+12	Рабочая тетрадь	Тетрадь содержит оригинальную подборку художественных текстов и авторских заданий. Материалы тетради будут способствовать формированию грамматического строя родного языка, навыка осознанного чтения и развитию связной речи, памяти и внимания детей с устойчивыми трудностями в обучении.\r\n\r\nПодробнее: http://www.labirint.ru/books/448618/	kozireva olga - rabochaya tetrad.jpg	5000	12	8	1
+13	Исповедь о Жизни	В эту книгу вошли религиозно-философские трактаты Л.Н. Толстого "Исповедь" и "О жизни", в которых писатель подвел итог годам своих духовных и нравственных исканий.\r\n"Исповедь" - автобиографическое произведение. Толстой описывает свои многолетние поиски смысла жизни, начиная с самых юных лет, мучительный страх перед смертью, ощущение никчемности человека перед вечностью и, наконец, приход к Богу и вере.\r\nТрактат "О жизни" Толстой считал одной из своих главных книг. В нем он формулирует суть своего мировоззрения. И в противовес своим прежним представлениям о смерти приходит к выводу, что для человека, познавшего истинный смысл жизни в служении нравственным идеалам, смерти уже не существует.\r\nПодробнее: http://www.labirint.ru/books/507401/	Lev Tolstoi - Ispoved o zhizni.jpg	436	4	1	2
+14	Мать	В основу романа «Мать», одного из самых популярных произведений Горького, легла массовая демонстрация 1902 года в городе Сормове. Отсюда основанный на реальных событиях волнующий сюжет, с острой политической борьбой, тайными сходками, обысками, арестами, самоотверженным героизмом главного героя-революционера Павла Власова. Однако центральный образ в романе — Пелагея Ниловна Власова, мать героя, один из самых ярких и волнующих персонажей российской литературы, символизирующая собой вечный образ Матери, наделенной даром безграничной любви и терпения.\r\nПодробнее: http://www.labirint.ru/books/548893/	MaximGorkii - Mat.jpeg	890	5	1	2
+15	Возвращаемая молодость	Михаила Зощенко знают прежде всего как блестящего рассказчика, автора смешных и очень смешных рассказов. Но созданное писателем перекрывает устоявшийся образ весельчака и балагура. В эту книгу вошли "большие" повести Зощенко, раскрывающие его дарование с других сторон. "Возвращенная молодость" обращает к размышлениям о нравственном и физическом здоровье человека, о законах и превратностях истории рассказывают повести "Керенский" и "Возмездие". В книгу также вошли рассказы для детей и фельетоны писателя.\r\nПодробнее на livelib.ru:\r\nhttps://www.livelib.ru/book/1000400124-vozvraschennaya-molodost-mihail-zoschenko	MihailZoshenko - Vozvrashenaya Molodost.jpg	450	6	1	1
+16	Записки сумасшедшего	Повесть представляет собой дневник главного героя. В начале он описывает свою жизнь и работу, а также окружающих его людей. Далее он пишет о своих чувствах к дочери директора, и вскоре после этого начинают проявляться признаки сумасшествия — он разговаривает с её собачкой Меджи, после чего заполучает письма, которые Меджи писала другой собаке. Через несколько дней он полностью отрывается от реальности — он понимает, что он — король Испании. Его безумие видно даже по числам в дневнике — если начинается дневник с 3 октября, то понимание о том, что он — король Испании, приходит, по его датировкам 43 апреля 2000 года. И, чем дальше, тем больше погружается герой вглубь своей фантазии. Он попадает в сумасшедший дом, но воспринимает это как прибытие в Испанию. В конце записи полностью теряют смысл, превращаясь в набор фраз. Последняя фраза повести: «А знаете ли, что у алжирского дея под самым носом шишка?».\r\n\r\nВ некоторых изданиях последняя фраза выглядит так: «А знаете ли, что у алжирского бея под самым носом шишка?»	Nikolai Gogol -  Zapiski Sumashedshego.jpg	3500	7	1	1
+17	Великие цитаты	Эта книга собрала в себе самые мудрые притчи и афоризмы великого поэта Востока и одного из самых известных мудрецов и философов. Высказывания Омара Хайяма, передающиеся от поколения к поколению, наполнены глубоким смыслом, яркостью образа и изяществом ритма. С присущим Хайяму остроумием и саркастичностью он создал изречения, которые поражают своим юмором и лукавством. Они дают силы в трудную минуту, помогают справиться с нахлынувшими проблемами, отвлекают от неприятностей, заставляют думать и рассуждать.\r\nПодробнее: http://www.labirint.ru/books/570820/	Omar Hoyam - Wise book.jpg	2500	8	6	2
+18	Электроника для начинающих	В ходе практических экспериментов рассмотрены основы электроники и показано, как проектировать, отлаживать и изготавливать электронные устройства в домашних условиях. Материал излагается последовательно от простого к сложному, начиная с простых опытов с электрическим током и заканчивая созданием сложных устройств с использованием транзисторов и микроконтроллеров. Описаны основные законы электроники, а также принципы функционирования различных электронных компонентов. Показано, как изготовить охранную сигнализацию для защиты от проникновения в дом, елочные огни, электронные украшения для одежды, устройство преобразования звука, кодовый замок, автономную роботизированную тележку и др. Приведены пошаговые инструкции и более 500 наглядных рисунков и фотографий.\r\nПодробнее: http://www.labirint.ru/books/343814/	platt charlz - Electronika dlya nachinaushih.jpg	340	13	7	1
+19	Логические микросхемы	Обучение в ходе экспериментов .\r\nВ книге "Электроника для начинающих" был представлен мир электроники и изложены его основные понятия. Теперь вы готовы перейти к следующему этапу - разработке схем, генерированию случайных чисел, аналого-цифровому преобразованию и многому другому. Данное руководство содержит многочисленные иллюстрации рассматриваемых проектов, а также списки деталей для каждого проекта, чтобы облегчить задачу их приобретения.\r\nЭлектроника - это намного больше, чем просто резисторы, конденсаторы, транзисторы и диоды. Существует большое множество проектов, которые можно создать, используя компараторы, операционные усилители и датчики. И не забывайте о мыслительных способностях логических микросхем!\r\nПодробнее: http://www.labirint.ru/books/481169/	platt charlz - Logicheskie microshemi.jpg	670	13	7	2
+20	Дневной трейдинг онлайн	"Забудьте об отчетах раздраженному шефу. Вы можете спокойно оставаться в постели, если у вас грипп. Вам больше не придется носить удушающие галстуки и высокие каблуки, грозящие искривлением позвоночника. Вы можете вести торги в рваной футболке, фланелевых шортах и домашних тапочках".\r\nТони Тернер\r\n\r\nО чем книга "Дневной трейдинг онлайн: Руководство для начинающих"\r\nО преимуществах дневного трейдинга в мире финансового круговорота. Начинающим трейдерам адресовано настолько мало толковой литературы, что автор, исходя из собственного горького опыта, решила взяться за перо. Результат получился более чем совершенный: все тонкости выживания на фондовом рынке разобраны подетально и, главное, прожиты лично.\r\nПодробнее: http://www.labirint.ru/books/507522/	toni terner - dnevnoi trading online.jpg	340	14	7	2
+21	Краткосрочный трейдинг для начинающих	Цитата\r\n"Традиционная ориентация на стратегию долгосрочного инвестирования утратила большую часть своей былой непогрешимости. За редкими исключениями миновали те времена, когда можно было купить акции - "иконы" американской промышленности и больше ни о чем не думать, зная, что они будут постоянно расти в цене и этой прибыли хватит на образование детей или безбедную жизнь в старости на Гавайях".\r\nТони Тернер\r\n\r\nО чем книга\r\nО краткосрочном трейдинге на рынке акций. Эта практическая книга последовательно проводит читателя по всем этапам и показывает, как добиться успеха при торговле в пределах месяца, недели и даже дня, а ясные, основанные на здравом смысле советы помогают существенно улучшить результаты.\r\nПодробнее: http://www.labirint.ru/books/364314/	toni terner - kratkosrochnii trading dlya nachinaushih.jpg	6200	14	7	2
+22	Краткосрочный трейдинг на фондовом рынке	Сегодняшний фондовый рынок, как известно, отличается крайней неустойчивостью. Тем важнее для трейдеров и инвесторов, особенно новичков, найти надежного советника и проводника посреди краткосрочных взлетов и падений акций. Именно эту роль исполняет в своей книге Тони Тернер, успешный трейдер и автор бестселлеров о трейдинге.\r\nПредоставляя огромное количество информации и знаний, которые будут полезны любому участнику рынка, автор распределяет материал по разделам - своего рода ориентирам на фондовом рынке. Среди них - "Семь шагов к успеху в трейдинге", позволяющих игроку пройти от самых основ до вершин мастерства, последовательно овладевая техническими приемами и стратегиями.\r\nПодробнее: http://www.labirint.ru/books/395520/	toni terner - kratkosrochnii trading na fondovom rinke.jpg	2400	14	7	1
+23	Галактика	Галактика стоит на пороге жестокой войны. Остаться в стороне — невозможно. В этой войне не останется победителей, а проигравших ждет печальная участь.\r\nНик Фадеев и его друзья не желали становиться героями, но судьба сама дала им в руки оружие. Новейший космический линкор, способный уничтожать планеты, готов дать достойный ответ тем, кто встал на пути человечества к звездам.\r\nНо иногда то, что люди считали спасением, внезапно становится проклятием Галактики…\r\nПодробнее: http://www.labirint.ru/books/380342/	valentin holmogorov - galactica.jpg	920	15	3	1
+24	Осваиваем ПК	Как настроить компьютер, планшет, смартфон; каковы особенности самых популярных операционных систем - Microsoft Windows 8 и Google Android; как скачивать файлы из Интернета, смотреть фильмы, слушать музыку; как совершить видеозвонок; что делать, чтобы обезопасить компьютер от вирусов и устранить неполадки - узнайте как можно больше о возможностях ваших гаджетов!\r\n\r\nПодробнее: http://www.labirint.ru/books/470030/	valentin holmogorov - osvaivaem pc.jpg	1345	15	3	2
+25	Вирусы	Время энтузиастов-одиночек, создававших компьютерные вирусы на заре информационной эпохи, давно прошло: в наши дни разработкой и распространением вредоносных программ занимаются хорошо организованные преступные группировки, имеющие жесткую иерархию и напоминающие по своей структуре настоящие мафиозные кланы. Объем этого подпольного рынка составляет сотни миллионов долларов.\r\nКнига штатного сотрудника одной из ведущих российских антивирусных компаний в увлекательной форме рассказывает об истории возникновения и развития технологий компьютерных вирусов, их разновидностях, внутренней архитектуре, способах распространения и принципах действия. Книга позволит читателям познакомиться с таинственным теневым миром киберпреступности, представители которого ежедневно осуществляют атаки на компьютеры простых пользователей по всему миру.\r\nПодробнее: http://www.labirint.ru/books/505315/	valentin holmogorov - virusi.jpg	3125	15	3	2
+26	Алмазный мой венец	Валентин Петрович Катаев (1897-1986) - один из лучших русских прозаиков XX века, великолепный мастер художественной прозы, литературный язык которого свеж и выразителен. Необычный прием, созданный Катаевым, - тонкая, изящная "зашифрованность" действующих лиц - способствовал появлению нового своеобразного жанра мемуарной литературы.\r\nВ книгу, помимо широко известного романа "Алмазный мой венец", вошли повести "Святой колодец", "Трава забвенья", "Кубик".\r\n\r\nПодробнее: http://www.labirint.ru/books/267819/	ValentinKataev - Almaznii moi venec.jpg	743	3	1	1
+27	Психология повседневной жизни	Классическая работа Зигмунда Фрейда "Психология масс и анализ человеческого "Я"" (Freud S.Massen psychologie und Ich-analyse) посвящена применению психоаналитического подхода для преодоления границы между индивидуальной и социальной психологией. По сути его работа представляет собой развернутый психоаналитический комментарий к идеям, изложенным Г. Лебоном в "Психологии толп".\r\nОднако Фрейд не удовлетворен объяснением феноменов поведения толпы: у Лебона не выявлено, откуда у массы потребность в вожде, почему вождь влияет на поведение толпы, в чем основа престижа?\r\nПодробнее: http://www.labirint.ru/books/449553/	zigmund freid - psihologiya povsednevnoi zhizni.jpg	560	9	5	2
+28	Толкование сноведений	В настоящее издание включен фундаментальный труд основателя теории психоанализа Зигмунда Фрейда "Толкование сновидений", в котором автор дает представление о методе и технике психоанализа, предвосхитивших многие положения современной теории сновидений.\r\nПодробнее: http://www.labirint.ru/books/285282/	zigmund freid - tolkovanie snovedenii.jpg	670	9	5	2
+29	Тотем и табу	Зигмунд Фрейд (1856-1939) - знаменитый австрийский психиатр, основоположник психоанализа, автор многочисленных классических сочинений, таких как "Введение в психоанализ", "Толкование сновидений", ""Я" и "Оно"", "Остроумие и его отношение к бессознательному", "Семейная жизнь невротиков" и многих других. В своих работах Фрейд по-новому объясняет принципы формирования человеческого общества, моральных и культурных ценностей. В этом смысле созданный в 1913 году труд "Тотем и табу" по праву считается одним из значительнейших и концептуальных для всего наследия Фрейда. На основе изучения психологии первобытных народов ученый анализирует возникновение различных запретов и дальнейшую их трансформацию в моральные нормы современного общества, а также делает выводы о причинах и корнях некоторых психологических комплексов, которыми зачастую страдают душевнобольные, а также те, кто подвержен неврозу.\r\nПодробнее: http://www.labirint.ru/books/379487/	zigmund freid - totem i tabu.jpg	1469	9	5	1
+30	Введение в психоанализ	В свое время идея Зигмунда Фрейда о влиянии полового инстинкта на психику и развитие человеческого общества произвела эффект разорвавшейся бомбы. Теория о бессознательном, которое влияет на все наши действия и поступки, и о сексуальном влечении как главной движущей силе отдельной личности и общества в целом и по сей день вызывает споры в научной среде, однако невозможно отрицать, что учение Фрейда о психоанализе внесло неоценимый вклад в развитие всей мировой психологии.\r\nПредлагаемое вниманию читателя издание представляет собой цикл лекций по введению в психоанализ, прочитанных Зигмундом Фрейдом в 1915–1917 годах.\r\nПодробнее: http://www.labirint.ru/books/509019/	zigmund freid - vvedenie v psihoanaliz.jpg	1690	9	5	2
+1	Метафизика	Аристотель (384-322 до н.э.) - один из величайших мыслителей Античности, ученик Платона и воспитатель Александра Македонского, основатель школы перипатетиков, основоположник формальной логики, ученый-естествоиспытатель, оказавший значительное влияние на развитие западноевропейской философии и науки.\r\nПредставленная в этой книге "Метафизика" - одно из главных произведений Аристотеля. В нем великий философ впервые ввел термин "теология" - "первая философия", которая изучает "начала и причины всего сущего", подверг критике учение Платона об идеях и создал теорию общих понятий. "Метафизика" Аристотеля входит в золотой фонд мировой философской мысли, и по ней в течение многих веков учились мудрости целые поколения европейцев.\r\nПодробнее: http://www.labirint.ru/books/499452/	aristotel - metafizika.jpg	450	16	6	1
+\.
+
+
+--
+-- TOC entry 2273 (class 0 OID 0)
+-- Dependencies: 189
+-- Name: Main_books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_books_id_seq"', 30, true);
+
+
+--
+-- TOC entry 2227 (class 0 OID 46152)
+-- Dependencies: 192
+-- Data for Name: Main_category; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_category" (id, title) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2274 (class 0 OID 0)
+-- Dependencies: 191
+-- Name: Main_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_category_id_seq"', 1, false);
+
+
+--
+-- TOC entry 2229 (class 0 OID 46160)
+-- Dependencies: 194
+-- Data for Name: Main_genre; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_genre" (id, title) FROM stdin;
+1	Классика
+2	Экономика.Бизнес.Право.
+3	Информационные технологии
+4	Естественные науки
+5	Психология
+6	Филологические науки
+7	Технические науки
+8	Педагогика
+\.
+
+
+--
+-- TOC entry 2275 (class 0 OID 0)
+-- Dependencies: 193
+-- Name: Main_genre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_genre_id_seq"', 8, true);
+
+
+--
+-- TOC entry 2231 (class 0 OID 46168)
+-- Dependencies: 196
+-- Data for Name: Main_order; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_order" (id, date, "time", user_id, status_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2276 (class 0 OID 0)
+-- Dependencies: 195
+-- Name: Main_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_order_id_seq"', 1, false);
+
+
+--
+-- TOC entry 2233 (class 0 OID 46176)
+-- Dependencies: 198
+-- Data for Name: Main_orderproduct; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_orderproduct" (id, numbers, order_id, product_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2277 (class 0 OID 0)
+-- Dependencies: 197
+-- Name: Main_orderproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_orderproduct_id_seq"', 1, false);
+
+
+--
+-- TOC entry 2235 (class 0 OID 46184)
+-- Dependencies: 200
+-- Data for Name: Main_publishing; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_publishing" (id, title, text, picture) FROM stdin;
+1	Азбука	История возникновения «Азбуки» связана с тем, что ввиду экономических трудностей в издательстве «Северо-Запад» часть сотрудников во главе с Вадимом Назаровым ушла оттуда, и в сотрудничестве с Московским издательством «Терра» они основали в 1995 году издательскую контору «Азбука». По-видимому, оно входило в Издательский холдинг «Терра», потому что на книгах этого периода наряду с названием издательства часто стоит указание на «Терра — книжный клуб» и, возможно, эти книги действительно распространялись через Терровскую систему почтовых книжных клубов. В выходных данных вышедших в эти годы книг стояли слова «СПб.: Терра — Азбука».\r\n\r\nДиректором «Азбуки» стал Максим Крютченко, а главным редактором — Вадим Назаров.\r\n\r\nНовое издательство быстро стало популярным благодаря таким проектам как «Русская фэнтези», «Перумовская серия» и другим. Сотрудничество с «Террой» продолжалось три года и было прекращено во времена кризиса 1998 года. После этого В. Назаров ушел из «Азбуки» и принял участие в создании издательства «Амфора».\r\n\r\nВ 2000-е годы «Азбука» стала крупнейшим издательством Санкт-Петербурга и Северо-Западного региона в области художественной литературы, входящим в число трех основных издательских компаний России. В это время «Азбука» ежегодно выпускала более 100 книжных серий и отдельных издательских проектов общим тиражом более 10 миллионов экземпляров в год. Основные направления издательской деятельности «Азбуки» — русская и зарубежная классика, современная отечественная и переводная художественная литература, детская литература, иллюстрированные словари и справочники в области истории и искусства.\r\n\r\nМногие издательские проекты издательства награждены престижными Российскими профессиональными премиями и дипломами.\r\n\r\nОсновная серия книг издательства — «Азбука-Классика» — дала со временем название всему издательству. Если в начале XXI века на титульном листе указывалось «Издательство «Азбука», то после 2005 года ставилось «Издательство «Азбука-Классика».	Azbooka.jpg
+2	Питер	Издательский дом «Питер» был основан в 1991 году.\r\n\r\nВ настоящее время «Питер» — это крупнейшее издательство в России, специализирующееся на выпуске качественных книг для тех, кто хочет чему-то научиться или достичь новых высот мастерства, лидер на рынке профессиональной литературы.\r\n\r\nЭкономика и финансы, менеджмент и маркетинг, история, психология, медицина, компьютерные и мультимедийные технологии — ИД «Питер» охватывает все информационные потоки, определяющие развитие экономки и общества.\r\n\r\nКниги издательства занимают первые места в российских книжных рейтингах и имеют многочисленные призы и награды.\r\n\r\nАвторы издательства — российские и зарубежные специалисты, профессионалы, которые добились успеха в своей области и перенесли свои знания на страницы книг.\r\n\r\nМы стремимся соответствовать духу времени и поэтому выпускаем электронные издания, книги с мультимедийными приложениями, а также активно расширяем спектр новых технических возможностей, чтобы сделать восприятие информации для наших читателей максимально эффективным и удобным.\r\n\r\nДостоверность информации, современная подача материала, актуальность тем, профессионализм авторов и высокое качество оформления книг — основные принципы работы издательства.	Piter.jpg
+\.
+
+
+--
+-- TOC entry 2278 (class 0 OID 0)
+-- Dependencies: 199
+-- Name: Main_publishing_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_publishing_id_seq"', 2, true);
+
+
+--
+-- TOC entry 2241 (class 0 OID 46379)
+-- Dependencies: 206
+-- Data for Name: Main_quotations; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_quotations" (id, title, text, author_id) FROM stdin;
+1	Исскуство	Искусство стремится непременно к добру, положительно или отрицательно: выставляет ли нам красоту всего лучшего, что ни есть в человеке, или же смеется над безобразием всего худшего в человеке. Если выставишь всю дрянь, какая ни есть в человеке, и выставишь ее таким образом, что всякий из зрителей получит к ней полное отвращение, спрашиваю: разве это уже не похвала всему хорошему? Спрашиваю: разве это не похвала добру?	7
+2	Переводчик	Переводчик должен быть как стекло, такое прозрачное, что его не видно.	7
+3	Любое я	В действительности же любое „я“, даже самое наивное, — это не единство, а многосложнейший мир, это маленькое звездное небо, хаос форм, ступеней и состояний, наследственности и возможностей.	2
+4	Про людей	Всегда можно связать любовью большое количество людей, если только останутся и такие, на которых можно будет направлять агрессию.	9
+5	Чистые	Мы чистыми пришли и осквернились,\r\nМы радостью цвели и огорчились.\r\nСердца сожгли слезами, жизнь напрасно\r\nРастратили и под землею скрылись.	8
+\.
+
+
+--
+-- TOC entry 2279 (class 0 OID 0)
+-- Dependencies: 205
+-- Name: Main_quotations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_quotations_id_seq"', 5, true);
+
+
+--
+-- TOC entry 2237 (class 0 OID 46192)
+-- Dependencies: 202
+-- Data for Name: Main_review; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_review" (id, text, product_id, user_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2280 (class 0 OID 0)
+-- Dependencies: 201
+-- Name: Main_review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_review_id_seq"', 1, false);
+
+
+--
+-- TOC entry 2239 (class 0 OID 46261)
+-- Dependencies: 204
+-- Data for Name: Main_status; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_status" (id, title) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2281 (class 0 OID 0)
+-- Dependencies: 203
+-- Name: Main_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_status_id_seq"', 1, false);
+
+
+--
+-- TOC entry 2213 (class 0 OID 46026)
+-- Dependencies: 178
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2282 (class 0 OID 0)
+-- Dependencies: 177
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
+
+
+--
+-- TOC entry 2215 (class 0 OID 46036)
+-- Dependencies: 180
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2283 (class 0 OID 0)
+-- Dependencies: 179
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 2211 (class 0 OID 46018)
+-- Dependencies: 176
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add log entry	1	add_logentry
+2	Can change log entry	1	change_logentry
+3	Can delete log entry	1	delete_logentry
+4	Can add permission	2	add_permission
+5	Can change permission	2	change_permission
+6	Can delete permission	2	delete_permission
+7	Can add group	3	add_group
+8	Can change group	3	change_group
+9	Can delete group	3	delete_group
+10	Can add user	4	add_user
+11	Can change user	4	change_user
+12	Can delete user	4	delete_user
+13	Can add content type	5	add_contenttype
+14	Can change content type	5	change_contenttype
+15	Can delete content type	5	delete_contenttype
+16	Can add session	6	add_session
+17	Can change session	6	change_session
+18	Can delete session	6	delete_session
+19	Can add quotations	7	add_quotations
+20	Can change quotations	7	change_quotations
+21	Can delete quotations	7	delete_quotations
+22	Can add book	8	add_book
+23	Can change book	8	change_book
+24	Can delete book	8	delete_book
+25	Can add order	9	add_order
+26	Can change order	9	change_order
+27	Can delete order	9	delete_order
+28	Can add order product	10	add_orderproduct
+29	Can change order product	10	change_orderproduct
+30	Can delete order product	10	delete_orderproduct
+31	Can add review	11	add_review
+32	Can change review	11	change_review
+33	Can delete review	11	delete_review
+34	Can add genre	12	add_genre
+35	Can change genre	12	change_genre
+36	Can delete genre	12	delete_genre
+37	Can add publishing	13	add_publishing
+38	Can change publishing	13	change_publishing
+39	Can delete publishing	13	delete_publishing
+40	Can add author	14	add_author
+41	Can change author	14	change_author
+42	Can delete author	14	delete_author
+43	Can add category	15	add_category
+44	Can change category	15	change_category
+45	Can delete category	15	delete_category
+46	Can add status	16	add_status
+47	Can change status	16	change_status
+48	Can delete status	16	delete_status
+\.
+
+
+--
+-- TOC entry 2284 (class 0 OID 0)
+-- Dependencies: 175
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_permission_id_seq', 48, true);
+
+
+--
+-- TOC entry 2217 (class 0 OID 46044)
+-- Dependencies: 182
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
+1	pbkdf2_sha256$24000$OMkRMuuroYXu$VDdfYpAsTP4fUMVjfRnhFqwysRZ2XoPuYDedPvbP4+k=	2017-02-17 13:39:11.259765+03	t	way			11adima@mail.ru	t	t	2017-02-17 13:38:15.655575+03
+\.
+
+
+--
+-- TOC entry 2219 (class 0 OID 46054)
+-- Dependencies: 184
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2285 (class 0 OID 0)
+-- Dependencies: 183
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
+
+
+--
+-- TOC entry 2286 (class 0 OID 0)
+-- Dependencies: 181
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+
+
+--
+-- TOC entry 2221 (class 0 OID 46062)
+-- Dependencies: 186
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2287 (class 0 OID 0)
+-- Dependencies: 185
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- TOC entry 2243 (class 0 OID 46396)
+-- Dependencies: 208
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, change_message, content_type_id, user_id) FROM stdin;
+1	2017-02-17 13:40:49.496763+03	1	Гомер	1	Добавлено.	14	1
+2	2017-02-17 13:42:12.096784+03	2	Герман Гессе	1	Добавлено.	14	1
+3	2017-02-17 13:46:55.665999+03	3	Катаев Валентин Петрович	1	Добавлено.	14	1
+4	2017-02-17 13:48:36.899304+03	4	Лев Николаевич Толстой	1	Добавлено.	14	1
+5	2017-02-17 13:50:27.365077+03	5	Максим Горький	1	Добавлено.	14	1
+6	2017-02-17 13:52:11.970902+03	6	Зощенко Михаил Михайлович	1	Добавлено.	14	1
+7	2017-02-17 13:53:53.953343+03	7	Гоголь Николай Васильевич	1	Добавлено.	14	1
+8	2017-02-17 13:54:52.051688+03	8	Омар Хайям	1	Добавлено.	14	1
+9	2017-02-17 13:56:51.954263+03	9	Зигмунд Фрейд	1	Добавлено.	14	1
+10	2017-02-17 13:58:48.119907+03	1	Классика	1	Добавлено.	12	1
+11	2017-02-17 13:59:47.856168+03	2	Экономика.Бизнес.Право.	1	Добавлено.	12	1
+12	2017-02-17 14:00:25.884423+03	3	Информационные технологии	1	Добавлено.	12	1
+13	2017-02-17 14:00:46.415901+03	4	Естественные науки	1	Добавлено.	12	1
+14	2017-02-17 14:01:04.418058+03	5	Психология	1	Добавлено.	12	1
+15	2017-02-17 14:01:22.304677+03	6	Филологические науки	1	Добавлено.	12	1
+16	2017-02-17 14:01:33.674574+03	7	Технические науки	1	Добавлено.	12	1
+17	2017-02-17 14:01:42.584768+03	8	Педагогика	1	Добавлено.	12	1
+18	2017-02-17 14:03:20.648462+03	1	Азбука	1	Добавлено.	13	1
+19	2017-02-17 14:05:42.340997+03	2	Питер	1	Добавлено.	13	1
+20	2017-02-17 14:12:23.771687+03	10	Федотов Василий Антонович	1	Добавлено.	14	1
+21	2017-02-17 14:14:54.47811+03	11	Каку Митио	1	Добавлено.	14	1
+22	2017-02-17 14:15:45.47552+03	11	Каку Митио	2	Изменен picture.	14	1
+23	2017-02-17 14:23:04.275089+03	12	Козырева Ольга Анатольевич	1	Добавлено.	14	1
+24	2017-02-17 14:29:41.554679+03	13	Платт Чарльз	1	Добавлено.	14	1
+25	2017-02-17 14:33:38.474323+03	14	Тони Тёрнер	1	Добавлено.	14	1
+26	2017-02-17 14:39:28.998061+03	15	Валентин Холмогоров	1	Добавлено.	14	1
+27	2017-02-17 14:51:21.044638+03	1	1	1	Добавлено.	8	1
+28	2017-02-17 14:54:30.160209+03	16	Аристотель	1	Добавлено.	14	1
+29	2017-02-17 14:55:20.190079+03	1	Метафизика	2	Изменен author.	8	1
+30	2017-02-17 14:57:53.668058+03	2	Политика	1	Добавлено.	8	1
+31	2017-02-17 14:58:46.469143+03	3	Риторика	1	Добавлено.	8	1
+32	2017-02-17 15:00:56.023762+03	4	Растениеводство	1	Добавлено.	8	1
+33	2017-02-17 15:03:03.31482+03	5	Игра в биссер	1	Добавлено.	8	1
+34	2017-02-17 15:04:36.79426+03	6	Иллиада	1	Добавлено.	8	1
+35	2017-02-17 15:05:46.631023+03	7	Будующее разума	1	Добавлено.	8	1
+36	2017-02-17 15:06:48.001113+03	8	Физика будующего	1	Добавлено.	8	1
+37	2017-02-17 15:07:41.73177+03	9	Космос Энштейна	1	Добавлено.	8	1
+38	2017-02-17 15:09:29.296645+03	10	Формирование Лексико-Грамматических Средств	1	Добавлено.	8	1
+39	2017-02-17 15:10:52.443991+03	11	Обучение Грамоте	1	Добавлено.	8	1
+40	2017-02-17 15:12:39.745722+03	12	Рабочая тетрадь	1	Добавлено.	8	1
+41	2017-02-17 15:12:57.401234+03	12	Рабочая тетрадь	2	Изменен picture.	8	1
+42	2017-02-17 15:13:09.837511+03	12	Козырева Ольга Анатольевна	2	Изменен personalData.	14	1
+43	2017-02-17 15:14:51.197392+03	13	Исповедь о Жизни	1	Добавлено.	8	1
+44	2017-02-17 15:15:48.012457+03	14	Мать	1	Добавлено.	8	1
+45	2017-02-17 15:18:04.457471+03	15	Возвращаемая молодость	1	Добавлено.	8	1
+46	2017-02-17 15:20:04.453892+03	16	Записки сумасшедшего	1	Добавлено.	8	1
+47	2017-02-17 15:20:33.348131+03	16	Записки сумасшедшего	2	Изменен author.	8	1
+48	2017-02-17 15:21:36.295577+03	17	Великие цитаты	1	Добавлено.	8	1
+49	2017-02-17 15:22:25.585657+03	18	Электроника для начинающих	1	Добавлено.	8	1
+50	2017-02-17 15:23:12.180288+03	19	Логические микросхемы	1	Добавлено.	8	1
+51	2017-02-17 15:24:30.586158+03	20	Дневной трейдинг онлайн	1	Добавлено.	8	1
+52	2017-02-17 15:25:29.47683+03	21	Краткосрочный трейдинг для начинающих	1	Добавлено.	8	1
+53	2017-02-17 15:26:17.718502+03	22	Краткосрочный трейдинг на фондовом рынке	1	Добавлено.	8	1
+54	2017-02-17 15:28:04.139885+03	23	Галактика	1	Добавлено.	8	1
+55	2017-02-17 15:28:57.632764+03	24	Осваиваем ПК	1	Добавлено.	8	1
+56	2017-02-17 15:29:48.269002+03	25	Вирусы	1	Добавлено.	8	1
+57	2017-02-17 15:31:00.376655+03	26	Алмазный мой венец	1	Добавлено.	8	1
+58	2017-02-17 15:32:36.343704+03	27	Психология повседневной жизни	1	Добавлено.	8	1
+59	2017-02-17 15:33:40.535252+03	28	Толкование сноведений	1	Добавлено.	8	1
+60	2017-02-17 15:34:27.731741+03	29	Тотем и табу	1	Добавлено.	8	1
+61	2017-02-17 15:35:14.057678+03	30	Введение в психоанализ	1	Добавлено.	8	1
+62	2017-02-17 15:36:01.499585+03	1	1	1	Добавлено.	7	1
+63	2017-02-17 15:36:18.747795+03	2	2	1	Добавлено.	7	1
+64	2017-02-17 15:37:10.384184+03	3	3	1	Добавлено.	7	1
+65	2017-02-17 15:37:58.849346+03	4	4	1	Добавлено.	7	1
+66	2017-02-17 15:38:26.164408+03	5	5	1	Добавлено.	7	1
+67	2017-02-17 15:39:38.402326+03	1	Метафизика	2	Изменен picture.	8	1
+\.
+
+
+--
+-- TOC entry 2288 (class 0 OID 0)
+-- Dependencies: 207
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('django_admin_log_id_seq', 67, true);
+
+
+--
+-- TOC entry 2209 (class 0 OID 46008)
+-- Dependencies: 174
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY django_content_type (id, app_label, model) FROM stdin;
+1	admin	logentry
+2	auth	permission
+3	auth	group
+4	auth	user
+5	contenttypes	contenttype
+6	sessions	session
+7	Main	quotations
+8	Main	book
+9	Main	order
+10	Main	orderproduct
+11	Main	review
+12	Main	genre
+13	Main	publishing
+14	Main	author
+15	Main	category
+16	Main	status
+\.
+
+
+--
+-- TOC entry 2289 (class 0 OID 0)
+-- Dependencies: 173
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('django_content_type_id_seq', 16, true);
+
+
+--
+-- TOC entry 2207 (class 0 OID 45997)
+-- Dependencies: 172
+-- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY django_migrations (id, app, name, applied) FROM stdin;
+1	contenttypes	0001_initial	2017-02-17 13:36:49.607258+03
+2	auth	0001_initial	2017-02-17 13:36:50.304663+03
+3	Main	0001_initial	2017-02-17 13:36:50.396805+03
+4	Main	0002_auto_20151022_1104	2017-02-17 13:36:51.154737+03
+5	Main	0003_auto_20151022_1114	2017-02-17 13:36:51.229253+03
+6	Main	0004_auto_20151023_1309	2017-02-17 13:36:51.447442+03
+7	Main	0005_auto_20151023_1312	2017-02-17 13:36:51.469167+03
+8	Main	0006_auto_20151023_1314	2017-02-17 13:36:51.483814+03
+9	Main	0007_auto_20151024_1456	2017-02-17 13:36:51.716048+03
+10	Main	0008_auto_20151024_1458	2017-02-17 13:36:51.908777+03
+11	Main	0009_auto_20151103_0241	2017-02-17 13:36:51.937676+03
+12	Main	0010_auto_20151103_0255	2017-02-17 13:36:52.52112+03
+13	Main	0011_auto_20151103_0300	2017-02-17 13:36:52.562416+03
+14	Main	0012_quotations	2017-02-17 13:36:52.705152+03
+15	Main	0013_auto_20170217_1336	2017-02-17 13:36:52.740933+03
+16	admin	0001_initial	2017-02-17 13:36:52.889532+03
+17	admin	0002_logentry_remove_auto_add	2017-02-17 13:36:52.922706+03
+18	contenttypes	0002_remove_content_type_name	2017-02-17 13:36:52.989711+03
+19	auth	0002_alter_permission_name_max_length	2017-02-17 13:36:53.014781+03
+20	auth	0003_alter_user_email_max_length	2017-02-17 13:36:53.048328+03
+21	auth	0004_alter_user_username_opts	2017-02-17 13:36:53.07382+03
+22	auth	0005_alter_user_last_login_null	2017-02-17 13:36:53.106454+03
+23	auth	0006_require_contenttypes_0002	2017-02-17 13:36:53.114969+03
+24	auth	0007_alter_validators_add_error_messages	2017-02-17 13:36:53.137465+03
+25	sessions	0001_initial	2017-02-17 13:36:53.265635+03
+\.
+
+
+--
+-- TOC entry 2290 (class 0 OID 0)
+-- Dependencies: 171
+-- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('django_migrations_id_seq', 25, true);
+
+
+--
+-- TOC entry 2244 (class 0 OID 46419)
+-- Dependencies: 209
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY django_session (session_key, session_data, expire_date) FROM stdin;
+8z3zfde9zwzhrd8ycsr6j23pnj0ueo9l	N2I0NTUzZDAwNDM2ZjhhM2I1NGQ1MzJiYzgzY2IwODRjY2FiYzg0Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkY2ZlY2NjMjIwM2ZjZDY1ODIzNDNmYzg2MDNhYjY5OTJjODA3OWI5In0=	2017-03-03 13:39:11.268371+03
+\.
+
+
+--
+-- TOC entry 2043 (class 2606 OID 46138)
+-- Name: Main_author Main_author_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_author"
+    ADD CONSTRAINT "Main_author_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2048 (class 2606 OID 46149)
+-- Name: Main_book Main_books_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_book"
+    ADD CONSTRAINT "Main_books_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2050 (class 2606 OID 46157)
+-- Name: Main_category Main_category_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_category"
+    ADD CONSTRAINT "Main_category_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2052 (class 2606 OID 46165)
+-- Name: Main_genre Main_genre_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_genre"
+    ADD CONSTRAINT "Main_genre_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2056 (class 2606 OID 46173)
+-- Name: Main_order Main_order_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_order"
+    ADD CONSTRAINT "Main_order_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2060 (class 2606 OID 46181)
+-- Name: Main_orderproduct Main_orderproduct_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_orderproduct"
+    ADD CONSTRAINT "Main_orderproduct_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2062 (class 2606 OID 46189)
+-- Name: Main_publishing Main_publishing_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_publishing"
+    ADD CONSTRAINT "Main_publishing_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2071 (class 2606 OID 46387)
+-- Name: Main_quotations Main_quotations_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_quotations"
+    ADD CONSTRAINT "Main_quotations_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2066 (class 2606 OID 46200)
+-- Name: Main_review Main_review_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_review"
+    ADD CONSTRAINT "Main_review_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2068 (class 2606 OID 46266)
+-- Name: Main_status Main_status_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_status"
+    ADD CONSTRAINT "Main_status_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2016 (class 2606 OID 46033)
+-- Name: auth_group auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- TOC entry 2022 (class 2606 OID 46088)
+-- Name: auth_group_permissions auth_group_permissions_group_id_0cd325b0_uniq; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_0cd325b0_uniq UNIQUE (group_id, permission_id);
+
+
+--
+-- TOC entry 2024 (class 2606 OID 46041)
+-- Name: auth_group_permissions auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2018 (class 2606 OID 46031)
+-- Name: auth_group auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2011 (class 2606 OID 46074)
+-- Name: auth_permission auth_permission_content_type_id_01ab375a_uniq; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_01ab375a_uniq UNIQUE (content_type_id, codename);
+
+
+--
+-- TOC entry 2013 (class 2606 OID 46023)
+-- Name: auth_permission auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2033 (class 2606 OID 46059)
+-- Name: auth_user_groups auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2035 (class 2606 OID 46103)
+-- Name: auth_user_groups auth_user_groups_user_id_94350c0c_uniq; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_94350c0c_uniq UNIQUE (user_id, group_id);
+
+
+--
+-- TOC entry 2026 (class 2606 OID 46049)
+-- Name: auth_user auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2039 (class 2606 OID 46067)
+-- Name: auth_user_user_permissions auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2041 (class 2606 OID 46117)
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_14a6b632_uniq; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_14a6b632_uniq UNIQUE (user_id, permission_id);
+
+
+--
+-- TOC entry 2029 (class 2606 OID 46051)
+-- Name: auth_user auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- TOC entry 2075 (class 2606 OID 46405)
+-- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2006 (class 2606 OID 46015)
+-- Name: django_content_type django_content_type_app_label_76bd3d3b_uniq; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_app_label_76bd3d3b_uniq UNIQUE (app_label, model);
+
+
+--
+-- TOC entry 2008 (class 2606 OID 46013)
+-- Name: django_content_type django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2004 (class 2606 OID 46005)
+-- Name: django_migrations django_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_migrations
+    ADD CONSTRAINT django_migrations_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2078 (class 2606 OID 46426)
+-- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- TOC entry 2044 (class 1259 OID 46237)
+-- Name: Main_books_080a38f3; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_books_080a38f3" ON "Main_book" USING btree (genre_id);
+
+
+--
+-- TOC entry 2045 (class 1259 OID 46243)
+-- Name: Main_books_0ac49fc5; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_books_0ac49fc5" ON "Main_book" USING btree (publishing_id);
+
+
+--
+-- TOC entry 2046 (class 1259 OID 46206)
+-- Name: Main_books_4f331e2f; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_books_4f331e2f" ON "Main_book" USING btree (author_id);
+
+
+--
+-- TOC entry 2053 (class 1259 OID 46212)
+-- Name: Main_order_3491001b; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_order_3491001b" ON "Main_order" USING btree (user_id);
+
+
+--
+-- TOC entry 2054 (class 1259 OID 46273)
+-- Name: Main_order_dc91ed4b; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_order_dc91ed4b" ON "Main_order" USING btree (status_id);
+
+
+--
+-- TOC entry 2057 (class 1259 OID 46223)
+-- Name: Main_orderproduct_69dfcb07; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_orderproduct_69dfcb07" ON "Main_orderproduct" USING btree (order_id);
+
+
+--
+-- TOC entry 2058 (class 1259 OID 46224)
+-- Name: Main_orderproduct_9bea82de; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_orderproduct_9bea82de" ON "Main_orderproduct" USING btree (product_id);
+
+
+--
+-- TOC entry 2069 (class 1259 OID 46393)
+-- Name: Main_quotations_4f331e2f; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_quotations_4f331e2f" ON "Main_quotations" USING btree (author_id);
+
+
+--
+-- TOC entry 2063 (class 1259 OID 46235)
+-- Name: Main_review_9bea82de; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_review_9bea82de" ON "Main_review" USING btree (product_id);
+
+
+--
+-- TOC entry 2064 (class 1259 OID 46366)
+-- Name: Main_review_e8701ad4; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX "Main_review_e8701ad4" ON "Main_review" USING btree (user_id);
+
+
+--
+-- TOC entry 2014 (class 1259 OID 46076)
+-- Name: auth_group_name_a6ea08ec_like; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_group_name_a6ea08ec_like ON auth_group USING btree (name varchar_pattern_ops);
+
+
+--
+-- TOC entry 2019 (class 1259 OID 46089)
+-- Name: auth_group_permissions_0e939a4f; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_group_permissions_0e939a4f ON auth_group_permissions USING btree (group_id);
+
+
+--
+-- TOC entry 2020 (class 1259 OID 46090)
+-- Name: auth_group_permissions_8373b171; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_group_permissions_8373b171 ON auth_group_permissions USING btree (permission_id);
+
+
+--
+-- TOC entry 2009 (class 1259 OID 46075)
+-- Name: auth_permission_417f1b1c; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_permission_417f1b1c ON auth_permission USING btree (content_type_id);
+
+
+--
+-- TOC entry 2030 (class 1259 OID 46105)
+-- Name: auth_user_groups_0e939a4f; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_user_groups_0e939a4f ON auth_user_groups USING btree (group_id);
+
+
+--
+-- TOC entry 2031 (class 1259 OID 46104)
+-- Name: auth_user_groups_e8701ad4; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_user_groups_e8701ad4 ON auth_user_groups USING btree (user_id);
+
+
+--
+-- TOC entry 2036 (class 1259 OID 46119)
+-- Name: auth_user_user_permissions_8373b171; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_user_user_permissions_8373b171 ON auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- TOC entry 2037 (class 1259 OID 46118)
+-- Name: auth_user_user_permissions_e8701ad4; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_user_user_permissions_e8701ad4 ON auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- TOC entry 2027 (class 1259 OID 46091)
+-- Name: auth_user_username_6821ab7c_like; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX auth_user_username_6821ab7c_like ON auth_user USING btree (username varchar_pattern_ops);
+
+
+--
+-- TOC entry 2072 (class 1259 OID 46416)
+-- Name: django_admin_log_417f1b1c; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX django_admin_log_417f1b1c ON django_admin_log USING btree (content_type_id);
+
+
+--
+-- TOC entry 2073 (class 1259 OID 46417)
+-- Name: django_admin_log_e8701ad4; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX django_admin_log_e8701ad4 ON django_admin_log USING btree (user_id);
+
+
+--
+-- TOC entry 2076 (class 1259 OID 46427)
+-- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX django_session_de54fa62 ON django_session USING btree (expire_date);
+
+
+--
+-- TOC entry 2079 (class 1259 OID 46428)
+-- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: way
+--
+
+CREATE INDEX django_session_session_key_c0390e0f_like ON django_session USING btree (session_key varchar_pattern_ops);
+
+
+--
+-- TOC entry 2087 (class 2606 OID 46326)
+-- Name: Main_book Main_book_author_id_df3ae694_fk_Main_author_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_book"
+    ADD CONSTRAINT "Main_book_author_id_df3ae694_fk_Main_author_id" FOREIGN KEY (author_id) REFERENCES "Main_author"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2088 (class 2606 OID 46331)
+-- Name: Main_book Main_book_genre_id_9d7102f6_fk_Main_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_book"
+    ADD CONSTRAINT "Main_book_genre_id_9d7102f6_fk_Main_genre_id" FOREIGN KEY (genre_id) REFERENCES "Main_genre"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2089 (class 2606 OID 46336)
+-- Name: Main_book Main_book_publishing_id_9b85b31d_fk_Main_publishing_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_book"
+    ADD CONSTRAINT "Main_book_publishing_id_9b85b31d_fk_Main_publishing_id" FOREIGN KEY (publishing_id) REFERENCES "Main_publishing"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2090 (class 2606 OID 46341)
+-- Name: Main_order Main_order_status_id_a7137136_fk_Main_status_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_order"
+    ADD CONSTRAINT "Main_order_status_id_a7137136_fk_Main_status_id" FOREIGN KEY (status_id) REFERENCES "Main_status"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2091 (class 2606 OID 46372)
+-- Name: Main_order Main_order_user_id_353d9551_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_order"
+    ADD CONSTRAINT "Main_order_user_id_353d9551_fk_auth_user_id" FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2092 (class 2606 OID 46351)
+-- Name: Main_orderproduct Main_orderproduct_order_id_89470755_fk_Main_order_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_orderproduct"
+    ADD CONSTRAINT "Main_orderproduct_order_id_89470755_fk_Main_order_id" FOREIGN KEY (order_id) REFERENCES "Main_order"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2093 (class 2606 OID 46356)
+-- Name: Main_orderproduct Main_orderproduct_product_id_4e8d2d01_fk_Main_book_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_orderproduct"
+    ADD CONSTRAINT "Main_orderproduct_product_id_4e8d2d01_fk_Main_book_id" FOREIGN KEY (product_id) REFERENCES "Main_book"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2096 (class 2606 OID 46388)
+-- Name: Main_quotations Main_quotations_author_id_f073bda1_fk_Main_author_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_quotations"
+    ADD CONSTRAINT "Main_quotations_author_id_f073bda1_fk_Main_author_id" FOREIGN KEY (author_id) REFERENCES "Main_author"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2094 (class 2606 OID 46361)
+-- Name: Main_review Main_review_product_id_a798501e_fk_Main_book_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_review"
+    ADD CONSTRAINT "Main_review_product_id_a798501e_fk_Main_book_id" FOREIGN KEY (product_id) REFERENCES "Main_book"(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2095 (class 2606 OID 46367)
+-- Name: Main_review Main_review_user_id_8439f433_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_review"
+    ADD CONSTRAINT "Main_review_user_id_8439f433_fk_auth_user_id" FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2082 (class 2606 OID 46082)
+-- Name: auth_group_permissions auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2081 (class 2606 OID 46077)
+-- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_b120cbf9_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2080 (class 2606 OID 46068)
+-- Name: auth_permission auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2084 (class 2606 OID 46097)
+-- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_97559544_fk_auth_group_id FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2083 (class 2606 OID 46092)
+-- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_6a12ed8b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2086 (class 2606 OID 46111)
+-- Name: auth_user_user_permissions auth_user_user_per_permission_id_1fbb5f2c_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_per_permission_id_1fbb5f2c_fk_auth_permission_id FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2085 (class 2606 OID 46106)
+-- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2097 (class 2606 OID 46406)
+-- Name: django_admin_log django_admin_content_type_id_c4bce8eb_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_content_type_id_c4bce8eb_fk_django_content_type_id FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2098 (class 2606 OID 46411)
+-- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_c564eba6_fk_auth_user_id FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- TOC entry 2251 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2017-02-17 15:44:36 MSK
+
+--
+-- PostgreSQL database dump complete
+--
+

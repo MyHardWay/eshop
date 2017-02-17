@@ -58,7 +58,8 @@ ROOT_URLCONF = 'EShop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'Main/templatetags')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(
+            BASE_DIR, 'Main/templatetags')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +81,19 @@ WSGI_APPLICATION = 'EShop.wsgi.application'
 
 DATABASES = {
    'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'NAME': 'eshop',
+       'USER': 'way',
+       'PASSWORD': 'lvbnhbq',
+       'HOST': '127.0.0.1',
+       'PORT': '5432'
+    }
+}
+
+
+"""
+DATABASES = {
+   'default': {
        'ENGINE': 'django.db.backends.mysql',
        'NAME': 'eshop',
        'USER': 'same',
@@ -88,6 +102,7 @@ DATABASES = {
        'PORT': '3306'
     }
 }
+"""
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

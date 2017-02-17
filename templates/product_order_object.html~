@@ -10,7 +10,7 @@
 			  	<a href="#" class="button prefix" onclick='delete_one("#product{{product.id}}")'>-</a>
 			</div>
 			<div class="small-6 columns">
-			  	<input type="text" placeholder="Количество товара" value="{{numbers}}" pattern="[0-9]{3}" id='product{{product.id}}' 		 								class='book_numbers' onchange='change_order("#book{{product.id}}")'>
+			  	<input type="text" placeholder="Количество товара" value="{{numbers}}" pattern="[0-9]{3}" id='product{{product.id}}' 		 								class='book_numbers' onchange='change_order("#product{{product.id}}")'>
 				<input type="hidden" value="{{order_product_id}}"" name="order_product_id">
 			</div>
 			<div class="small-3 columns">

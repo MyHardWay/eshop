@@ -8,23 +8,76 @@
 		<h2>{{ products.0.genre }}({{products|length}})</h2>
 		<hr>
 		<div class="row">
-			<div class="small-2 columns">
+			<div class="small-3 columns">
 				<div class="search-in-genre" style ="height: 550px; min-height: 550px;">
+<!--				
 					<div class="row">
 						<div class="small-8 small-centered columns" style="padding-top: 10px ">
 						<a class="button" id="buy{{product.id}}" onclick="makePurchase({{product.id}}); return false;" data-carttext="" href="#" style ="width: 100%;">Отчистить всё</a>
 						</div>					
-					</div>				
-					<div class="row" style ="padding-top: 10px;">
-						<div class="small-10 columns" >Цена</div>
-						<div class="small-2 columns">
-								<img src="{% static 'img/banners/chistilishe_banner.jpg'%}">
-						</div>	
-					</div>							
+					</div>
+-->
+				{{ contents}}
+				<form method='GET' action='/genre?id={{id}}' id='genreSearchForm' onsubmit="check_for_prizes_valid('#min_prize', '#max_prize')">
+					<div class= 'search-in-genre-margin'>
+							<div class = "row">
+									<input type="submit" class="button" value="Применить" >
+									<input type="hidden" name="id" value = "{{id}}" >
+							</div>
+							<div class="row">
+								<div class="small-3 columns">
+									<h4>Цена</h4>
+								</div>
+								<div class="small-9 columns">
+									<div class="shuffle-button"><img align="top" src="{% static 'img/icons/add.png'%}" onclick="change_visibility('#price-filter', this, '{% static 'img/icons/minus.png'%}', '{% static 'img/icons/add.png'%}')"></div>
+								</div>
+							</div>
+							<hr></hr>
+
+		  			
+							<div id="price-filter">
+								<div class="row">
+										<div class="large-8 columns">
+     								 		<label>Минимальная цена
+       								 		<input type="text" placeholder="Минимальная цена" name="min_prize" value="{{min_prize|default_if_none:''}}" id="min_prize" onkeypress="return check_key_is_number(event)" onpaste="return validate_paste_numbers(event)">
+     								 		</label>
+   						 			</div>
+      
+								</div>						
+								<div class="row">
+										<div class="large-8 columns">
+     								 		<label>Максимальная цена
+       								 		<input type="text" placeholder="Минимальная цена" name="max_prize" value="{{max_prize|default_if_none:''}}" id="max_prize" onkeypress="return check_key_is_number(event)" onpaste="return validate_paste_numbers(event)">
+     								 		</label>
+   						 			</div>
+      
+								</div>					
+							</div>
+							<div class="row">
+								<div class="small-3 columns">
+									<h4>Издательство</h4>
+								</div>
+								<div class="small-9 columns">
+									<div class="shuffle-button"><img  align="top" src="{% static 'img/icons/add.png'%}" onclick="change_visibility('#publishing-filter', this, '{% static 'img/icons/minus.png'%}', '{% static 'img/icons/add.png'%}')"></div>
+								</div>
+							</div>
+							<hr></hr>						
+							<div id="publishing-filter">
+								{% for publishing in publishings %}
+									<div class="row">
+									 	<div class="small-8 columns">
+     							 			<input id="{{publishing}}" type="checkbox" name="pub_{{publishing}}"><label for="checkbox1" >{{publishing}}</label>
+     							 		</div>
+     								</div>
+								{% endfor %}							
+						
+							</div>							
+						</div>
+				</form>				
 				</div>
 			</div>
-			<div class="small-10 columns">
-				<ul class="small-block-grid-4">
+			<div class="small-9 columns">
+				<ul class="small-block-grid-3">
 						{% for product in products %}
 							{% get_product product %}
 						{% endfor %}

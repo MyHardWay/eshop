@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load get_product %}
+{% load get_quotations %}
 {% load staticfiles %}
 {% block Main %}
 	<!-- Контент -->
@@ -26,6 +27,23 @@
 	</div>
 	<div class='row'>
 		<div class="small-8 small-centered columns" style="margin-top: -100px; background-color: white; padding: 0px;">
+			<!-- Цитатник -->	
+			<ul class="small-block-grid-2">
+			{% for quotation in quotations %}
+				{% get_quotations quotation %}
+			{% endfor %}
+
+			</ul>
+		</div>
+	</div>
+	<div class='row'>
+		<div class="small-8 small-centered columns" style="padding-top: 50px; background-color: white; padding: 0px;">
+			<h1>Бестселлеры</h1>
+			<hr></hr>
+		</div>
+	</div>		
+	<div class='row'>
+		<div class="small-8 small-centered columns" style="background-color: white; padding: 0px;">
 			<!-- Перечень книг -->	
 			<ul class="small-block-grid-5">
 			{% for product in products %}
@@ -35,13 +53,11 @@
 			</ul>
 		</div>
 	</div>
-
 		<div class="small-8 small-centered columns">
 			<div class='small-block-grid-1'>
 				<img src="{% static 'img/banners/chistilishe_banner.jpg'%}" class="banner">
 				<img src="{% static 'img/banners/dark.jpeg'%}" class="banner">
 			</div>
 		</div>
-
 	
 {% endblock %}

@@ -12,7 +12,7 @@
     <div aria-hidden="false" class="content active" id="panela">
     <div class="row">
       <ul class="small-block-grid-3">
-		{% for book in Books %}
+		{% for book in books %}
 			<li><a href={{book.get_absolute_url}}><i class="fi-fast-forward"></i>{{book.title}}</a></li>
 		{% endfor %}
 
@@ -24,7 +24,7 @@
     <div aria-hidden="false" class="content active" id="panela">
     <div class="row">
       <ul class="small-block-grid-3">
-		{% for author in Author %}
+		{% for author in authors %}
 			<li><a href={{author.get_absolute_url}}><i class="fi-fast-forward"></i>{{author.personalData}}</a></li>
 		{% endfor %}
 
@@ -36,8 +36,8 @@
     <div aria-hidden="false" class="content active" id="panela">
     <div class="row">
       <ul class="small-block-grid-3">
-		{% for publish in Publishing %}
-			<li><a href={{publish.get_absolute_url}}><i class="fi-fast-forward"></i>{{publish.title}}</a></li>
+		{% for publishing in publishings %}
+			<li><a href={{publishing.get_absolute_url}}><i class="fi-fast-forward"></i>{{publishings.title}}</a></li>
 		{% endfor %}
 
 	</ul>

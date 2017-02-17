@@ -132,7 +132,7 @@ section.top-bar-section.left > ul > li {
 
 #searchPanel a{
 	color: black;
-	line-height: inherit;
+	#line-height: inherit;
 	text-decoration: none;
 }
 
@@ -147,9 +147,16 @@ section.top-bar-section.left > ul > li {
 	margin: 0px;
 }
 
+li.product-buy-card  {
+	margin: 0px;
+	padding: 0px;
+	background-color: white;
+}
+
+
 .content-row
 	{
-	min-width: 100% !important;
+	max-width: 100% !important;
 }
 
 .banner {
@@ -160,16 +167,18 @@ section.top-bar-section.left > ul > li {
 
 .container {
 	overflow:hidden;
-	position:relative;
-	min-width:1280px !important;
+	#position:relative;
+	#max-width:1280px;
+	min-width: 1280px;
 	width:100%;
-	min-height:100%;
+	#min-height:100%;https://zm.ctm.ru/service/home/~/?auth=co&loc=ru&id=1410&part=2
 	font-size: 1.2rem;
 }
 	
-.content-width {
-	width:1200px !important;
-	min-width:1200px !important;
+.content-width {http://www.4vsar.ru/news/79180.html
+	#width:100% !important;
+	#max-width:1280px !important;
+	min-width: 1280px !important;
 }    
     
 
@@ -201,10 +210,98 @@ border-bottom:1px solid #F4F4F4;
 	background-color: #fff;
 	border:solid #e9eaec; 
 	border-width: 3px 3px 3px 3px;
+	background-color: #f2f3f5;
 }    
     
+.search-in-genre h4{
+	#padding-top: 10px;
+	#text-align: center;
+	padding-top: 10px;
+	padding-bottom: -15px;
+	width: 40px;
+}
 
-    
-    
-    
+.search-in-genre .button{
+	width: 60%;
+	height: 50px;
+ 	margin: 10px auto;
+ 	padding: 15px 10px 10px 10px;
+ 	display:block;
+	text-align: center;
+	background-color: grey;
+}     
+
+.search-in-genre-margin {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.search-in-genre  hr{
+	margin-top: 0px;
+	padding-top: 0px;
+   
+}
+
+.shuffle-button {
+        width: 25px;
+        height: 25px;
+        #background: #e3e3e3;
+        #border: 1px solid #939393;
+        #line-height: 25px;
+        #text-align: center;
+        #font-size: 30px;
+        #color: grey;
+        #border-radius: 30px;
+        #align-content: right;
+        float: right;
+        cursor: pointer;
+        vertical-align: bottom;
+        #align-content: middle;
+        margin: auto;
+        display: inline-block;
+        padding-top: 16px;
+}
+
+.product-body-object {
+		border:solid #e9eaec;
+		border-width: 5px 5px 5px 5px;
+		padding: 25px;
+		height: 550px;
+		min-height: 550px;
+}
+
+.cover img{
+	display: block;
+	height: 300px;
+	min-height: 300px; 
+}
+
+.img-circle {
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    border: solid #000;
+	 border-width: 0 3px;
+} 
+
+a {
+	color: black;
+	font-family: COMIC SANS MS;
+}
+
+.quotations {
+	font-style: italic;
+	font-family: COMIC SANS MS;
+}
+
+.quotations-object {
+		border:solid #e9eaec;
+		border-width: 5px 5px 5px 5px;
+		padding: 25px;
+		height: 500px;
+		min-height: 500px;
+}
     

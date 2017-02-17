@@ -131,3 +131,55 @@ function add_one(productSelector) {
 	    $(productSelector).trigger('onchange');	
 	}
 
+function make_search(inputForm, inputField) {
+			document.getElementById("searchForm").action = '/search?param=';
+			var formAction = $(inputForm).attr('action');
+			var paramValue = $(inputForm).find('input')[0].value;
+			
+			alert(paramValue);
+			$(inputForm).attr('action', formAction +  paramValue);
+		}	
+
+
+function check_for_prizes_valid(minPrize, maxPrize) {
+			var minPrizeVal = parseInt($(minPrize).val());
+			var maxPrizeVal = parseInt($(maxPrize).val());
+			if(minPrizeVal > maxPrizeVal){
+				$(minPrize).val(maxPrizeVal);}
+			}
+			
+
+function change_visibility(element_id, element_img, hide_img, show_img) {			
+			if ($(element_id).is(':visible')){
+				$(element_id).hide(300);
+				$(element_img).attr('src', hide_img);		
+			}
+			else {
+				$(element_id).show(300);
+				$(element_img).attr('src', show_img);								
+			};}
+		
+// Ввод только целых чисел.			
+function check_key_is_number(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+    return true;
+}			
+
+// Запрещаем вставлять из буффера строку содержащую не только цифры.
+function validate_paste_numbers(e){
+	 var pastedText = undefined;
+    if (window.clipboardData && window.clipboardData.getData) { // IE
+        pastedText = window.clipboardData.getData('Text');
+    } else if (e.clipboardData && e.clipboardData.getData) {
+        pastedText = e.clipboardData.getData('text/plain');
+    }
+    if (!$.isNumeric(pastedText)){
+      e.preventDefault();
+    }
+
+}				
+				
+			
+

@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Authorization</title>
+	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
+	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	
+</head>
+<body>
+<div class='large-3 large-offset-3 columns'>
+	<form method='POST' id="activeform">
+	{% csrf_token %}
+	{{form}}
+	{% if error %}
+	<p><h6>{{error}}</h6></p>
+	{% endif %}
+	<input type='submit' class='button' value='Зарегистрироваться'>
+	</form>
+</div>
+
+
+<script type="text/javascript">
+	$('#activeform').on('submit', function(event){
+    	    event.getDefaultPrevented();
+	    var _self = $(this);
+	    var token = $('input[name="csrfmiddlewaretoken"]').val();
+            alert( _self.serialize())  // sanity check
+                $.ajax({
+		    method: _self.attr('method'),
+		    url: "/auth/registrate/",
+		    data: {"dasdas": "dfsdfsd"},
+		    contentType:"application/json; charset=utf-8",
+  		    dataType:"html",
+                    success: function(data, textStatus, jqXHR) {
+                        //код в этом блоке выполняется при успешной отправке сообщения
+                        alert("Успех" + data)},
+                    error: function( xhr, textStatus ) {
+    		        alert( [ xhr.status, textStatus ] )},
+	            complete: function() {
+                        //код в этом блоке выполняется при успешной отправке сообщения
+                        alert("Комплит")},
+		    headers: {"X-CSRFToken": token, "HTTP_X_REQUESTED_WITH": "XMLHttpRequest"},
+		    crossDomain: false
+                });
+	return false;
+	});
+</script>
+
+</body>
+

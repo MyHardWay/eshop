@@ -41,48 +41,32 @@
 
 <!-- Диалоговое окно --> 
 <div id="dialog">
-  <p>Удалить товары из корзины?</p>
+ 	<p>Удалить товары из корзины?</p>
 </div>
  
-
+<!-- Содержимое корзины -->
 <ul class="tabs" data-tab>
-  <li class="tab-title active"><a href="#panel1">Заказ</a></li>
-  <li class="tab-title"><a href="#panel2">Отложено</a></li>
+ 	<li class="tab-title active"><a href="#panel1">Заказ</a></li>
+ 	<li class="tab-title"><a href="#panel2">Отложено</a></li>
 </ul>
 <div class="tabs-content">
-  <div class="content active" id="panel1">
-    <div aria-hidden="false" class="content active" id="panela">
-    <div class="row">
-      <ul class="small-block-grid-5">
-		{% for order_product in order_products %}
-			{% get_products_in_basket order_product %}
-		{% endfor %}
+	<!-- Текущий заказ -->
+ 	<div class="content active" id="panel1">
+		<div aria-hidden="false" class="content active" id="panela">
+    			<div class="row">
+      				<ul class="small-block-grid-5">
+					{% for order_product in order_products %}
+						{% get_products_in_basket order_product %}
+					{% endfor %}
 
-	</ul>
-    </div>
-  </div>
-  </div>
-  <div class="content" id="panel2">
-    <p>Панель для отложенного товара. На данный момент находится в разработке.</p>
-  </div>
-
-</div>
-<script type="text/javascript">
-
-</script>
-
-<script type="text/javascript">
-
-</script>
-
-<script type="text/javascript">
-	
-</script>
-
-<script type="text/javascript">
-	
-</script>
-
+				</ul>
+    			</div>
+  		</div>
+  	</div>
+	<!-- Отложенные товары -->
+  	<div class="content" id="panel2">
+    		<p>Панель для отложенного товара. На данный момент находится в разработке.</p>
+  	</div>
 
 
 {% endblock %}

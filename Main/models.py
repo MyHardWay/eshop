@@ -1,7 +1,23 @@
 # -*- coding: utf-8 -*-
 from django.contrib.auth.models import User
 from django.db import models
+from django.template.defaultfilters import title
 
+## Цитата.
+class Quotations(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Название цитаты')
+
+    text = models.TextField(verbose_name='Текст цитаты')
+    
+    author = models.ForeignKey('Author', verbose_name='Автор')
+    
+    def __unicode__(self):
+        return self.title;
+    
+    def __str__(self):
+        return str(self.id)
+    
+    
 
 ## Книга
 class Book(models.Model):
@@ -31,7 +47,7 @@ class Book(models.Model):
         return self.title;
     
     def __str__(self):
-        return str(self.id)
+        return str(self.title)
     
 ## Заказ.   
 class Order(models.Model):
