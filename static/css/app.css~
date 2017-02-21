@@ -263,12 +263,22 @@ border-bottom:1px solid #F4F4F4;
 }
 
 .product-body-object {
-		border:solid #e9eaec;
-		border-width: 5px 5px 5px 5px;
+		#border:solid #e9eaec;
+		#border-width: 5px 5px 5px 5px;
 		padding: 25px;
 		height: 550px;
 		min-height: 550px;
+		#box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
+
+.product-body-object:hover {
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		#box-shadow: 20px -15px 10px 5px rgba(0, 0, 0, .2);
+		#z-index: 100;
+		 position: relative;
+}
+
+
 
 .cover img{
 	display: block;
@@ -283,8 +293,10 @@ border-bottom:1px solid #F4F4F4;
     width: 200px;
     height: 200px;
     align-self: center;
-    border: solid #000;
-	 border-width: 0 3px;
+    #border: solid #000;
+	 #border-width: 0 3px;
+	 
+	 
 } 
 
 a {
@@ -300,8 +312,41 @@ a {
 .quotations-object {
 		border:solid #e9eaec;
 		border-width: 5px 5px 5px 5px;
-		#padding: 25px;
+		padding: 25px;
 		height: 500px;
 		min-height: 500px;
 }
+
+.search_panel {
+	 padding-right: 0px;
+	 min-width: 1280px !important;
+    margin: 0;
+    padding: 0;
+    #overflow: hidden;
+    #background-color: #333;
+    #position: fixed; /* Set the navbar to fixed position */
+    #top: 0; /* Position the navbar at the top of the page */
+    #z-index: 10000;
+}
+
+.moving-bar {
+	position: fixed !important;
+	z-index: 1000;
+	background-color: white;
+	box-shadow: 0 0 10px 10px rgba(0,0,0,0.5);
+	top:0px;
+	min-width:100%;
+   width: 100%;
+   top:0px; 
+}
+
+.moving-bar input, .moving-bar img {
+	height: 30px !important;
+}
+    
+.slide img {
+	height: 350px;
+	i
+}    
+    
     

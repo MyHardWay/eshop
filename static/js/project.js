@@ -151,11 +151,11 @@ function check_for_prizes_valid(minPrize, maxPrize) {
 
 function change_visibility(element_id, element_img, hide_img, show_img) {			
 			if ($(element_id).is(':visible')){
-				$(element_id).hide(300);
+				$(element_id).hide(100);
 				$(element_img).attr('src', hide_img);		
 			}
 			else {
-				$(element_id).show(300);
+				$(element_id).show(100);
 				$(element_img).attr('src', show_img);								
 			};}
 		
@@ -182,4 +182,76 @@ function validate_paste_numbers(e){
 }				
 				
 			
+function isElementOutViewport (searchBar, navPannel) {
+
+    var rect = $(navPannel).get(0).getBoundingClientRect();
+    //visible = rect.bottom < 0 || rect.right < 0 || rect.left > window.innerWidth || rect.top > window.innerHeight;
+    visible = $(navPannel).is(":within-viewport");
+    if (visible) {
+    			$(searchBar).hide();
+ 						}
+    else {
+		 $(searchBar).show();
+    	}
+}
+
+function makeSlider(slider_id) {	   
+	   var cnt = $(slider_id).attr('data-cnt');
+	   var slidecontainer = $(slider_id).find('.slidecontainer');
+	   var slider_width = parseInt($(slidecontainer).width() / cnt);
+	   var slider_height = $(slidecontainer).parent().height();
+	   //$(slidecontainer).attr('width', $(slidecontainer).parent().width());
+	   //$(slider_id).find('.slide').find('.slidecontainer').attr('width')
+		var sliders = $(slider_id).find('.slide');
+		var next_arrow = $(slider_id).find('.next');
+		var previous_arrow = $(slider_id).find('.previous');
+//		var slider_width = $($(sliders)[0]).width();
+		var count = 1;
+	   $(sliders).each(function () {
+					$(this).attr('id',count);
+					//alert((count-1)*slider_width);
+					$(this).css({'left': (count-1)*slider_width, 'height':slider_height, 'width':slider_width});
+					count ++;
+					$(previous_arrow).attr('data-current', 1);
+					$(next_arrow).attr('data-current', cnt);
+		
+		})};
+		
+
+function mooveSlideOnPrevious (prev_arrow){
+	var slideshow = $(prev_arrow).closest('.slideshow');
+	var sliders = $(slideshow).find('.slide');
+	var slider_width = parseInt($($(sliders)[0]).width());
+	var next_arrow = $(slideshow).find('.next');
+	var cnt = parseInt($(sliders).length);
+	var cnt_in_grid = parseInt($(slideshow).attr('data-cnt'));
+	var cur_id = parseInt($(prev_arrow).attr('data-current'));
+	var left_css = 0;
+	for (var idx = 1; idx < (cnt_in_grid +1); idx++) {
+			left_css = parseInt($(slideshow).find('#' + cur_id).css('left'));
+			$(slideshow).find('#' + cur_id).animate({'left': left_css - slider_width}, 1000);
+			left_css = left_css;
+			if (cur_id == cnt){
+					cur_id = 1;	
+					alert('ravno');				
+					}
+			else {
+					cur_id ++;
+					//alert('ne ravno');
+				}
+	
+	} 
+	
+
+		
+
+}		
+		
+		
+		
+	
+
+
+
+
 

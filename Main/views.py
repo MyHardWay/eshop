@@ -7,7 +7,7 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseNotFound, HttpResponse   
 
 from Main.models import Author, Book, Genre, Order, OrderProduct, Publishing
-from Main.models import Status, Quotations
+from Main.models import Status, Quotations, Videos
 
 ## Отображает стартовую страницу сайта.
 def show_index_page(request):
@@ -15,8 +15,10 @@ def show_index_page(request):
     res_dict.update(csrf(request))
     quotations = Quotations.objects.select_related().order_by('?')[:2]
     books = Book.objects.all()[:5]
+    videos = Videos.objects.all()
     res_dict['quotations'] = quotations
     res_dict['products'] = books
+    res_dict['videos'] = videos
     return render_to_response ('index.html', res_dict)
 
 ## Отображает страницу корзины пользователя.
@@ -131,13 +133,17 @@ def delete_order_product(request):
 def show_book_of_selected_genre(request):
     print(request.GET)
     genre_id = request.GET['id']
-    selected_pubs = [s_p.replace('pub_', '')
-             for s_p in request.GET.values() if s_p.startswith('pub_')]
+    selected_pubs = [key.replace('pub_', '')
+        for key, value in request.GET.items()
+            if key.startswith('pub_') and value]
     ## Если 
-    products = Book.objects.select_related(
-        'publishing').filter(genre_id=genre_id)
+    products = Book.objects.filter(genre_id=genre_id)
+    
+    pub_set = set()
+    for product in products:
+        pub_set.add(product.publishing.title)
     if selected_pubs:
-        products = products.filter(publishing__name__in = selected_pubs)
+        products = products.filter(publishing__title__in = selected_pubs)
     max_prize = request.GET.get('max_prize')
     if max_prize and max_prize.isdigit():
         products = products.filter(prize__lte = max_prize)
@@ -145,9 +151,6 @@ def show_book_of_selected_genre(request):
     if min_prize and min_prize.isdigit():
         products = products.filter(prize__gte = min_prize)
 
-    pub_set = set()
-    for product in products:
-        pub_set.add(product.publishing.title) 
     res_dict = make_res_dict(request) 
     res_dict['id'] = genre_id
     res_dict['max_prize'] = request.GET.get('max_prize')

@@ -17,8 +17,24 @@ class Quotations(models.Model):
     def __str__(self):
         return str(self.id)
     
-    
 
+class Videos (models.Model):
+    title = models.CharField(max_length=100, verbose_name='Название видео')
+    
+    url = models.TextField(verbose_name='Ссылка на видео')
+    
+    picture = models.TextField(verbose_name='Ссылка на картинку')
+    
+    def __unicode__(self):
+        return self.title;
+    
+    def __str__(self):
+        return self.title
+    
+    def get_picture(self):
+        return 'img/videos/' + self.picture
+    
+    
 ## Книга
 class Book(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название')
