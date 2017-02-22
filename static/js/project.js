@@ -226,20 +226,31 @@ function mooveSlideOnPrevious (prev_arrow){
 	var cnt = parseInt($(sliders).length);
 	var cnt_in_grid = parseInt($(slideshow).attr('data-cnt'));
 	var cur_id = parseInt($(prev_arrow).attr('data-current'));
+	if (cur_id == cnt){
+			$(prev_arrow).attr('data-current', 1);
+			}
+	else {
+			$(prev_arrow).attr('data-current', cur_id +1);		
+		}
 	var left_css = 0;
-	for (var idx = 1; idx < (cnt_in_grid +1); idx++) {
-			left_css = parseInt($(slideshow).find('#' + cur_id).css('left'));
+	var curr_elem = 0;
+	for (var idx = 1; idx < (cnt_in_grid + 2); idx++) {
+		   curr_elem = $(slideshow).find('#' + cur_id);
+			left_css = parseInt($(curr_elem).css('left'));
+			if ((left_css < 0) || (left_css > slider_width * cnt_in_grid)){
+				left_css = slider_width * cnt_in_grid;
+				$(curr_elem).css({'left': left_css});			
+			}
 			$(slideshow).find('#' + cur_id).animate({'left': left_css - slider_width}, 1000);
 			left_css = left_css;
 			if (cur_id == cnt){
 					cur_id = 1;	
-					alert('ravno');				
+					//alert('ravno');				
 					}
 			else {
 					cur_id ++;
 					//alert('ne ravno');
 				}
-	
 	} 
 	
 

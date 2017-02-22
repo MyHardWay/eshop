@@ -60,7 +60,7 @@
 			</div>
 		</div>
 	-->
-	<div class='row content-row' style='background-color: white;'>
+	<div class='row content-row' style='background-color: white; padding-top: 30px;'>
 			<div class="row" style>
 					<div class="small-4 small-centered columns">	
 							<h1>Книжные премьеры недели</h1>
@@ -68,13 +68,13 @@
 			</div>
 		  <div class="row" style>
 							<div id='slideshow' class="slideshow" style='padding-top:30px' data-cnt='3'>
-							   <div class="small-2 columns">
+							   <div class="small-2 columns" style='height:430px;'>
 							   	<center>
-										<img src="{% static 'img/icons/previous.png' %}" onclick="mooveSlideOnPrevious(this)" class='previous' data-current=''>
+										<img src="{% static 'img/icons/previous.png' %}" onclick="mooveSlideOnPrevious(this)" class='previous centred-img' data-current=''>
 									</center>						   
 							   </div>
 							   <div class="small-8 columns">
-									<ul id="slidecontainer" class='slidecontainer' style="overflow:hidden; position: relative; height: 330px; display: inherit;">
+									<ul id="slidecontainer" class='slidecontainer' style="overflow:hidden; position: relative; height: 430px; display: inherit;">
 										{% for video in videos %}
 											<li class='slide' style='position:absolute; overflow: hidden; display: inline-block;'>
         										<img src="{% static video.get_picture %}" style='width: 100%; padding: 30px'>
@@ -82,9 +82,9 @@
 										{% endfor %}
 									</ul>
 								</div>
-								<div class="small-2 columns">
+								<div class="small-2 columns" style='height:430px;'>
 									<center>							
-										<img 	src="{% static 'img/icons/skip.png' %}" onclick="" class="next" data-current=''>
+										<img 	src="{% static 'img/icons/skip.png' %}" onclick="" class="next centred-img" data-current=''>
 									</center>	
 								</div>
 										
