@@ -5,9 +5,62 @@
 	<title>Authorization</title>
 	<link rel='stylesheet' type='text/css' href="{% static 'css/foundation.css' %}">
 	<link rel='stylesheet' type='text/css' href="{% static 'css/app.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript">
+	function Authorization(form)  {
+    var token = $('input[name="csrfmiddlewaretoken"]').val();
+    alert('dasd');
+	$.ajax({
+	    method: "POST",
+	    url: "/auth/login/",
+	    data: $(form).serialize(),
+	    contentType:"application/x-www-form-urlencoded; charset=UTF-8",
+	    dataType:"json",
+	    success: function(data, textStatus, jqXHR) {
+	    alert('dasd');
+		if (data['result'] == 'success')
+			{
+			alert('dasd');
+			window.location.href = "/rs";}
+		else
+			{
+			alert('fdf');
+			$("#error").text(data['error']);}},
+	    error: function( xhr, textStatus ) {
+	        alert( [ xhr.status, textStatus ] );},
+	    headers: {"X-CSRFToken": token, "HTTP_X_REQUESTED_WITH": "XMLHttpRequest"},
+	    crossDomain: false
+ 	});
+}	
+</script>	
+	
+	
 </head>
 <body>
-<div class='large-3 large-offset-3 columns'>
+  <video autoplay loop muted preload="auto" class="bgvideo" id="bgvideo" >
+   	<source src="{% static 'video/timelaps.mp4' %}" type="video/mp4"></source>
+  </video>
+  <div style="background-color:black; overflow: auto; box-shadow: 0 0 10px rgba(0,0,0,0.5); opacity: .8;">
+  		<center>							
+			<a href="/"><img 	src="{% static 'img/icons/home.png' %}" style="position:relative; height:100%; max-height:100%; "></a>
+		</center>		
+  </div>
+  <div class="inner-container">
+  <form  id="activeform">
+  <div class="box">
+  		{% csrf_token %}
+      <h1 style="color: white;">Login</h1>
+      {{form}}
+<!--      <input placeholder="Username" type="text" id="id_username" name="username">-->
+<!--      <input placeholder="Password" type="password" id="id_password" name="password">-->
+      <a href="/auth/registrate" style="float:right; padding-bottom: 30px; padding-right: 50px; color:white;">Регистрация</a>
+      <button onclick="Authorization('#activeform')">Login</button>
+      <p><h6><div id="error"></h6></p>
+    </div>
+    </form>
+    </div>
+  
+<!--<div class='large-3 large-offset-3 columns'>
 	<form action='/auth/login/' method='post'>
 	{% csrf_token %}
 	{{form}}
@@ -16,6 +69,10 @@
 	{% endif %}
 	<input type='submit' class='button' value='Войти'>
 	<input type='button' value='Регистрация' class ='button' onclick="location.href='/auth/registrate'">
-	</form>
-</div>
+	</form>-->
+
 </body>
+</html>
+
+
+

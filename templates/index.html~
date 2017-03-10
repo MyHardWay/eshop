@@ -46,11 +46,11 @@
 				<li>
 					<div class="topic-card">
 						<center>
-							<img src="{% static topic.get_picture %}" alt="" style="display: block; height: 300px; min-height: 300px; width: 100%; min-width: 100%;">
+							<img src="{% static topic.get_picture %}" alt="">
 						</center>
-							<h5 style='text-align:center; margin-top: 25px; text-transform: uppercase; font-weight: bold;'>{{topic.title}}</h5>
+							<h5>{{topic.title}}</h5>
 							<center>
-								<a href="" style="margin-top: 25px;">{{topic.short}}</a>
+								<a href="">{{topic.short}}</a>
 							</center>
 					</div>
 				</li>

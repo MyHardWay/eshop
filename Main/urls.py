@@ -16,6 +16,8 @@ urlpatterns = [
         name='book_info_page'),
     url(r'^author/(?P<author_id>[0-9]+)/$', views.show_author_info_page,
         name='author_info_page'),
+    url(r'^topic/(?P<topic_id>[0-9]+)/$', views.show_topic_info_page,
+        name='topic_info_page'),
     url(r'^publishing/(?P<publishing_id>[0-9]+)/$', views.show_publishing_info_page,
         name='publishing_info_page'),
     url(r'^makepurchase/$', views.make_purchase),

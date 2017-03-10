@@ -5,7 +5,7 @@
 -- Dumped from database version 9.3.12
 -- Dumped by pg_dump version 9.6.1
 
--- Started on 2017-02-22 12:31:43 MSK
+-- Started on 2017-03-10 17:44:25 MSK
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2264 (class 0 OID 0)
+-- TOC entry 2262 (class 0 OID 0)
 -- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
@@ -71,7 +71,7 @@ CREATE SEQUENCE "Main_author_id_seq"
 ALTER TABLE "Main_author_id_seq" OWNER TO way;
 
 --
--- TOC entry 2265 (class 0 OID 0)
+-- TOC entry 2263 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: Main_author_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -114,7 +114,7 @@ CREATE SEQUENCE "Main_books_id_seq"
 ALTER TABLE "Main_books_id_seq" OWNER TO way;
 
 --
--- TOC entry 2266 (class 0 OID 0)
+-- TOC entry 2264 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: Main_books_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -151,7 +151,7 @@ CREATE SEQUENCE "Main_category_id_seq"
 ALTER TABLE "Main_category_id_seq" OWNER TO way;
 
 --
--- TOC entry 2267 (class 0 OID 0)
+-- TOC entry 2265 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: Main_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -188,7 +188,7 @@ CREATE SEQUENCE "Main_genre_id_seq"
 ALTER TABLE "Main_genre_id_seq" OWNER TO way;
 
 --
--- TOC entry 2268 (class 0 OID 0)
+-- TOC entry 2266 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: Main_genre_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -228,7 +228,7 @@ CREATE SEQUENCE "Main_order_id_seq"
 ALTER TABLE "Main_order_id_seq" OWNER TO way;
 
 --
--- TOC entry 2269 (class 0 OID 0)
+-- TOC entry 2267 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: Main_order_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -267,7 +267,7 @@ CREATE SEQUENCE "Main_orderproduct_id_seq"
 ALTER TABLE "Main_orderproduct_id_seq" OWNER TO way;
 
 --
--- TOC entry 2270 (class 0 OID 0)
+-- TOC entry 2268 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: Main_orderproduct_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -306,51 +306,12 @@ CREATE SEQUENCE "Main_publishing_id_seq"
 ALTER TABLE "Main_publishing_id_seq" OWNER TO way;
 
 --
--- TOC entry 2271 (class 0 OID 0)
+-- TOC entry 2269 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: Main_publishing_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
 
 ALTER SEQUENCE "Main_publishing_id_seq" OWNED BY "Main_publishing".id;
-
-
---
--- TOC entry 206 (class 1259 OID 46379)
--- Name: Main_quotations; Type: TABLE; Schema: public; Owner: way
---
-
-CREATE TABLE "Main_quotations" (
-    id integer NOT NULL,
-    title character varying(100) NOT NULL,
-    text text NOT NULL,
-    author_id integer NOT NULL
-);
-
-
-ALTER TABLE "Main_quotations" OWNER TO way;
-
---
--- TOC entry 205 (class 1259 OID 46377)
--- Name: Main_quotations_id_seq; Type: SEQUENCE; Schema: public; Owner: way
---
-
-CREATE SEQUENCE "Main_quotations_id_seq"
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE "Main_quotations_id_seq" OWNER TO way;
-
---
--- TOC entry 2272 (class 0 OID 0)
--- Dependencies: 205
--- Name: Main_quotations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
---
-
-ALTER SEQUENCE "Main_quotations_id_seq" OWNED BY "Main_quotations".id;
 
 
 --
@@ -384,7 +345,7 @@ CREATE SEQUENCE "Main_review_id_seq"
 ALTER TABLE "Main_review_id_seq" OWNER TO way;
 
 --
--- TOC entry 2273 (class 0 OID 0)
+-- TOC entry 2270 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: Main_review_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -421,7 +382,7 @@ CREATE SEQUENCE "Main_status_id_seq"
 ALTER TABLE "Main_status_id_seq" OWNER TO way;
 
 --
--- TOC entry 2274 (class 0 OID 0)
+-- TOC entry 2271 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: Main_status_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -430,7 +391,47 @@ ALTER SEQUENCE "Main_status_id_seq" OWNED BY "Main_status".id;
 
 
 --
--- TOC entry 211 (class 1259 OID 46442)
+-- TOC entry 211 (class 1259 OID 46461)
+-- Name: Main_topics; Type: TABLE; Schema: public; Owner: way
+--
+
+CREATE TABLE "Main_topics" (
+    id integer NOT NULL,
+    title character varying(100) NOT NULL,
+    text text NOT NULL,
+    short character varying(100) NOT NULL,
+    picture character varying(100) NOT NULL
+);
+
+
+ALTER TABLE "Main_topics" OWNER TO way;
+
+--
+-- TOC entry 210 (class 1259 OID 46459)
+-- Name: Main_topics_id_seq; Type: SEQUENCE; Schema: public; Owner: way
+--
+
+CREATE SEQUENCE "Main_topics_id_seq"
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE "Main_topics_id_seq" OWNER TO way;
+
+--
+-- TOC entry 2272 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: Main_topics_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
+--
+
+ALTER SEQUENCE "Main_topics_id_seq" OWNED BY "Main_topics".id;
+
+
+--
+-- TOC entry 209 (class 1259 OID 46442)
 -- Name: Main_videos; Type: TABLE; Schema: public; Owner: way
 --
 
@@ -445,7 +446,7 @@ CREATE TABLE "Main_videos" (
 ALTER TABLE "Main_videos" OWNER TO way;
 
 --
--- TOC entry 210 (class 1259 OID 46440)
+-- TOC entry 208 (class 1259 OID 46440)
 -- Name: Main_videos_id_seq; Type: SEQUENCE; Schema: public; Owner: way
 --
 
@@ -460,8 +461,8 @@ CREATE SEQUENCE "Main_videos_id_seq"
 ALTER TABLE "Main_videos_id_seq" OWNER TO way;
 
 --
--- TOC entry 2275 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 2273 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: Main_videos_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
 
@@ -497,7 +498,7 @@ CREATE SEQUENCE auth_group_id_seq
 ALTER TABLE auth_group_id_seq OWNER TO way;
 
 --
--- TOC entry 2276 (class 0 OID 0)
+-- TOC entry 2274 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -535,7 +536,7 @@ CREATE SEQUENCE auth_group_permissions_id_seq
 ALTER TABLE auth_group_permissions_id_seq OWNER TO way;
 
 --
--- TOC entry 2277 (class 0 OID 0)
+-- TOC entry 2275 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -574,7 +575,7 @@ CREATE SEQUENCE auth_permission_id_seq
 ALTER TABLE auth_permission_id_seq OWNER TO way;
 
 --
--- TOC entry 2278 (class 0 OID 0)
+-- TOC entry 2276 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -634,7 +635,7 @@ CREATE SEQUENCE auth_user_groups_id_seq
 ALTER TABLE auth_user_groups_id_seq OWNER TO way;
 
 --
--- TOC entry 2279 (class 0 OID 0)
+-- TOC entry 2277 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -658,7 +659,7 @@ CREATE SEQUENCE auth_user_id_seq
 ALTER TABLE auth_user_id_seq OWNER TO way;
 
 --
--- TOC entry 2280 (class 0 OID 0)
+-- TOC entry 2278 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -696,7 +697,7 @@ CREATE SEQUENCE auth_user_user_permissions_id_seq
 ALTER TABLE auth_user_user_permissions_id_seq OWNER TO way;
 
 --
--- TOC entry 2281 (class 0 OID 0)
+-- TOC entry 2279 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -705,7 +706,7 @@ ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permiss
 
 
 --
--- TOC entry 208 (class 1259 OID 46396)
+-- TOC entry 206 (class 1259 OID 46396)
 -- Name: django_admin_log; Type: TABLE; Schema: public; Owner: way
 --
 
@@ -725,7 +726,7 @@ CREATE TABLE django_admin_log (
 ALTER TABLE django_admin_log OWNER TO way;
 
 --
--- TOC entry 207 (class 1259 OID 46394)
+-- TOC entry 205 (class 1259 OID 46394)
 -- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: way
 --
 
@@ -740,8 +741,8 @@ CREATE SEQUENCE django_admin_log_id_seq
 ALTER TABLE django_admin_log_id_seq OWNER TO way;
 
 --
--- TOC entry 2282 (class 0 OID 0)
--- Dependencies: 207
+-- TOC entry 2280 (class 0 OID 0)
+-- Dependencies: 205
 -- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
 
@@ -778,7 +779,7 @@ CREATE SEQUENCE django_content_type_id_seq
 ALTER TABLE django_content_type_id_seq OWNER TO way;
 
 --
--- TOC entry 2283 (class 0 OID 0)
+-- TOC entry 2281 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -817,7 +818,7 @@ CREATE SEQUENCE django_migrations_id_seq
 ALTER TABLE django_migrations_id_seq OWNER TO way;
 
 --
--- TOC entry 2284 (class 0 OID 0)
+-- TOC entry 2282 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: django_migrations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: way
 --
@@ -826,7 +827,7 @@ ALTER SEQUENCE django_migrations_id_seq OWNED BY django_migrations.id;
 
 
 --
--- TOC entry 209 (class 1259 OID 46419)
+-- TOC entry 207 (class 1259 OID 46419)
 -- Name: django_session; Type: TABLE; Schema: public; Owner: way
 --
 
@@ -896,14 +897,6 @@ ALTER TABLE ONLY "Main_publishing" ALTER COLUMN id SET DEFAULT nextval('"Main_pu
 
 
 --
--- TOC entry 2007 (class 2604 OID 46382)
--- Name: Main_quotations id; Type: DEFAULT; Schema: public; Owner: way
---
-
-ALTER TABLE ONLY "Main_quotations" ALTER COLUMN id SET DEFAULT nextval('"Main_quotations_id_seq"'::regclass);
-
-
---
 -- TOC entry 2005 (class 2604 OID 46195)
 -- Name: Main_review id; Type: DEFAULT; Schema: public; Owner: way
 --
@@ -920,7 +913,15 @@ ALTER TABLE ONLY "Main_status" ALTER COLUMN id SET DEFAULT nextval('"Main_status
 
 
 --
--- TOC entry 2010 (class 2604 OID 46445)
+-- TOC entry 2010 (class 2604 OID 46464)
+-- Name: Main_topics id; Type: DEFAULT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_topics" ALTER COLUMN id SET DEFAULT nextval('"Main_topics_id_seq"'::regclass);
+
+
+--
+-- TOC entry 2009 (class 2604 OID 46445)
 -- Name: Main_videos id; Type: DEFAULT; Schema: public; Owner: way
 --
 
@@ -976,7 +977,7 @@ ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval(
 
 
 --
--- TOC entry 2008 (class 2604 OID 46399)
+-- TOC entry 2007 (class 2604 OID 46399)
 -- Name: django_admin_log id; Type: DEFAULT; Schema: public; Owner: way
 --
 
@@ -1000,7 +1001,7 @@ ALTER TABLE ONLY django_migrations ALTER COLUMN id SET DEFAULT nextval('django_m
 
 
 --
--- TOC entry 2233 (class 0 OID 46133)
+-- TOC entry 2231 (class 0 OID 46133)
 -- Dependencies: 188
 -- Data for Name: Main_author; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1026,7 +1027,7 @@ COPY "Main_author" (id, "personalData", text, picture) FROM stdin;
 
 
 --
--- TOC entry 2285 (class 0 OID 0)
+-- TOC entry 2283 (class 0 OID 0)
 -- Dependencies: 187
 -- Name: Main_author_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1035,7 +1036,7 @@ SELECT pg_catalog.setval('"Main_author_id_seq"', 16, true);
 
 
 --
--- TOC entry 2235 (class 0 OID 46141)
+-- TOC entry 2233 (class 0 OID 46141)
 -- Dependencies: 190
 -- Data for Name: Main_book; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1075,7 +1076,7 @@ COPY "Main_book" (id, title, text, picture, prize, author_id, genre_id, publishi
 
 
 --
--- TOC entry 2286 (class 0 OID 0)
+-- TOC entry 2284 (class 0 OID 0)
 -- Dependencies: 189
 -- Name: Main_books_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1084,7 +1085,7 @@ SELECT pg_catalog.setval('"Main_books_id_seq"', 30, true);
 
 
 --
--- TOC entry 2237 (class 0 OID 46152)
+-- TOC entry 2235 (class 0 OID 46152)
 -- Dependencies: 192
 -- Data for Name: Main_category; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1094,7 +1095,7 @@ COPY "Main_category" (id, title) FROM stdin;
 
 
 --
--- TOC entry 2287 (class 0 OID 0)
+-- TOC entry 2285 (class 0 OID 0)
 -- Dependencies: 191
 -- Name: Main_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1103,7 +1104,7 @@ SELECT pg_catalog.setval('"Main_category_id_seq"', 1, false);
 
 
 --
--- TOC entry 2239 (class 0 OID 46160)
+-- TOC entry 2237 (class 0 OID 46160)
 -- Dependencies: 194
 -- Data for Name: Main_genre; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1121,7 +1122,7 @@ COPY "Main_genre" (id, title) FROM stdin;
 
 
 --
--- TOC entry 2288 (class 0 OID 0)
+-- TOC entry 2286 (class 0 OID 0)
 -- Dependencies: 193
 -- Name: Main_genre_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1130,7 +1131,7 @@ SELECT pg_catalog.setval('"Main_genre_id_seq"', 8, true);
 
 
 --
--- TOC entry 2241 (class 0 OID 46168)
+-- TOC entry 2239 (class 0 OID 46168)
 -- Dependencies: 196
 -- Data for Name: Main_order; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1140,7 +1141,7 @@ COPY "Main_order" (id, date, "time", user_id, status_id) FROM stdin;
 
 
 --
--- TOC entry 2289 (class 0 OID 0)
+-- TOC entry 2287 (class 0 OID 0)
 -- Dependencies: 195
 -- Name: Main_order_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1149,7 +1150,7 @@ SELECT pg_catalog.setval('"Main_order_id_seq"', 1, false);
 
 
 --
--- TOC entry 2243 (class 0 OID 46176)
+-- TOC entry 2241 (class 0 OID 46176)
 -- Dependencies: 198
 -- Data for Name: Main_orderproduct; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1159,7 +1160,7 @@ COPY "Main_orderproduct" (id, numbers, order_id, product_id) FROM stdin;
 
 
 --
--- TOC entry 2290 (class 0 OID 0)
+-- TOC entry 2288 (class 0 OID 0)
 -- Dependencies: 197
 -- Name: Main_orderproduct_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1168,7 +1169,7 @@ SELECT pg_catalog.setval('"Main_orderproduct_id_seq"', 1, false);
 
 
 --
--- TOC entry 2245 (class 0 OID 46184)
+-- TOC entry 2243 (class 0 OID 46184)
 -- Dependencies: 200
 -- Data for Name: Main_publishing; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1180,7 +1181,7 @@ COPY "Main_publishing" (id, title, text, picture) FROM stdin;
 
 
 --
--- TOC entry 2291 (class 0 OID 0)
+-- TOC entry 2289 (class 0 OID 0)
 -- Dependencies: 199
 -- Name: Main_publishing_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1189,30 +1190,7 @@ SELECT pg_catalog.setval('"Main_publishing_id_seq"', 2, true);
 
 
 --
--- TOC entry 2251 (class 0 OID 46379)
--- Dependencies: 206
--- Data for Name: Main_quotations; Type: TABLE DATA; Schema: public; Owner: way
---
-
-COPY "Main_quotations" (id, title, text, author_id) FROM stdin;
-2	Переводчик	Переводчик должен быть как стекло, такое прозрачное, что его не видно.	7
-3	Любое я	В действительности же любое „я“, даже самое наивное, — это не единство, а многосложнейший мир, это маленькое звездное небо, хаос форм, ступеней и состояний, наследственности и возможностей.	2
-4	Про людей	Всегда можно связать любовью большое количество людей, если только останутся и такие, на которых можно будет направлять агрессию.	9
-5	Чистые	Мы чистыми пришли и осквернились,\r\nМы радостью цвели и огорчились.\r\nСердца сожгли слезами, жизнь напрасно\r\nРастратили и под землею скрылись.	8
-\.
-
-
---
--- TOC entry 2292 (class 0 OID 0)
--- Dependencies: 205
--- Name: Main_quotations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
---
-
-SELECT pg_catalog.setval('"Main_quotations_id_seq"', 5, true);
-
-
---
--- TOC entry 2247 (class 0 OID 46192)
+-- TOC entry 2245 (class 0 OID 46192)
 -- Dependencies: 202
 -- Data for Name: Main_review; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1222,7 +1200,7 @@ COPY "Main_review" (id, text, product_id, user_id) FROM stdin;
 
 
 --
--- TOC entry 2293 (class 0 OID 0)
+-- TOC entry 2290 (class 0 OID 0)
 -- Dependencies: 201
 -- Name: Main_review_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1231,7 +1209,7 @@ SELECT pg_catalog.setval('"Main_review_id_seq"', 1, false);
 
 
 --
--- TOC entry 2249 (class 0 OID 46261)
+-- TOC entry 2247 (class 0 OID 46261)
 -- Dependencies: 204
 -- Data for Name: Main_status; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1241,7 +1219,7 @@ COPY "Main_status" (id, title) FROM stdin;
 
 
 --
--- TOC entry 2294 (class 0 OID 0)
+-- TOC entry 2291 (class 0 OID 0)
 -- Dependencies: 203
 -- Name: Main_status_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1250,8 +1228,31 @@ SELECT pg_catalog.setval('"Main_status_id_seq"', 1, false);
 
 
 --
--- TOC entry 2256 (class 0 OID 46442)
+-- TOC entry 2254 (class 0 OID 46461)
 -- Dependencies: 211
+-- Data for Name: Main_topics; Type: TABLE DATA; Schema: public; Owner: way
+--
+
+COPY "Main_topics" (id, title, text, short, picture) FROM stdin;
+4	ЧТЕНИЕ - ОДНА ИЗ ОСНОВ РАЗВИТИЯ ЛИЧНОСТИ	Сегодня мы настолько привыкли проводить вечера перед экраном телевизора или бороздить просторы интернета, что чтение книг кажется уже никому не нужным атавизмом, доставшимся нам  в наследство от наших родителей. Вот они ещё жили в то время, когда читать книги было модно, а собственная библиотека была мечтой каждой интеллигентной семьи. Такой потере интереса к чтению во многом способствует и то огромное количество пустой литературы, которая сегодня присутствует на полках книжных магазинов. Этот писательский мусор создан специально для того, чтобы забивать голову совершенно ненужной информацией. Чтение подобных книг вряд ли может способствовать получению новых знаний или опыта, скорее, это пустая трата времени.\r\n\r\nДля того, чтобы чтение книг приводило к росту самосознания и развитию личности, выбирать стоит только совершенно определённые книги, в которых собраны идеи и опыт людей на практике познавших, что нужно делать, чтобы достигнуть совершенства в своем духовном развитии. Подобные книги гораздо важнее, чем классическая литература, хотя, стоит признать, что и она во многом способствует развитию таких черт характера как справедливость, любовь, мужество, героизм. Если ребёнок с детства читает хорошие книги, он  наверняка вырастет хорошим человеком, ведь книга порой воспитывает лучше, чем школьные учителя.\r\n\r\nОднако, вырастая, не стоит останавливаться в развитии личности. У взрослого человека появляется необходимость в совершенно других книгах. Это книги так называемого личностного роста. Они способны полностью перевернуть ваше восприятие мира и восприятие себя в этом мире.  Благодаря подобным книгам вы придёте к выводу, что саморазвитие является ключом к успеху, что только от вас лично зависит ваша жизнь, вы являетесь её автором и исполнителем.	Читать дальше	books.jpg
+3	ДРЕВНЕЙШИЕ КОЛЛЕКЦИИ МИРА	Едва лишь освоив письменность, люди стали фиксировать свои мысли и идеи, стремясь через слова достичь своего рода бессмертия. Многие из ранних письменных трудов человечества, к сожалению, бесследно утеряны, так и не найдя современного читателя. Но есть те немногие, кому повезло сохраниться до сегодняшних дней...\r\n\r\n\r\nРассказ о двух братьях. Египет, 1185 г. до н.э.\r\nРассказ о двух братьях был написан вскоре после конца правления фараона Сети II (1200 — 1194 гг. до н.э.), и некоторые считают его самой первой сказкой. Точная дата находки папируса, увы, неизвестна, но известно, что Британский музей купил его в 1857 году, и что впоследствии был осуществлен перевод текста. Первая часть рассказа повествует о двух братьях: Анубисе и Бате. Жена Анубиса пытается соблазнить Бата, который пресекает все ее попытки. Тогда женщина притворяется больной и заявляет, что Бата избил ее, после того как якобы безуспешно пытался ее совратить.\r\n\r\nУслышав это, Анубис приходит в ярость и жаждет убить Бата, который убегает из дома, моля бога Ра о спасении. Ра услышал его мольбу и создал между братьями реку, полную крокодилов. Желая доказать собственную невиновность, Бата отрезает себе гениталии и выбрасывает их в реку. После этого Анубис возвращается домой и убивает свою лживую жену. Его брат же уходит в Долину Кедра, где вешает свое сердце на дерево, которое, в ходе сложных перипетий, позднее срубает супруга Бата, в результате чего мужчина погибает.\r\n\r\nВторая часть рассказа несколько отличается от первой, превращаясь уже в историю о царствовании, так как Бата в конечном итоге возрождается и становится царем, а Анубис — принцем.\r\n\r\n\r\nПапирус Весткар. Египет, 1700 гг. до н.э.\r\nПапирус Весткар представляет собой коллекцию из пяти независимых историй, каждая из которых рассказывает об одном древнеегипетском жреце или колдуне и о чудесах, которые они совершили. Предположительно папирус был найден британским авантюристом Генри Весткаром, в честь которого он и был назван. В конце концов он попал в руки немецкого египтолога, который и занялся его переводом. Хотя происхождение папируса до сих пор остается тайной, его можно найти в египетском музее в Берлине.\r\n\r\nНаиболее известной сказкой этого папируса, пожалуй, является сказка о Джеди. Ему было 110 лет, он очень любил поесть и был известным колдуном, который мог выполнять один удивительный трюк — воссоединять отрезанные головы с телами. Однажды Хеопс пригласил его к себе во дворец и предложил одного из своих слуг для демонстрации этого чуда, но Джеди отказался, сказав, что не творит «магию» на людях. Тогда ему принесли гуся, на котором колдун и показал фараону свое умение. Хеопс остался доволен трюком и потребовал показать ему еще; так, среди прочего, Джеди повторил свой фокус на быке (к несчастью, подробного описания, как ему это удалось, в истории не приведено).\r\n\r\n\r\n«Плач о гибели Ура». Шумеры, 2000 гг. до н.э.\r\nОдин из старейших примеров мировой поэзии «Плач о гибели Ура» является погребальной песней о разрушенном городе, написанной первыми королями династии Исин, желавшими отстроить его заново. Этой песней авторы хотели успокоить разгневанную и страдающую душу бога города Ур Нанна, что было необходимым условием для начала строительства. Помимо этого «Плач о гибели Ура» должен был рассеять подозрения народа о том, что короли династии Исин были каким-то образом связаны с уничтожением города.\r\n\r\nПовествование в первой половине песни ведется от лица жены Нанны богини Нингаль, во второй части в дело вступают голоса выживших в этой страшной трагедии. Песня начинается со списка разных шумерских городов, которые были уничтожены и, по мнению автора, покинуты богами. После этого Нингаль описывает разрушение города Ур «с сброшенными в кучу телами мертвых людей на улицах» и говорит о том, как городские здания взывают к ней. Песнь заканчивается тем, что выжившие прославляют Нанну и Нингаль.\r\n\r\n\r\n«Классика поэзии». Китай, 1000-600 гг. до н.э.\r\nСтарейшим из сохранившихся сборником стихов в китайской истории является «Классика поэзии» или «Shijing»; считается, что его собрал великий философ Конфуций. Книга является частью сборника «Пять классических трактатов», состоящего из пяти независимых книг. На протяжении столетий поэмы устно передавались из поколения в поколения; автор их неизвестен, хотя основная масса, скорее всего, была придумана людьми, жившими во времена правления царского дома Чжоу, которому приписывают основание всей китайской культуры.\r\n\r\nВ «Классике поэзии» представлено 305 поэм, сама книга разделена на три части: Feng (песни), Ya (оды и эпосы) и Song (гимны). Самой примечательной из них является, пожалуй, Feng, в которой собраны фольклорные песни и стихи о гнете и притеснениях простых людей, смешанные с надеждой и оптимизмом.\r\n\r\n\r\n«Речение Ипувера», Египет, 1650 г. до н.э. 05\r\nНесмотря на заявления о том, что это произведение литературы доказывает истинность и историчность Ветхого Завета, «Речение Ипувера», по мнению историков, было написано еще египтянами в далеком XVII в. до н.э. Первоначально носившее название «Жалобы египетского мудреца», «Речение» рассказывает о социальных бедствиях, которые обрушились на египетское царство. Среди прочего в тексте говорится о свирепствовавшей в Египте чуме, во время которой воды Нила окрасились в красный как кровь цвет, став непригодными для питья.\r\n\r\nИсточником всех бед послужило то, что бедные люди пытались жить выше закона. Гражданское неповиновение привело к тому, что Египтом стали править воры и бандиты. Документы на собственность были уничтожены по всей стране, вследствие чего возникла неразбериха с землей и недвижимостью; дело дошло до того, что люди просто начали кончать жизнь самоубийством в водах Нила. К сожалению, подлинный источник документа найти невозможно, а само «Речение Ипувера» является лишь копией старого манускрипта.\r\n\r\n\r\n«Сказание Синухе». Египет, 2000 гг. до н.э.\r\n«Сказание Синухе» считается величайшим литературным произведением Древнего Египта и рассказывает о египтянине знатного происхождения. Будучи в поездке по Ливии вместе с принцем Сенусертом I, Синухе узнает об убийстве фараона Аменемхета I и о том, что замышляется покушение на самого Сенусерта. Боясь за собственную жизнь из-за дружбы с принцем, Синухе бежал из страны и обосновался в Сирии, где женился на дочери местного вождя и стал уважаемым членом общества.\r\n\r\nНесколько лет Синухе защищал родину своего тестя от разных вторженцев, чем заработал себе определенную славу. В связи с этим он несколько раз принимал у себя египетских эмиссаров, которые в конце концов рассказали о нем Сенусерту, пережившему-таки попытку покушения и ставшему к тому времени фараоном. Сенусерт пригласил к себе Синухе, который струсил и сбежал, бросив его, и встретил мужчину с распростертыми объятиями, простив ему все и взяв к себе на службу.\r\n\r\n\r\n«Путешествия Уну-Амона». Египет, 1000 гг. до н.э.\r\nЕдинственная сохранившаяся копия этого египетского романа находится в государственном музее изобразительных искусств имени А. С. Пушкина в Москве. Роман повествует о, вероятно, правдивой истории высокопоставленного жреца храма Амона по имени Уну-Амон. Уну-Амона отправили в Финикию (современная Сирия), чтобы он нашел там кедр для реставрации священной барки, на которой статую Амона проносили по городу во время фестивалей.\r\n\r\nПоездка эта, хоть и казалась сперва самой заурядной, оборачиваетсся долгим и насыщенным путешествием. Под конец когда мужчина добрался до Кипра, его чуть не растерзала разъяренная толпа, но местная царица успела взять его под свою защиту. К несчастью, на этом история обрывается, так как никаких других листов папируса найдено не было.\r\n\r\nПроизведение представляет огромную пользу для историков, так как оно является одним из немногочисленных источников, дающих представление о жизни в Египте и Финикии того времени.	Читать дальше	woods.jpg
+2	ГРАФИТИ КАК ФОРМА СОВРЕМЕННОГО ИССКУСТВА	В нашу страну (как и многое в нашей стране приходит с опазданием) граффити попало в 80 — 90 гг., но только спустя десятилетие получило массовый характер и популярность.\r\n\r\nПри существовании огромного разнообразия всевозможных субкультур граффити является наиболее актуальным видом уличного искусства. Надписи, изображения, все, что наносится на стены и другие поверхности — относится к граффити.\r\n\r\nТермин граффити в истории применяется давно, но в другом значении. И связывали раньше его с древними эпиграфическими памятниками как надписи, процарапанные на поверхности в Греции, Риме, странах Древнего Востока. Тогда граффити выцарапывали на стенах острыми предметами или использовали для этого мел и уголь.\r\nВ современном мире граффити рисуют аэрозольной краской. Сейчас гораздо проще развиваться в рисовании граффити, т.к. наличие современных инструментов позволяет создавать новые стили и техники без ограничений.\r\n\r\nОчень часто современное граффити включает новые технологии и элементы других искусств. Таким примером может служить использование в творчестве магнитных светодиодов и проецируемых изображений или разноцветных трикотажных тканей(вязаных предметов) .\r\n\r\nЧем дольше присматриваешься к рисунку граффити, тем больше понимаешь его смысл и он начинает нравиться. Увлекаются рисованием граффити люди разных возрастов. Большую их часть, конечно, составляют тинейджеры, объединяющиеся в разные команды и придумывающие ей уникальное название.\r\n\r\nЯвляясь средством коммуникации и неординарной формой девиантного поведения подростков и молодежи, в современном мире граффити по праву претендует звание искусства. Рисунки граффити наиболее часто можно встретить в таких местах городского пространства, которые недоступны для всеобщего обозрения и скрыты парадными фасадами зданий: гаражи, подземные переходы, лестницы, бетонные заграждения автомагистрали, зона железнодорожного полотна и т.д.\r\n\r\nГраффити не теряет своей актуальности и продолжает свое развитие. Мир уличного искусства не должен иметь ограничений и связан с адреналином, признанием и уважением. Путь его развития еще долгий и интересный.	Читать дальше	worlds.jpg
+1	ПОДБОРКА КНИГ О ЯПОСКОЙ КУХНЕ	Японская кухня уже на протяжении долгого времени признана одной из самых оригинальных и специфичных во всем мире. Ну а самым известным блюдом можно без сомнения назвать суши, которые сегодня можно отведать в любом уголке мира. Мы предлагаем вам научиться готовить это поистине настоящее кулинарное произведение самим! И наша книга обязательно вам в этом поможет. Данное издание содержит большое количество рецептов суши, подробное описание процесса приготовления этого экзотического блюда, а также прекрасные иллюстрации, которые облегчат ваш труд.	Читать дальше	tokyo.jpg
+\.
+
+
+--
+-- TOC entry 2292 (class 0 OID 0)
+-- Dependencies: 210
+-- Name: Main_topics_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
+--
+
+SELECT pg_catalog.setval('"Main_topics_id_seq"', 4, true);
+
+
+--
+-- TOC entry 2252 (class 0 OID 46442)
+-- Dependencies: 209
 -- Data for Name: Main_videos; Type: TABLE DATA; Schema: public; Owner: way
 --
 
@@ -1268,8 +1269,8 @@ COPY "Main_videos" (id, title, url, picture) FROM stdin;
 
 
 --
--- TOC entry 2295 (class 0 OID 0)
--- Dependencies: 210
+-- TOC entry 2293 (class 0 OID 0)
+-- Dependencies: 208
 -- Name: Main_videos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
@@ -1277,7 +1278,7 @@ SELECT pg_catalog.setval('"Main_videos_id_seq"', 8, true);
 
 
 --
--- TOC entry 2223 (class 0 OID 46026)
+-- TOC entry 2221 (class 0 OID 46026)
 -- Dependencies: 178
 -- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1287,7 +1288,7 @@ COPY auth_group (id, name) FROM stdin;
 
 
 --
--- TOC entry 2296 (class 0 OID 0)
+-- TOC entry 2294 (class 0 OID 0)
 -- Dependencies: 177
 -- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1296,7 +1297,7 @@ SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
 
 
 --
--- TOC entry 2225 (class 0 OID 46036)
+-- TOC entry 2223 (class 0 OID 46036)
 -- Dependencies: 180
 -- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1306,7 +1307,7 @@ COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 2297 (class 0 OID 0)
+-- TOC entry 2295 (class 0 OID 0)
 -- Dependencies: 179
 -- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1315,7 +1316,7 @@ SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 2221 (class 0 OID 46018)
+-- TOC entry 2219 (class 0 OID 46018)
 -- Dependencies: 176
 -- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1339,9 +1340,6 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 16	Can add session	6	add_session
 17	Can change session	6	change_session
 18	Can delete session	6	delete_session
-19	Can add quotations	7	add_quotations
-20	Can change quotations	7	change_quotations
-21	Can delete quotations	7	delete_quotations
 22	Can add book	8	add_book
 23	Can change book	8	change_book
 24	Can delete book	8	delete_book
@@ -1372,31 +1370,35 @@ COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
 49	Can add videos	17	add_videos
 50	Can change videos	17	change_videos
 51	Can delete videos	17	delete_videos
+52	Can add topics	18	add_topics
+53	Can change topics	18	change_topics
+54	Can delete topics	18	delete_topics
 \.
 
 
 --
--- TOC entry 2298 (class 0 OID 0)
+-- TOC entry 2296 (class 0 OID 0)
 -- Dependencies: 175
 -- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
-SELECT pg_catalog.setval('auth_permission_id_seq', 51, true);
+SELECT pg_catalog.setval('auth_permission_id_seq', 54, true);
 
 
 --
--- TOC entry 2227 (class 0 OID 46044)
+-- TOC entry 2225 (class 0 OID 46044)
 -- Dependencies: 182
 -- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: way
 --
 
 COPY auth_user (id, password, last_login, is_superuser, username, first_name, last_name, email, is_staff, is_active, date_joined) FROM stdin;
-1	pbkdf2_sha256$24000$OMkRMuuroYXu$VDdfYpAsTP4fUMVjfRnhFqwysRZ2XoPuYDedPvbP4+k=	2017-02-20 15:19:26.719201+03	t	way			11adima@mail.ru	t	t	2017-02-17 13:38:15.655575+03
+2	pbkdf2_sha256$24000$cdrRm4wczYJo$LuuFyAZWuKH6t/f/3O2sbkEoX2ytcji+SNODhJG4LQY=	2017-03-10 17:11:35.063712+03	f	test				f	t	2017-03-10 17:11:34.953284+03
+1	pbkdf2_sha256$24000$OMkRMuuroYXu$VDdfYpAsTP4fUMVjfRnhFqwysRZ2XoPuYDedPvbP4+k=	2017-03-10 17:34:18.364218+03	t	way			11adima@mail.ru	t	t	2017-02-17 13:38:15.655575+03
 \.
 
 
 --
--- TOC entry 2229 (class 0 OID 46054)
+-- TOC entry 2227 (class 0 OID 46054)
 -- Dependencies: 184
 -- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1406,7 +1408,7 @@ COPY auth_user_groups (id, user_id, group_id) FROM stdin;
 
 
 --
--- TOC entry 2299 (class 0 OID 0)
+-- TOC entry 2297 (class 0 OID 0)
 -- Dependencies: 183
 -- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1415,16 +1417,16 @@ SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
 
 
 --
--- TOC entry 2300 (class 0 OID 0)
+-- TOC entry 2298 (class 0 OID 0)
 -- Dependencies: 181
 -- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
-SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+SELECT pg_catalog.setval('auth_user_id_seq', 2, true);
 
 
 --
--- TOC entry 2231 (class 0 OID 46062)
+-- TOC entry 2229 (class 0 OID 46062)
 -- Dependencies: 186
 -- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1434,7 +1436,7 @@ COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
 
 
 --
--- TOC entry 2301 (class 0 OID 0)
+-- TOC entry 2299 (class 0 OID 0)
 -- Dependencies: 185
 -- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
@@ -1443,8 +1445,8 @@ SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
 
 
 --
--- TOC entry 2253 (class 0 OID 46396)
--- Dependencies: 208
+-- TOC entry 2249 (class 0 OID 46396)
+-- Dependencies: 206
 -- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: way
 --
 
@@ -1510,13 +1512,7 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 59	2017-02-17 15:33:40.535252+03	28	Толкование сноведений	1	Добавлено.	8	1
 60	2017-02-17 15:34:27.731741+03	29	Тотем и табу	1	Добавлено.	8	1
 61	2017-02-17 15:35:14.057678+03	30	Введение в психоанализ	1	Добавлено.	8	1
-62	2017-02-17 15:36:01.499585+03	1	1	1	Добавлено.	7	1
-63	2017-02-17 15:36:18.747795+03	2	2	1	Добавлено.	7	1
-64	2017-02-17 15:37:10.384184+03	3	3	1	Добавлено.	7	1
-65	2017-02-17 15:37:58.849346+03	4	4	1	Добавлено.	7	1
-66	2017-02-17 15:38:26.164408+03	5	5	1	Добавлено.	7	1
 67	2017-02-17 15:39:38.402326+03	1	Метафизика	2	Изменен picture.	8	1
-68	2017-02-17 16:20:01.07272+03	1	1	3		7	1
 69	2017-02-20 15:21:54.108791+03	1	1	1	Добавлено.	17	1
 70	2017-02-20 15:22:23.899637+03	2	2	1	Добавлено.	17	1
 71	2017-02-20 15:23:00.616729+03	3	3	1	Добавлено.	17	1
@@ -1541,20 +1537,34 @@ COPY django_admin_log (id, action_time, object_id, object_repr, action_flag, cha
 90	2017-02-21 09:18:15.338147+03	3	Девушка в поезде	2	Изменен picture.	17	1
 91	2017-02-21 09:18:55.310434+03	2	Что в моём kindle	2	Изменен picture.	17	1
 92	2017-02-21 09:19:46.0584+03	1	Бизнес как игра	2	Изменен picture.	17	1
+62	2017-02-17 15:36:01.499585+03	1	1	1	Добавлено.	\N	1
+63	2017-02-17 15:36:18.747795+03	2	2	1	Добавлено.	\N	1
+64	2017-02-17 15:37:10.384184+03	3	3	1	Добавлено.	\N	1
+65	2017-02-17 15:37:58.849346+03	4	4	1	Добавлено.	\N	1
+66	2017-02-17 15:38:26.164408+03	5	5	1	Добавлено.	\N	1
+68	2017-02-17 16:20:01.07272+03	1	1	3		\N	1
+93	2017-03-10 12:22:08.973859+03	1	1	1	Добавлено.	18	1
+94	2017-03-10 12:23:23.986555+03	2	2	1	Добавлено.	18	1
+95	2017-03-10 12:24:22.082597+03	3	3	1	Добавлено.	18	1
+96	2017-03-10 12:25:59.381133+03	4	4	1	Добавлено.	18	1
+97	2017-03-10 13:58:15.139106+03	4	ЧТЕНИЕ - ОДНА ИЗ ОСНОВ РАЗВИТИЯ ЛИЧНОСТИ	2	Изменен title и text.	18	1
+98	2017-03-10 13:59:34.706799+03	3	ДРЕВНЕЙШИЕ КОЛЛЕКЦИИ МИРА	2	Изменен text.	18	1
+99	2017-03-10 14:00:57.731236+03	2	ГРАФИТИ КАК ФОРМА СОВРЕМЕННОГО ИССКУСТВА	2	Изменен text.	18	1
+100	2017-03-10 14:02:17.984093+03	1	ПОДБОРКА КНИГ О ЯПОСКОЙ КУХНЕ	2	Изменен text.	18	1
 \.
 
 
 --
--- TOC entry 2302 (class 0 OID 0)
--- Dependencies: 207
+-- TOC entry 2300 (class 0 OID 0)
+-- Dependencies: 205
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
-SELECT pg_catalog.setval('django_admin_log_id_seq', 92, true);
+SELECT pg_catalog.setval('django_admin_log_id_seq', 100, true);
 
 
 --
--- TOC entry 2219 (class 0 OID 46008)
+-- TOC entry 2217 (class 0 OID 46008)
 -- Dependencies: 174
 -- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1566,7 +1576,6 @@ COPY django_content_type (id, app_label, model) FROM stdin;
 4	auth	user
 5	contenttypes	contenttype
 6	sessions	session
-7	Main	quotations
 8	Main	book
 9	Main	order
 10	Main	orderproduct
@@ -1577,20 +1586,21 @@ COPY django_content_type (id, app_label, model) FROM stdin;
 15	Main	category
 16	Main	status
 17	Main	videos
+18	Main	topics
 \.
 
 
 --
--- TOC entry 2303 (class 0 OID 0)
+-- TOC entry 2301 (class 0 OID 0)
 -- Dependencies: 173
 -- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
-SELECT pg_catalog.setval('django_content_type_id_seq', 17, true);
+SELECT pg_catalog.setval('django_content_type_id_seq', 18, true);
 
 
 --
--- TOC entry 2217 (class 0 OID 45997)
+-- TOC entry 2215 (class 0 OID 45997)
 -- Dependencies: 172
 -- Data for Name: django_migrations; Type: TABLE DATA; Schema: public; Owner: way
 --
@@ -1623,27 +1633,34 @@ COPY django_migrations (id, app, name, applied) FROM stdin;
 25	sessions	0001_initial	2017-02-17 13:36:53.265635+03
 26	Main	0014_videos	2017-02-20 15:19:08.878437+03
 27	Main	0015_videos_picture	2017-02-21 08:57:29.268679+03
+28	Main	0016_auto_20170310_1214	2017-03-10 12:14:37.704699+03
+29	Main	0017_topics_picture	2017-03-10 12:17:04.098087+03
+30	Main	0018_auto_20170310_1218	2017-03-10 12:18:09.407701+03
 \.
 
 
 --
--- TOC entry 2304 (class 0 OID 0)
+-- TOC entry 2302 (class 0 OID 0)
 -- Dependencies: 171
 -- Name: django_migrations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: way
 --
 
-SELECT pg_catalog.setval('django_migrations_id_seq', 27, true);
+SELECT pg_catalog.setval('django_migrations_id_seq', 30, true);
 
 
 --
--- TOC entry 2254 (class 0 OID 46419)
--- Dependencies: 209
+-- TOC entry 2250 (class 0 OID 46419)
+-- Dependencies: 207
 -- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: way
 --
 
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 8z3zfde9zwzhrd8ycsr6j23pnj0ueo9l	N2I0NTUzZDAwNDM2ZjhhM2I1NGQ1MzJiYzgzY2IwODRjY2FiYzg0Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkY2ZlY2NjMjIwM2ZjZDY1ODIzNDNmYzg2MDNhYjY5OTJjODA3OWI5In0=	2017-03-03 13:39:11.268371+03
 wbh8yskebacbjnrrhsxx8yq6a1hmbiiv	OWM5YTQ4ODgzNDZmYzQ3YTJiMjBkZmY5ZjQyNTgxNDFjN2NlZGI3YTp7Il9hdXRoX3VzZXJfaGFzaCI6ImRjZmVjY2MyMjAzZmNkNjU4MjM0M2ZjODYwM2FiNjk5MmM4MDc5YjkiLCJfYXV0aF91c2VyX2lkIjoiMSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2017-03-06 15:19:26.77982+03
+hg7w4pnmbd7fq6in8zr004h71rn1s1ve	YTNkOGZjMTVlNTZjZWQ0YTczOTI5ODY3ZjFlOTc0NWU4ZDBjY2U0NDp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9oYXNoIjoiZGNmZWNjYzIyMDNmY2Q2NTgyMzQzZmM4NjAzYWI2OTkyYzgwNzliOSIsIl9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIn0=	2017-03-24 17:01:47.863255+03
+e85p3gosrwcllmn2uzc8c55ksacyapf9	N2I0NTUzZDAwNDM2ZjhhM2I1NGQ1MzJiYzgzY2IwODRjY2FiYzg0Zjp7Il9hdXRoX3VzZXJfaWQiOiIxIiwiX2F1dGhfdXNlcl9iYWNrZW5kIjoiZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5kcy5Nb2RlbEJhY2tlbmQiLCJfYXV0aF91c2VyX2hhc2giOiJkY2ZlY2NjMjIwM2ZjZDY1ODIzNDNmYzg2MDNhYjY5OTJjODA3OWI5In0=	2017-03-24 17:02:35.140279+03
+ylmkxu49bj7dv6d1r7ojyimsl4e2frag	Njk4OTk3NDg4ZGY2MWJlZTQ0OWM1MjM4ZGM1NzM4ZmE3Y2VhYTU5NTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZGNmZWNjYzIyMDNmY2Q2NTgyMzQzZmM4NjAzYWI2OTkyYzgwNzliOSIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2017-03-24 17:29:49.72965+03
+eyqlq26vrbp5galazsp3tbdzjxz5kmcr	Njk4OTk3NDg4ZGY2MWJlZTQ0OWM1MjM4ZGM1NzM4ZmE3Y2VhYTU5NTp7Il9hdXRoX3VzZXJfYmFja2VuZCI6ImRqYW5nby5jb250cmliLmF1dGguYmFja2VuZHMuTW9kZWxCYWNrZW5kIiwiX2F1dGhfdXNlcl9oYXNoIjoiZGNmZWNjYzIyMDNmY2Q2NTgyMzQzZmM4NjAzYWI2OTkyYzgwNzliOSIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=	2017-03-24 17:34:18.372667+03
 \.
 
 
@@ -1711,15 +1728,6 @@ ALTER TABLE ONLY "Main_publishing"
 
 
 --
--- TOC entry 2079 (class 2606 OID 46387)
--- Name: Main_quotations Main_quotations_pkey; Type: CONSTRAINT; Schema: public; Owner: way
---
-
-ALTER TABLE ONLY "Main_quotations"
-    ADD CONSTRAINT "Main_quotations_pkey" PRIMARY KEY (id);
-
-
---
 -- TOC entry 2074 (class 2606 OID 46200)
 -- Name: Main_review Main_review_pkey; Type: CONSTRAINT; Schema: public; Owner: way
 --
@@ -1738,7 +1746,16 @@ ALTER TABLE ONLY "Main_status"
 
 
 --
--- TOC entry 2089 (class 2606 OID 46450)
+-- TOC entry 2088 (class 2606 OID 46469)
+-- Name: Main_topics Main_topics_pkey; Type: CONSTRAINT; Schema: public; Owner: way
+--
+
+ALTER TABLE ONLY "Main_topics"
+    ADD CONSTRAINT "Main_topics_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 2086 (class 2606 OID 46450)
 -- Name: Main_videos Main_videos_pkey; Type: CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -1855,7 +1872,7 @@ ALTER TABLE ONLY auth_user
 
 
 --
--- TOC entry 2083 (class 2606 OID 46405)
+-- TOC entry 2080 (class 2606 OID 46405)
 -- Name: django_admin_log django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -1891,7 +1908,7 @@ ALTER TABLE ONLY django_migrations
 
 
 --
--- TOC entry 2086 (class 2606 OID 46426)
+-- TOC entry 2083 (class 2606 OID 46426)
 -- Name: django_session django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -1953,14 +1970,6 @@ CREATE INDEX "Main_orderproduct_69dfcb07" ON "Main_orderproduct" USING btree (or
 --
 
 CREATE INDEX "Main_orderproduct_9bea82de" ON "Main_orderproduct" USING btree (product_id);
-
-
---
--- TOC entry 2077 (class 1259 OID 46393)
--- Name: Main_quotations_4f331e2f; Type: INDEX; Schema: public; Owner: way
---
-
-CREATE INDEX "Main_quotations_4f331e2f" ON "Main_quotations" USING btree (author_id);
 
 
 --
@@ -2052,7 +2061,7 @@ CREATE INDEX auth_user_username_6821ab7c_like ON auth_user USING btree (username
 
 
 --
--- TOC entry 2080 (class 1259 OID 46416)
+-- TOC entry 2077 (class 1259 OID 46416)
 -- Name: django_admin_log_417f1b1c; Type: INDEX; Schema: public; Owner: way
 --
 
@@ -2060,7 +2069,7 @@ CREATE INDEX django_admin_log_417f1b1c ON django_admin_log USING btree (content_
 
 
 --
--- TOC entry 2081 (class 1259 OID 46417)
+-- TOC entry 2078 (class 1259 OID 46417)
 -- Name: django_admin_log_e8701ad4; Type: INDEX; Schema: public; Owner: way
 --
 
@@ -2068,7 +2077,7 @@ CREATE INDEX django_admin_log_e8701ad4 ON django_admin_log USING btree (user_id)
 
 
 --
--- TOC entry 2084 (class 1259 OID 46427)
+-- TOC entry 2081 (class 1259 OID 46427)
 -- Name: django_session_de54fa62; Type: INDEX; Schema: public; Owner: way
 --
 
@@ -2076,7 +2085,7 @@ CREATE INDEX django_session_de54fa62 ON django_session USING btree (expire_date)
 
 
 --
--- TOC entry 2087 (class 1259 OID 46428)
+-- TOC entry 2084 (class 1259 OID 46428)
 -- Name: django_session_session_key_c0390e0f_like; Type: INDEX; Schema: public; Owner: way
 --
 
@@ -2084,7 +2093,7 @@ CREATE INDEX django_session_session_key_c0390e0f_like ON django_session USING bt
 
 
 --
--- TOC entry 2097 (class 2606 OID 46326)
+-- TOC entry 2096 (class 2606 OID 46326)
 -- Name: Main_book Main_book_author_id_df3ae694_fk_Main_author_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2093,7 +2102,7 @@ ALTER TABLE ONLY "Main_book"
 
 
 --
--- TOC entry 2098 (class 2606 OID 46331)
+-- TOC entry 2097 (class 2606 OID 46331)
 -- Name: Main_book Main_book_genre_id_9d7102f6_fk_Main_genre_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2102,7 +2111,7 @@ ALTER TABLE ONLY "Main_book"
 
 
 --
--- TOC entry 2099 (class 2606 OID 46336)
+-- TOC entry 2098 (class 2606 OID 46336)
 -- Name: Main_book Main_book_publishing_id_9b85b31d_fk_Main_publishing_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2111,7 +2120,7 @@ ALTER TABLE ONLY "Main_book"
 
 
 --
--- TOC entry 2100 (class 2606 OID 46341)
+-- TOC entry 2099 (class 2606 OID 46341)
 -- Name: Main_order Main_order_status_id_a7137136_fk_Main_status_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2120,7 +2129,7 @@ ALTER TABLE ONLY "Main_order"
 
 
 --
--- TOC entry 2101 (class 2606 OID 46372)
+-- TOC entry 2100 (class 2606 OID 46372)
 -- Name: Main_order Main_order_user_id_353d9551_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2129,7 +2138,7 @@ ALTER TABLE ONLY "Main_order"
 
 
 --
--- TOC entry 2102 (class 2606 OID 46351)
+-- TOC entry 2101 (class 2606 OID 46351)
 -- Name: Main_orderproduct Main_orderproduct_order_id_89470755_fk_Main_order_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2138,7 +2147,7 @@ ALTER TABLE ONLY "Main_orderproduct"
 
 
 --
--- TOC entry 2103 (class 2606 OID 46356)
+-- TOC entry 2102 (class 2606 OID 46356)
 -- Name: Main_orderproduct Main_orderproduct_product_id_4e8d2d01_fk_Main_book_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2147,16 +2156,7 @@ ALTER TABLE ONLY "Main_orderproduct"
 
 
 --
--- TOC entry 2106 (class 2606 OID 46388)
--- Name: Main_quotations Main_quotations_author_id_f073bda1_fk_Main_author_id; Type: FK CONSTRAINT; Schema: public; Owner: way
---
-
-ALTER TABLE ONLY "Main_quotations"
-    ADD CONSTRAINT "Main_quotations_author_id_f073bda1_fk_Main_author_id" FOREIGN KEY (author_id) REFERENCES "Main_author"(id) DEFERRABLE INITIALLY DEFERRED;
-
-
---
--- TOC entry 2104 (class 2606 OID 46361)
+-- TOC entry 2103 (class 2606 OID 46361)
 -- Name: Main_review Main_review_product_id_a798501e_fk_Main_book_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2165,7 +2165,7 @@ ALTER TABLE ONLY "Main_review"
 
 
 --
--- TOC entry 2105 (class 2606 OID 46367)
+-- TOC entry 2104 (class 2606 OID 46367)
 -- Name: Main_review Main_review_user_id_8439f433_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2174,7 +2174,7 @@ ALTER TABLE ONLY "Main_review"
 
 
 --
--- TOC entry 2092 (class 2606 OID 46082)
+-- TOC entry 2091 (class 2606 OID 46082)
 -- Name: auth_group_permissions auth_group_permiss_permission_id_84c5c92e_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2183,7 +2183,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- TOC entry 2091 (class 2606 OID 46077)
+-- TOC entry 2090 (class 2606 OID 46077)
 -- Name: auth_group_permissions auth_group_permissions_group_id_b120cbf9_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2192,7 +2192,7 @@ ALTER TABLE ONLY auth_group_permissions
 
 
 --
--- TOC entry 2090 (class 2606 OID 46068)
+-- TOC entry 2089 (class 2606 OID 46068)
 -- Name: auth_permission auth_permiss_content_type_id_2f476e4b_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2201,7 +2201,7 @@ ALTER TABLE ONLY auth_permission
 
 
 --
--- TOC entry 2094 (class 2606 OID 46097)
+-- TOC entry 2093 (class 2606 OID 46097)
 -- Name: auth_user_groups auth_user_groups_group_id_97559544_fk_auth_group_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2210,7 +2210,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- TOC entry 2093 (class 2606 OID 46092)
+-- TOC entry 2092 (class 2606 OID 46092)
 -- Name: auth_user_groups auth_user_groups_user_id_6a12ed8b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2219,7 +2219,7 @@ ALTER TABLE ONLY auth_user_groups
 
 
 --
--- TOC entry 2096 (class 2606 OID 46111)
+-- TOC entry 2095 (class 2606 OID 46111)
 -- Name: auth_user_user_permissions auth_user_user_per_permission_id_1fbb5f2c_fk_auth_permission_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2228,7 +2228,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- TOC entry 2095 (class 2606 OID 46106)
+-- TOC entry 2094 (class 2606 OID 46106)
 -- Name: auth_user_user_permissions auth_user_user_permissions_user_id_a95ead1b_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2237,7 +2237,7 @@ ALTER TABLE ONLY auth_user_user_permissions
 
 
 --
--- TOC entry 2107 (class 2606 OID 46406)
+-- TOC entry 2105 (class 2606 OID 46406)
 -- Name: django_admin_log django_admin_content_type_id_c4bce8eb_fk_django_content_type_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2246,7 +2246,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
--- TOC entry 2108 (class 2606 OID 46411)
+-- TOC entry 2106 (class 2606 OID 46411)
 -- Name: django_admin_log django_admin_log_user_id_c564eba6_fk_auth_user_id; Type: FK CONSTRAINT; Schema: public; Owner: way
 --
 
@@ -2255,7 +2255,7 @@ ALTER TABLE ONLY django_admin_log
 
 
 --
--- TOC entry 2263 (class 0 OID 0)
+-- TOC entry 2261 (class 0 OID 0)
 -- Dependencies: 6
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
@@ -2266,7 +2266,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2017-02-22 12:31:43 MSK
+-- Completed on 2017-03-10 17:44:25 MSK
 
 --
 -- PostgreSQL database dump complete

@@ -9,6 +9,7 @@ from django.http import HttpResponse
 from .forms import RussianUserCreationForm
 
 ## Отображает форму авторизации.
+"""
 def login(request):
     res_dict= {}
     res_dict.update(csrf(request))
@@ -27,6 +28,37 @@ def login(request):
          
     res_dict['form'] = AuthenticationForm
     return render_to_response('login.html', res_dict)
+"""
+
+def login(request):
+    if request.POST:
+        if request.is_ajax():
+            print(request.POST)
+            print('fsdf')
+            form = AuthenticationForm(data = request.POST)
+            if form.is_valid():
+                print('valid')
+                user_name = request.POST['username']
+                user_password = request.POST['password']
+                user = auth.authenticate(username=user_name,
+                                    password=user_password)
+                if user:
+                    auth.login(request, user)
+                    res = {'result': 'success'}
+                    print(res)
+                else:
+                    res = {'result': 'Неверный пользователь или пароль'}
+            else:
+                res = {'result': 'Заполните все поля'}
+            print(res)
+            return HttpResponse(json.dumps(res))
+    else:
+        print('here')            
+        res_dict= {}
+        res_dict.update(csrf(request))
+        res_dict['form'] = AuthenticationForm
+        return render_to_response('login.html', res_dict)
+
 
 ## Выходит из системы.
 def logout(request):

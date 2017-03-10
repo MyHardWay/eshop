@@ -18,10 +18,10 @@ class Topics(models.Model):
     
     
     def __unicode__(self):
-        return self.title;
+        return self.title
     
     def __str__(self):
-        return str(self.id)
+        return self.title
     
 
 class Videos (models.Model):

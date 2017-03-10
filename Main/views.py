@@ -108,6 +108,16 @@ def show_author_info_page(request, author_id):
     res_dict['content'] = cur_author
     return render_to_response ('about.html', res_dict)
 
+## Отображает статью.
+# @param topic_id ИД статьи.
+def show_topic_info_page(request, topic_id):
+    res_dict = make_res_dict(request)
+    cur_topic = Topics.objects.get(id=topic_id)
+    res_dict['content'] = cur_topic
+    return render_to_response ('topic.html', res_dict)
+
+
+
 ## Отображает страницу издательства.
 # @param publishing_id ИД издательства.   
 def show_publishing_info_page(request, publishing_id):
