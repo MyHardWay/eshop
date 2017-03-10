@@ -119,40 +119,59 @@
 		<hr style="margin: 0px; padding: 0px;"></hr>
 		{% block Main %}
 		{% endblock %}
-		<div class="row content-row" style="background-color: black; margin-top: 50px;" >
+		<div class="row content-row footer">
 				<div class="small-8 small-centered columns">
-					<div style="padding-bottom: 50px;">
-						<h2>Используемый стек технологий</h2>
-						<p style="color: white;">
-							Данный книжный магазин был разработан при помощи Django framework версии 1.9.4 на текущий момент. Все шаблоны были написанны самостоятельно на связке HTML + FOUNDATION
-							Framework. Для обеспечение динамики использован JavaScript + Jquery. Взаимодействие с базой данных MySQL осуществляется по средством ORM DJANGO. Некоторые составляющие сайта
-							, реализованы с использованием технологии AJAX.
-						</p>
-					</div>		
-				</div>
+						<div class="row">
+							<div class="small-4 columns">
+									<h4>Использованные технологии</h4>
+      							<ul class="footer-links">
+        								<li><a href="#">Ajax</a></li>
+        								<li><a href="#">JQuery</a></li>
+        								<li><a href="#">Django</a></li>
+        								<li><a href="#">Foundation</a></li>
+        								<li><a href="#">PostgreSQL</a></li>
+      							<ul>
+    						</div>
+							<div class="small-4 columns">
+									<h4>Работай со мной</h4>
+      							<ul class="footer-links">
+        								<li><a href="#">Ajax</a></li>
+        								<li><a href="#">JQuery</a></li>
+        								<li><a href="#">Django</a></li>
+        								<li><a href="#">Foundation</a></li>
+        								<li><a href="#">PostgreSQL</a></li>
+      							<ul>
+    						</div>
+    				  	<div class="small-3 columns">
+								<h4>Мои контакты</h4>
+								<ul class='small-block-grid-6'>
+									<li><a href="/auth/login/"><img class="social" src="{% static 'img/icons/mail.png'%}"></a></li>							
+									<li><a href="/auth/login/"><img class="social" align="top" src="{% static 'img/icons/Twitter.png'%}"></a></li>
+									<li><a href="/auth/login/"><img class="social" align="top" src="{% static 'img/icons/VK.png'%}"></a></li>							
+								</ul>		
+					  	</div>			
+					</div>
+					<hr></hr>
+					<div class="row" style="padding-bottom:20px;">
+						<div class="small-4 columns">
+							<img class="social" align="top" src="{% static 'img/icons/russia.png'%}">
+							<p style="display:inline; padding-left:5px;">Все права защищены</p>			
+						</div>
+						<div class="small-2 small-offset-4 columns">
+							<ul class='small-block-grid-2'>
+								<li><a href="/auth/login/">Адрес</a></li>
+								<li><a href="/auth/login/">Телефон</a></li>	
+							</ul>
+						</div>
+					</div>
+					</div>	
+				
 		</div>
-		<div class="row content-row" style="background-color: #333333;" >
-				<div class="small-8 small-centered columns">
-					<h2> Контактная информация: <a href="http://vk.com/id1627239">Я вконтакте</a></h2>
-				</div>
-		</div>
+
 	</div>
 		<script type="text/javascript" src="{% static 'js/foundation.min.js' %}"></script>
 		<script> $(document).foundation(); </script>
-		<script type="text/javascript">
-		<!-- Иницализируем двигающиеся панель поиска. -->
-		window.onload = function () {
-			makeSlider('#slideshow', 3);
-			$('#search-wrapper').clone().attr('id', 'moved-bar').appendTo('#container');
-			$('#moved-bar').addClass('moving-bar');
-			isElementOutViewport ('#moved-bar', '#nav-panel');}
-		$(document).ready(function(){
-    		$(window).scroll(function(){
-      		isElementOutViewport ('#moved-bar', '#nav-panel');
-    			})
-		})		
-		
-	</script>	
+		<script type="text/javascript"> initProjJs ();</script>	
 		
 </body>
 </html>

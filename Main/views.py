@@ -7,16 +7,16 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseNotFound, HttpResponse   
 
 from Main.models import Author, Book, Genre, Order, OrderProduct, Publishing
-from Main.models import Status, Quotations, Videos
+from Main.models import Status, Topics, Videos
 
 ## Отображает стартовую страницу сайта.
 def show_index_page(request):
     res_dict = make_res_dict(request)
     res_dict.update(csrf(request))
-    quotations = Quotations.objects.select_related().order_by('?')[:2]
+    topics = Topics.objects.select_related().order_by('?')[:4]
     books = Book.objects.all()[:5]
     videos = Videos.objects.all()
-    res_dict['quotations'] = quotations
+    res_dict['topics'] = topics
     res_dict['products'] = books
     res_dict['videos'] = videos
     return render_to_response ('index.html', res_dict)

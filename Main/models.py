@@ -4,12 +4,18 @@ from django.db import models
 from django.template.defaultfilters import title
 
 ## Цитата.
-class Quotations(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Название цитаты')
+class Topics(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Короткое описание топика')
 
-    text = models.TextField(verbose_name='Текст цитаты')
+    text = models.TextField(verbose_name='Текст топика')
     
-    author = models.ForeignKey('Author', verbose_name='Автор')
+    short = models.CharField(max_length=100, verbose_name='Приглашение')
+    
+    picture = models.CharField(max_length=100, verbose_name='Ссылка на картинку')
+    
+    def get_picture(self):
+        return 'img/banners/' + self.picture
+    
     
     def __unicode__(self):
         return self.title;

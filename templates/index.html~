@@ -6,7 +6,7 @@
 	<!-- Контент -->
 	
 	<div style="background-color: black;" class="row content-row">
-		<div class="small-8 small-centered columns" style="height: 550px;">
+		<div class="small-8 small-centered columns" style="height: 750px;">
 		<!-- Слайдер -->
 			<ul class="example-orbit" data-orbit>
 			  <li>
@@ -25,9 +25,10 @@
 			</ul>
 		</div>
 	</div>
+	<!--
 	<div class='row'>
 		<div class="small-8 small-centered columns" style="margin-top: -100px; background-color: white; padding: 0px;">
-			<!-- Цитатник -->	
+
 			<ul class="small-block-grid-2">
 			{% for quotation in quotations %}
 				{% get_quotations quotation %}
@@ -35,13 +36,37 @@
 
 			</ul>
 		</div>
-	</div>
-
-		<div class="small-8 small-centered columns" style="margin-top: 50px; background-color: white; padding: 0px;">
-			<h1>Бестселлеры</h1>
-			<hr></hr>
-		</div>	
+	</div> -->
+	
 	<div class='row'>
+		<div class="small-8 small-centered columns" style="margin-top: -200px; background-color: white; padding: 0px;">
+
+			<ul class="small-block-grid-2">
+			{% for topic in topics %}
+				<li>
+					<div class="topic-card">
+						<center>
+							<img src="{% static topic.get_picture %}" alt="" style="display: block; height: 300px; min-height: 300px; width: 100%; min-width: 100%;">
+						</center>
+							<h5 style='text-align:center; margin-top: 25px; text-transform: uppercase; font-weight: bold;'>{{topic.title}}</h5>
+							<center>
+								<a href="" style="margin-top: 25px;">{{topic.short}}</a>
+							</center>
+					</div>
+				</li>
+			{% endfor %}
+
+			</ul>
+		</div>
+	</div> 
+	
+	
+	
+
+  <div class="small-8 small-centered columns header">
+			<h1><center>Бестселлеры</center></h1>
+  </div>	
+	<div class='row main-content'>
 		<div class="small-8 small-centered columns" style="background-color: white; padding: 0px;">
 			<!-- Перечень книг -->	
 			<ul class="small-block-grid-5">
@@ -60,35 +85,39 @@
 			</div>
 		</div>
 	-->
-	<div class='row content-row' style='background-color: white; padding-top: 30px;'>
+	<div class='row content-row header'>
 			<div class="row" style>
 					<div class="small-4 small-centered columns">	
 							<h1>Книжные премьеры недели</h1>
 					</div>	
 			</div>
-		  <div class="row" style>
-							<div id='slideshow' class="slideshow" style='padding-top:30px' data-cnt='3'>
-							   <div class="small-2 columns" style='height:430px;'>
+		  <div class="row slideshow main-content" id='slideshow' data-cnt='3' data-prev='' data-next=''>
+							   <div class="small-2 columns arrows">
 							   	<center>
-										<img src="{% static 'img/icons/previous.png' %}" onclick="mooveSlideOnPrevious(this)" class='previous centred-img' data-current=''>
+										<img src="{% static 'img/icons/previous.png' %}" class='previous centred-img' data-current=''>
 									</center>						   
 							   </div>
 							   <div class="small-8 columns">
-									<ul id="slidecontainer" class='slidecontainer' style="overflow:hidden; position: relative; height: 430px; display: inherit;">
+									<ul id="slidecontainer" class='slidecontainer'>
 										{% for video in videos %}
-											<li class='slide' style='position:absolute; overflow: hidden; display: inline-block;'>
-        										<img src="{% static video.get_picture %}" style='width: 100%; padding: 30px'>
+											<div id="video_{{video.id}}" class="reveal-modal large" data-reveal aria-labelledby="video_{{video.id}}" aria-hidden="true" role="dialog">
+  												<h2 id="video_{{video.id}}">{{video.title}}</h2>
+  												<div class="flex-video widescreen vimeo">
+   											 	<iframe width="1280" height="720" src="{{video.url}}" frameborder="0" allowfullscreen></iframe>
+  												</div>
+  												<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+											</div>																		
+											<li class='slide'>
+        										<img src="{% static video.get_picture %}"  data-reveal-id="video_{{video.id}}">
 											</li>
 										{% endfor %}
 									</ul>
 								</div>
-								<div class="small-2 columns" style='height:430px;'>
+								<div class="small-2 columns arrows">
 									<center>							
-										<img 	src="{% static 'img/icons/skip.png' %}" onclick="" class="next centred-img" data-current=''>
+										<img 	src="{% static 'img/icons/skip.png' %}"  class="next centred-img" data-current=''>
 									</center>	
-								</div>
-										
-							</div>
+								</div>			
 					</div>	
 			</div>			
 			
